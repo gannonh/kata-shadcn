@@ -1,0 +1,99 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import React from "react";
+
+import { cn } from "@/lib/utils";
+
+import { Particles } from "@/components/magicui/particles";
+import { Button } from "@/components/ui/button";
+
+interface Hero218Props {
+  className?: string;
+}
+
+const Hero218 = ({ className }: Hero218Props) => {
+  return (
+    <section className={cn("py-32", className)}>
+      <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
+        <p className="text-muted-foreground">
+          Bridging Developers, Building the Future
+        </p>
+        <h1 className="realtive z-15 max-w-3xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
+          <span
+            className="overflow-hidden"
+            style={{
+              transformStyle: "preserve-3d",
+              perspective: "600px",
+            }}
+          >
+            {"The only app you Need to Stay Productive"
+              .split(" ")
+              .map((word, i) => (
+                <motion.span
+                  className="relative inline-block px-[6px] leading-[none]"
+                  key={i}
+                  initial={{
+                    opacity: 0,
+                    y: "70%",
+                    rotateX: "-28deg",
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: "0%",
+                    rotateX: "0deg",
+                  }}
+                  transition={{
+                    delay: i * 0.08 + 0.1,
+                    duration: 0.8,
+                    ease: [0.215, 0.61, 0.355, 1],
+                  }}
+                >
+                  {word === "Productive" ? (
+                    <span className="font-playfair italic">{word}</span>
+                  ) : (
+                    word
+                  )}
+                </motion.span>
+              ))}
+          </span>
+        </h1>
+        <Particles
+          className="absolute inset-0 z-0"
+          quantity={500}
+          ease={80}
+          color="#000000"
+          refresh
+        />
+
+        <div className="relative h-92 w-full -translate-y-15 overflow-hidden">
+          <div className="absolute z-10 h-92 w-full bg-background blur-xl" />
+          <div className="absolute z-13 h-92 w-full -translate-y-62 bg-background blur-2xl" />
+
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="absolute z-12 w-full overflow-hidden"
+          >
+            <img
+              src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/green-shape.svg"
+              className="h-215 w-full -translate-y-90 -rotate-76"
+              alt=""
+            />
+          </motion.div>
+        </div>
+        <Button
+          variant="secondary"
+          className="text-md group -mt-15 flex w-fit items-center justify-center gap-2 rounded-full px-4 py-1 tracking-tight"
+        >
+          Contact Us now
+          <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
+        </Button>
+      </div>
+    </section>
+  );
+};
+
+export { Hero218 };
