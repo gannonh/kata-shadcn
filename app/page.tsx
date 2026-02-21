@@ -1,70 +1,148 @@
-import * as React from "react"
-import { OpenInV0Button } from "@/components/open-in-v0-button"
-import { HelloWorld } from "@/registry/new-york/blocks/hello-world/hello-world"
-import { ExampleForm } from "@/registry/new-york/blocks/example-form/example-form"
-import PokemonPage from "@/registry/new-york/blocks/complex-component/page"
-import { ExampleCard } from "@/registry/new-york/blocks/example-with-css/example-card"
-// This page displays items from the custom registry.
-// You are free to implement this with your own design as needed.
+"use client"
+
+import { useState, useMemo } from "react"
+import componentIndex from "@/lib/component-index.json"
+
+type Component = {
+  name: string
+  title: string
+  description: string
+  category: string
+  installCommand: string
+}
+
+const components = componentIndex as Component[]
+
+const categories = Array.from(
+  new Set(components.map((c) => c.category))
+).sort()
 
 export default function Home() {
+  const [search, setSearch] = useState("")
+  const [activeCategory, setActiveCategory] = useState<string | null>(null)
+
+  const filtered = useMemo(() => {
+    const q = search.toLowerCase()
+    return components.filter((c) => {
+      const matchesSearch =
+        !q ||
+        c.name.toLowerCase().includes(q) ||
+        c.description.toLowerCase().includes(q) ||
+        c.category.toLowerCase().includes(q)
+      const matchesCategory =
+        !activeCategory || c.category === activeCategory
+      return matchesSearch && matchesCategory
+    })
+  }, [search, activeCategory])
+
   return (
-    <div className="max-w-3xl mx-auto flex flex-col min-h-svh px-4 py-8 gap-8">
+    <div className="max-w-6xl mx-auto px-4 py-8 flex flex-col gap-6">
       <header className="flex flex-col gap-1">
-        <h1 className="text-3xl font-bold tracking-tight">Custom Registry</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Component Registry</h1>
         <p className="text-muted-foreground">
-          A custom registry for distributing code using shadcn.
+          {components.length} components · Private registry
         </p>
       </header>
-      <main className="flex flex-col flex-1 gap-8">
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm text-muted-foreground sm:pl-3">
-              A simple hello world component
-            </h2>
-            <OpenInV0Button name="hello-world" className="w-fit" />
-          </div>
-          <div className="flex items-center justify-center min-h-[400px] relative">
-            <HelloWorld />
-          </div>
-        </div>
 
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm text-muted-foreground sm:pl-3">
-              A contact form with Zod validation.
-            </h2>
-            <OpenInV0Button name="example-form" className="w-fit" />
-          </div>
-          <div className="flex items-center justify-center min-h-[500px] relative">
-            <ExampleForm />
-          </div>
-        </div>
+      <div className="flex flex-col gap-3">
+        <input
+          type="search"
+          placeholder="Search components..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="w-full max-w-sm rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        />
 
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm text-muted-foreground sm:pl-3">
-              A complex component showing hooks, libs and components.
-            </h2>
-            <OpenInV0Button name="complex-component" className="w-fit" />
-          </div>
-          <div className="flex items-center justify-center min-h-[400px] relative">
-            <PokemonPage />
-          </div>
+        <div className="flex flex-wrap gap-2">
+          <button
+            onClick={() => setActiveCategory(null)}
+            className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+              !activeCategory
+                ? "bg-primary text-primary-foreground"
+                : "bg-muted text-muted-foreground hover:bg-muted/80"
+            }`}
+          >
+            All ({components.length})
+          </button>
+          {categories.map((cat) => {
+            const count = components.filter((c) => c.category === cat).length
+            return (
+              <button
+                key={cat}
+                onClick={() =>
+                  setActiveCategory(activeCategory === cat ? null : cat)
+                }
+                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors capitalize ${
+                  activeCategory === cat
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80"
+                }`}
+              >
+                {cat} ({count})
+              </button>
+            )
+          })}
         </div>
+      </div>
 
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm text-muted-foreground sm:pl-3">
-              A login form with a CSS file.
-            </h2>
-            <OpenInV0Button name="example-with-css" className="w-fit" />
-          </div>
-          <div className="flex items-center justify-center min-h-[400px] relative">
-            <ExampleCard />
-          </div>
+      <p className="text-sm text-muted-foreground">
+        {filtered.length} result{filtered.length !== 1 ? "s" : ""}
+      </p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {filtered.map((component) => (
+          <ComponentCard key={component.name} component={component} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function ComponentCard({ component }: { component: Component }) {
+  const [copied, setCopied] = useState(false)
+
+  function copy() {
+    navigator.clipboard.writeText(component.installCommand)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 1500)
+  }
+
+  const previewUrl = `https://www.shadcnblocks.com/blocks/${component.category}#${component.name}`
+
+  return (
+    <div className="flex flex-col gap-3 rounded-lg border p-4 text-sm">
+      <div className="flex items-start justify-between gap-2">
+        <div className="flex flex-col gap-1">
+          <span className="font-medium">{component.name}</span>
+          <span className="text-xs capitalize text-muted-foreground">
+            {component.category}
+          </span>
         </div>
-      </main>
+        <a
+          href={previewUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs text-muted-foreground underline-offset-2 hover:underline shrink-0"
+        >
+          Preview ↗
+        </a>
+      </div>
+
+      {component.description && (
+        <p className="text-muted-foreground line-clamp-2 text-xs leading-relaxed">
+          {component.description}
+        </p>
+      )}
+
+      <div className="flex items-center gap-2 rounded-md bg-muted px-2 py-1.5">
+        <code className="flex-1 truncate text-xs">{component.installCommand}</code>
+        <button
+          onClick={copy}
+          className="text-xs text-muted-foreground hover:text-foreground transition-colors shrink-0"
+        >
+          {copied ? "Copied!" : "Copy"}
+        </button>
+      </div>
     </div>
   )
 }
