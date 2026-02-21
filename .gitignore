@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Generated registry output — rebuilt by pnpm registry:build
+/public/r/
+!/public/r/complex-component.json
+!/public/r/example-form.json
+!/public/r/example-with-css.json
+!/public/r/hello-world.json
+!/public/r/registry.json
+
+# Generated browser index — rebuilt by pnpm registry:build
+/lib/component-index.json
