@@ -47,6 +47,7 @@ export default function Home() {
       <div className="flex flex-col gap-3">
         <input
           type="search"
+          aria-label="Search components by name, description, or category"
           placeholder="Search components..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -56,6 +57,8 @@ export default function Home() {
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setActiveCategory(null)}
+            aria-pressed={!activeCategory}
+            aria-label="All categories"
             className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
               !activeCategory
                 ? "bg-primary text-primary-foreground"
@@ -72,6 +75,8 @@ export default function Home() {
                 onClick={() =>
                   setActiveCategory(activeCategory === cat ? null : cat)
                 }
+                aria-pressed={activeCategory === cat}
+                aria-label={`Filter by ${cat} category`}
                 className={`px-3 py-1 rounded-full text-xs font-medium transition-colors capitalize ${
                   activeCategory === cat
                     ? "bg-primary text-primary-foreground"
@@ -85,7 +90,7 @@ export default function Home() {
         </div>
       </div>
 
-      <p className="text-sm text-muted-foreground">
+      <p aria-live="polite" className="text-sm text-muted-foreground">
         {filtered.length} result{filtered.length !== 1 ? "s" : ""}
       </p>
 
@@ -122,9 +127,10 @@ function ComponentCard({ component }: { component: Component }) {
           href={previewUrl}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={`Preview ${component.name} on shadcnblocks.com (opens in new tab)`}
           className="text-xs text-muted-foreground underline-offset-2 hover:underline shrink-0"
         >
-          Preview ↗
+          Preview <span aria-hidden="true">↗</span>
         </a>
       </div>
 
@@ -138,9 +144,10 @@ function ComponentCard({ component }: { component: Component }) {
         <code className="flex-1 truncate text-xs">{component.installCommand}</code>
         <button
           onClick={copy}
+          aria-label={copied ? "Copied to clipboard" : `Copy install command for ${component.name}`}
           className="text-xs text-muted-foreground hover:text-foreground transition-colors shrink-0"
         >
-          {copied ? "Copied!" : "Copy"}
+          <span aria-live="polite">{copied ? "Copied!" : "Copy"}</span>
         </button>
       </div>
     </div>
