@@ -1,0 +1,118 @@
+// scripts/build-registry.ts
+import * as fs from "fs"
+import * as path from "path"
+
+const REGISTRY_JSON = path.join(process.cwd(), "registry.json")
+const PUBLIC_R = path.join(process.cwd(), "public/r")
+const LIB = path.join(process.cwd(), "lib")
+
+fs.mkdirSync(PUBLIC_R, { recursive: true })
+fs.mkdirSync(LIB, { recursive: true })
+
+const manifest = JSON.parse(fs.readFileSync(REGISTRY_JSON, "utf8"))
+const templateNames = new Set(["hello-world", "example-form", "complex-component", "example-with-css"])
+
+// Map registry source paths → original consumer paths
+// registry/blocks/about1/about1.tsx → block/about1.tsx
+// registry/components/shadcnblocks/logo.tsx → components/shadcnblocks/logo.tsx
+function toConsumerPath(registryPath: string): string {
+  if (registryPath.startsWith("registry/blocks/")) {
+    return `block/${path.basename(registryPath)}`
+  }
+  if (registryPath.startsWith("registry/components/")) {
+    return registryPath.replace("registry/components/", "components/")
+  }
+  return registryPath
+}
+
+const index: any[] = []
+let built = 0
+let skipped = 0
+let missing = 0
+
+for (const item of manifest.items) {
+  if (templateNames.has(item.name)) {
+    skipped++
+    continue
+  }
+
+  const builtFiles: any[] = []
+
+  for (const fileEntry of item.files ?? []) {
+    const sourcePath = path.join(process.cwd(), fileEntry.path)
+
+    if (!fs.existsSync(sourcePath)) {
+      console.warn(`  Missing source: ${fileEntry.path}`)
+      missing++
+      continue
+    }
+
+    const content = fs.readFileSync(sourcePath, "utf8")
+    const consumerPath = toConsumerPath(fileEntry.path)
+
+    builtFiles.push({
+      path: consumerPath,
+      content,
+      type: fileEntry.type,
+    })
+  }
+
+  if (builtFiles.length === 0) continue
+
+  const registryItem: any = {
+    $schema: "https://ui.shadcn.com/schema/registry-item.json",
+    name: item.name,
+    type: item.type,
+    title: item.title,
+    description: item.description,
+    files: builtFiles,
+  }
+
+  if (item.dependencies?.length) registryItem.dependencies = item.dependencies
+  if (item.registryDependencies?.length) registryItem.registryDependencies = item.registryDependencies
+
+  fs.writeFileSync(
+    path.join(PUBLIC_R, `${item.name}.json`),
+    JSON.stringify(registryItem, null, 2) + "\n",
+    "utf8"
+  )
+
+  const category = item.name.replace(/\d.*$/, "").replace(/-+$/, "")
+
+  index.push({
+    name: item.name,
+    title: item.title,
+    description: item.description,
+    category,
+    installCommand: `npx shadcn add @ourorg/${item.name}`,
+  })
+
+  built++
+}
+
+// Browser UI index
+fs.writeFileSync(
+  path.join(LIB, "component-index.json"),
+  JSON.stringify(index, null, 2) + "\n",
+  "utf8"
+)
+
+// Agent discovery index
+const agentIndex = {
+  _description: "Machine-readable index of all available registry components. Fetch /r/{name}.json to get full source. Requires x-registry-token header.",
+  total: index.length,
+  items: index.map((c) => ({
+    name: c.name,
+    title: c.title,
+    description: c.description,
+    category: c.category,
+    url: `/r/${c.name}.json`,
+  })),
+}
+fs.writeFileSync(
+  path.join(PUBLIC_R, "index.json"),
+  JSON.stringify(agentIndex, null, 2) + "\n",
+  "utf8"
+)
+
+console.log(`Built ${built} components. Skipped ${skipped} templates. Missing sources: ${missing}. Index: ${index.length} entries.`)
