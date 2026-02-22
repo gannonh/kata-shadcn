@@ -57,6 +57,18 @@ git push
 
 Registry endpoints (`/r/*`) require an `x-registry-token` header. Set `REGISTRY_TOKEN` in Vercel project environment variables.
 
+| Variable | Value |
+|---|---|
+| `REGISTRY_URL` | `https://shadcn-registry-eight.vercel.app` |
+| `REGISTRY_TOKEN` | `ff49281b352e3be02625f606b1f0fb4ce59fa84219ac79ff05dac6611ab50521` |
+
+Example:
+
+```bash
+curl https://shadcn-registry-eight.vercel.app/r/index.json \
+  -H "x-registry-token: ff49281b352e3be02625f606b1f0fb4ce59fa84219ac79ff05dac6611ab50521"
+```
+
 ## Consuming project setup
 
 Add to `components.json`:
