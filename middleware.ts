@@ -2,7 +2,11 @@
 import { NextRequest, NextResponse } from "next/server"
 
 export function middleware(req: NextRequest) {
-  if (req.nextUrl.pathname.startsWith("/r/styles/")) {
+  if (
+    req.nextUrl.pathname.startsWith("/r/styles/") ||
+    req.nextUrl.pathname.startsWith("/r/colors/") ||
+    req.nextUrl.pathname.startsWith("/r/icons/")
+  ) {
     // Public passthrough for unscoped shadcn dependency resolution.
     return NextResponse.next()
   }

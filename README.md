@@ -27,6 +27,8 @@ middleware.ts      # protects /r/* with x-registry-token header
 app/page.tsx       # searchable component browser UI
 app/styles/*       # fallback proxy for unscoped shadcn dependencies
 app/r/styles/*     # compatibility proxy when REGISTRY_URL includes /r
+app/r/colors/*     # upstream shadcn color registry passthrough
+app/r/icons/*      # upstream shadcn icon registry passthrough
 docs/
   plans/           # design docs and implementation plans
   reference/       # shadcnblocks and shadcn CLI reference
@@ -57,7 +59,8 @@ git push
 
 ## Auth
 
-Registry endpoints (`/r/*`) require an `x-registry-token` header, except `/r/styles/*` which is intentionally public for unscoped dependency passthrough. Set `REGISTRY_TOKEN` in Vercel project environment variables.
+Registry endpoints (`/r/*`) require an `x-registry-token` header, except `/r/styles/*`, `/r/colors/*`, and `/r/icons/*` which are intentionally public passthrough routes for built-in shadcn dependencies.
+Set `REGISTRY_TOKEN` in Vercel project environment variables.
 
 Compatibility endpoints under `/styles/*` proxy to the public shadcn registry for unscoped dependencies (e.g. `utils`, `button`) that the CLI resolves via `styles/{style}/{name}.json`.
 
