@@ -1,0 +1,53 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## What this is
+
+Private self-hosted shadcn component registry with 2555 licensed shadcnblocks.com components. Deployed at https://shadcn-registry-eight.vercel.app (auto-deploys on push to main).
+
+## Commands
+
+```bash
+pnpm dev                # Next.js dev server (Turbopack)
+pnpm build              # registry:build + next build
+pnpm lint               # ESLint
+pnpm registry:build     # Regenerate public/r/ and lib/component-index.json from registry/ sources
+```
+
+No test suite exists.
+
+## Architecture
+
+**Build pipeline:** `registry.json` → `scripts/build-registry.ts` → `public/r/{name}.json` (shadcn CLI-ready format) + `lib/component-index.json` (browser UI index) + `public/r/index.json` (agent discovery).
+
+**Source of truth:** `registry/` directory. `registry.json` is the manifest. Each component lives in `registry/blocks/{name}/{name}.tsx`. Shared helpers in `registry/components/`. Generated output in `public/r/` is gitignored.
+
+**Path mapping at build time:** `registry/blocks/about1/about1.tsx` → `block/about1.tsx` in the consumer-facing JSON. `registry/components/foo.tsx` → `components/foo.tsx`.
+
+**Auth (middleware.ts):** All `/r/*` requests require `x-registry-token` header matching `REGISTRY_TOKEN` env var. Public passthroughs (no token): `/r/styles/*`, `/r/colors/*`, `/r/icons/*`. If `REGISTRY_TOKEN` is unset, all requests are allowed (local dev mode).
+
+**Browser UI:** `app/page.tsx` renders a client-side searchable component index loaded from `lib/component-index.json`.
+
+**Compatibility routes:** `app/styles/*` and `app/r/styles/*` proxy to upstream shadcn registry for unscoped dependencies. `app/r/colors/*` and `app/r/icons/*` pass through to upstream.
+
+## Tech stack
+
+Next.js 15 (App Router), React 19, TypeScript 5.9, Tailwind CSS 4, pnpm. Path alias: `@/*` → `./`.
+
+`registry/blocks/` and `registry/components/` are excluded from tsconfig (they're raw component sources, not part of the app build).
+
+## Environment variables
+
+- `REGISTRY_TOKEN` — secret for `/r/*` auth (required in production)
+- `REGISTRY_URL` — deployed base URL
+- `SHADCNBLOCKS_API_KEY` — shadcnblocks.com API key (download scripts only)
+- `SHADCN_FALLBACK_REGISTRY_URL` — override for unscoped dependency proxy (defaults to `https://ui.shadcn.com/r`)
+
+## Component workflow
+
+Edit: modify files in `registry/blocks/{name}/` or `registry/components/`, run `pnpm registry:build`, deploy.
+
+Add: create `registry/blocks/{name}/{name}.tsx`, add entry to `registry.json`, run `pnpm registry:build`, deploy.
+
+Consumers install with: `npx shadcn add @kata-shadcn/{name}` (requires `components.json` registry config and `REGISTRY_TOKEN` in env).
