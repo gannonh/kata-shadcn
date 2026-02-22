@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Private self-hosted shadcn component registry with 2555 licensed shadcnblocks.com components. Deployed at https://shadcn-registry-eight.vercel.app (auto-deploys on push to main).
+Private self-hosted shadcn component registry with 2555 components. Deployed at https://shadcn-registry-eight.vercel.app (auto-deploys on push to main).
 
 ## Commands
 
