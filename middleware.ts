@@ -2,6 +2,11 @@
 import { NextRequest, NextResponse } from "next/server"
 
 export function middleware(req: NextRequest) {
+  if (req.nextUrl.pathname.startsWith("/r/styles/")) {
+    // Public passthrough for unscoped shadcn dependency resolution.
+    return NextResponse.next()
+  }
+
   const token = req.headers.get("x-registry-token")
   const expected = process.env.REGISTRY_TOKEN
 
