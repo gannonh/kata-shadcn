@@ -51,3 +51,4 @@ next-env.d.ts
 
 # Generated browser index — rebuilt by pnpm registry:build
 /lib/component-index.json
+/docs/registry-manifest.json
