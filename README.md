@@ -25,6 +25,7 @@ lib/
   component-index.json   # generated browser index — gitignored
 middleware.ts      # protects /r/* with x-registry-token header
 app/page.tsx       # searchable component browser UI
+app/styles/*       # fallback proxy for unscoped shadcn dependencies
 docs/
   plans/           # design docs and implementation plans
   reference/       # shadcnblocks and shadcn CLI reference
@@ -57,6 +58,8 @@ git push
 
 Registry endpoints (`/r/*`) require an `x-registry-token` header. Set `REGISTRY_TOKEN` in Vercel project environment variables.
 
+Compatibility endpoints under `/styles/*` proxy to the public shadcn registry for unscoped dependencies (e.g. `utils`, `button`) that the CLI resolves via `styles/{style}/{name}.json`.
+
 Credentials are in `.env.local` (gitignored). See `.env.example` for the required variables.
 
 Example:
@@ -74,7 +77,7 @@ Add to `components.json`:
 {
   "registries": {
     "@ourorg": {
-      "url": "https://shadcn-registry-eight.vercel.app/r/{name}",
+      "url": "https://shadcn-registry-eight.vercel.app/r/{name}.json",
       "headers": {
         "x-registry-token": "${REGISTRY_TOKEN}"
       }
