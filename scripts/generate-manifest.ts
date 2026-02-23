@@ -6,6 +6,7 @@ const PUBLIC_R = path.join(process.cwd(), "public/r")
 const SKIP = new Set([
   "registry.json",
   "index.json",
+  "index-compact.json",
   "complex-component.json",
   "example-form.json",
   "example-with-css.json",

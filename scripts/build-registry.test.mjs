@@ -9,7 +9,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const root = path.join(__dirname, "..")
 const componentIndexPath = path.join(root, "lib", "component-index.json")
 const compactIndexPath = path.join(root, "public", "r", "index-compact.json")
-const MAX_COMPACT_INDEX_BYTES = 300 * 1024 // 300KB; at ~2555 entries with full keys we exceed 150KB
+// 300KB cap; design target is ~80–100KB — test allows headroom for growth
+const MAX_COMPACT_INDEX_BYTES = 300 * 1024
 
 describe("build-registry", () => {
   before(() => {
@@ -65,6 +66,11 @@ describe("build-registry", () => {
         keys,
         ["category", "name", "url"],
         `each compact item must have only name, category, url; got ${keys.join(", ")}`
+      )
+      assert.strictEqual(
+        item.url,
+        `/r/${item.name}.json`,
+        `compact item url must be /r/<name>.json; got ${item.url}`
       )
     }
 
