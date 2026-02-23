@@ -25,7 +25,7 @@ pnpm test:e2e             # E2E tests (Playwright): browser UI component cards
 
 ## Architecture
 
-**Build pipeline:** `registry.json` → `scripts/build-registry.ts` → `public/r/{name}.json` (shadcn CLI-ready format) + `lib/component-index.json` (browser UI index) + `public/r/index.json` (agent discovery).
+**Build pipeline:** `registry.json` → `scripts/build-registry.ts` → `public/r/{name}.json` (shadcn CLI-ready format) + `lib/component-index.json` (browser UI index) + `public/r/index.json` (full agent discovery) + `public/r/index-compact.json` (compact agent index: name, category, url only).
 
 **Source of truth:** `registry/` directory. `registry.json` is the manifest. Each component lives in `registry/blocks/{name}/{name}.tsx`. Shared helpers in `registry/components/`. Generated output in `public/r/` is gitignored.
 
