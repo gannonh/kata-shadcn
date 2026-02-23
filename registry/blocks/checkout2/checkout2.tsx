@@ -15,9 +15,9 @@ import z from "zod";
 
 import { cn } from "@/lib/utils";
 
-import { Logo, LogoImage } from "@/components/shadcnblocks/logo";
-import { Price, PriceValue } from "@/components/shadcnblocks/price";
-import QuantityInput from "@/components/shadcnblocks/quantity-input";
+import { Logo, LogoImage } from "@/components/shared/logo";
+import { Price, PriceValue } from "@/components/shared/price";
+import QuantityInput from "@/components/shared/quantity-input";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

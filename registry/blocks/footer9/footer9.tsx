@@ -130,7 +130,7 @@ const Footer9 = ({ className }: Footer9Props) => {
               </li>
               <li>
                 <p className="text-gray-400">
-                  © 2024 Shadcnblocks.com. All rights reserved.
+                  © 2024 Kata. All rights reserved.
                 </p>
               </li>
             </ul>

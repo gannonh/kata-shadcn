@@ -19,28 +19,24 @@ Projects must have two files:
 ### CLI (Recommended)
 
 ```bash
-npx shadcn add @shadcnblocks/hero-1
+npx shadcn add @kata-shadcn/hero1
 ```
 
 Alternative package managers:
 
 ```bash
-pnpm dlx shadcn add @shadcnblocks/hero-1
-yarn dlx shadcn add @shadcnblocks/hero-1
-bunx shadcn add @shadcnblocks/hero-1
+pnpm dlx shadcn add @kata-shadcn/hero1
+yarn dlx shadcn add @kata-shadcn/hero1
+bunx shadcn add @kata-shadcn/hero1
 ```
+
+Requires `components.json` configured for the Kata registry with `REGISTRY_TOKEN` in `.env`. See README for setup.
 
 ### Copy & Paste
 
 Copy source code from the Code tab on block pages. Requires:
 - Manual NPM package installation
 - Separate installation of component dependencies
-
-### Pro Blocks Authentication
-
-1. Generate a key from Dashboard → API Keys
-2. Add to `.env`: `SHADCNBLOCKS_API_KEY=sk_live_your_api_key_here`
-3. Update `components.json` with authentication headers
 
 ## CLI Advantages
 

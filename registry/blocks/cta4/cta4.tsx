@@ -25,7 +25,7 @@ const Cta4 = ({
   title = "Call to Action",
   description = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto illo praesentium nisi, accusantium quae.",
   buttonText = "Get Started",
-  buttonUrl = "https://shadcnblocks.com",
+  buttonUrl = "#",
   items = defaultItems,
   className,
 }: Cta4Props) => {

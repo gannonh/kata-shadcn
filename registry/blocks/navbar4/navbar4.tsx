@@ -1012,7 +1012,7 @@ const Navbar4 = ({ className }: Navbar4Props) => {
         <NavigationMenu className="min-w-full [&>div:last-child]:left-auto">
           <div className="flex w-full justify-between gap-2 py-4">
             <a
-              href="https://www.shadcnblocks.com"
+              href="#"
               className="flex items-center gap-2"
             >
               <img
@@ -1021,7 +1021,7 @@ const Navbar4 = ({ className }: Navbar4Props) => {
                 alt="Shadcn UI Navbar"
               />
               <span className="text-lg font-semibold tracking-tighter">
-                Shadcnblocks.com
+                Kata
               </span>
             </a>
             <div className="flex items-center gap-2 xl:gap-8">

@@ -681,14 +681,14 @@ const StepThreeComponent = ({
       value: "pro",
       description:
         "Sync all contacts, events, and messages. Get the complete picture of your communications.",
-      image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg",
+      image: "https://deifkwefumgah.cloudfront.net/Kata/block/block-1.svg",
     },
     {
       title: "Contacts only",
       value: "lite",
       description:
         "Only sync contact information. Ideal for privacy-conscious users.",
-      image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-2.svg",
+      image: "https://deifkwefumgah.cloudfront.net/Kata/block/block-2.svg",
     },
   ];
 
@@ -756,7 +756,7 @@ const StepThreeComponent = ({
           <div className="w-full space-y-3">
             <Button className="w-full" onClick={onSubmit}>
               <img
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/google-icon.svg"
+                src="https://deifkwefumgah.cloudfront.net/Kata/block/logos/google-icon.svg"
                 alt="Google"
                 className="size-4"
               />
@@ -764,7 +764,7 @@ const StepThreeComponent = ({
             </Button>
             <Button className="w-full" onClick={onSubmit}>
               <img
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/facebook-icon.svg"
+                src="https://deifkwefumgah.cloudfront.net/Kata/block/logos/facebook-icon.svg"
                 alt="Microsoft"
                 className="size-4"
               />
@@ -981,17 +981,17 @@ interface Onboarding1Props {
 
 const Onboarding1 = ({
   className,
-  companyLogo = "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo-word.svg",
-  copyright = `© ${new Date().getFullYear()} ShadcnBlocks`,
+  companyLogo = "https://deifkwefumgah.cloudfront.net/Kata/block/logos/Kata-logo-word.svg",
+  copyright = `© ${new Date().getFullYear()} Kata`,
   footerLinks = [
-    { label: "Privacy Policy", href: "https://shadcnblocks.com" },
+    { label: "Privacy Policy", href: "#" },
     {
       label: "Support",
-      href: "https://shadcnblocks.com",
+      href: "#",
     },
     {
       label: "Sign out",
-      href: "https://shadcnblocks.com",
+      href: "#",
     },
   ],
   steps = [

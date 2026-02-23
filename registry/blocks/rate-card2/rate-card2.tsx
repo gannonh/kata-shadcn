@@ -6,7 +6,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import { useGoogleFont } from "@/hooks/use-google-font";
 
-import { BorderButton } from "@/components/shadcnblocks/border-button";
+import { BorderButton } from "@/components/shared/border-button";
 
 interface RateCard2Props {
   className?: string;

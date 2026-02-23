@@ -6,7 +6,7 @@ import { useMemo } from "react";
 import { Controller, ControllerRenderProps, useForm } from "react-hook-form";
 import z from "zod";
 
-import { Price, PriceValue } from "@/components/shadcnblocks/price";
+import { Price, PriceValue } from "@/components/shared/price";
 import { Button } from "@/components/ui/button";
 import {
   Carousel,

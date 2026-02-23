@@ -8,7 +8,7 @@ Challenger: challenger-quickwins
 
 ## Context
 
-kata-shadcn is a private self-hosted shadcn component registry with 2555 licensed shadcnblocks.com components. Deployed on Vercel. The registry is functional but has no tests, no analytics, limited discoverability tooling, and several rough edges. This report identifies 6 quick-win improvements achievable in 1-2 days of focused work, plus 1 item reclassified to the high-value features track.
+kata-shadcn is a private self-hosted shadcn component registry with 2555 licensed Kata components. Deployed on Vercel. The registry is functional but has no tests, no analytics, limited discoverability tooling, and several rough edges. This report identifies 6 quick-win improvements achievable in 1-2 days of focused work, plus 1 item reclassified to the high-value features track.
 
 ---
 
@@ -112,7 +112,7 @@ Create curated multi-component combinations for common page types (landing page,
 
 **Why not a bundle system:** The shadcn CLI already supports `npx shadcn add comp1 comp2 comp3`. Custom bundle resolution adds engineering complexity with no functional benefit over a copy-paste multi-component command. The value is curation and visual validation, not plumbing.
 
-**Key constraint:** Components from different shadcnblocks design series may have visual conflicts (spacing, color, typography). Recipes should group components from the same numbered series when possible (e.g., all `*1` components, all `*3` components). Visual QA of each recipe is the real cost.
+**Key constraint:** Components from different component design series may have visual conflicts (spacing, color, typography). Recipes should group components from the same numbered series when possible (e.g., all `*1` components, all `*3` components). Visual QA of each recipe is the real cost.
 
 ---
 
@@ -125,7 +125,7 @@ Create curated multi-component combinations for common page types (landing page,
 
 Automated screenshot capture of 2555 components via Playwright requires: a render harness handling diverse component signatures and props, mock data for data-dependent components, ~125MB of image storage (CDN, not git), and ~85 minutes of render time per full run. This is a proper project, not a quick-win.
 
-**Low-cost probe first:** Check if shadcnblocks.com exposes OG images or a thumbnail API for their components. If so, hotlinking those images costs zero infrastructure and zero build time. If not, pursue the full Playwright approach as a high-value feature.
+**Low-cost probe first:** Check if Kata exposes OG images or a thumbnail API for their components. If so, hotlinking those images costs zero infrastructure and zero build time. If not, pursue the full Playwright approach as a high-value feature.
 
 ---
 

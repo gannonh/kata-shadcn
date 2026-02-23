@@ -6,8 +6,8 @@ import { useCallback } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import z from "zod";
 
-import { Price, PriceValue } from "@/components/shadcnblocks/price";
-import QuantityInput from "@/components/shadcnblocks/quantity-input";
+import { Price, PriceValue } from "@/components/shared/price";
+import QuantityInput from "@/components/shared/quantity-input";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";

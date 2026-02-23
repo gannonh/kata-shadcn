@@ -12,9 +12,9 @@ import "photoswipe/style.css";
 
 import { cn } from "@/lib/utils";
 
-import { Price, PriceType, PriceValue } from "@/components/shadcnblocks/price";
-import QuantityInput from "@/components/shadcnblocks/quantity-input";
-import { Rating } from "@/components/shadcnblocks/rating";
+import { Price, PriceType, PriceValue } from "@/components/shared/price";
+import QuantityInput from "@/components/shared/quantity-input";
+import { Rating } from "@/components/shared/rating";
 import {
   Accordion,
   AccordionContent,

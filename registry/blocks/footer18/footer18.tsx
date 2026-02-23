@@ -63,7 +63,7 @@ interface LanguagesSelectProps {
   languages: Array<LanguageOption>;
 }
 
-const HOME_LINK = "https://shadcnblocks.com";
+const HOME_LINK = "#";
 const LOGO = "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg";
 
 const SOCIAL_LINKS = [
@@ -402,8 +402,8 @@ const Footer18 = ({ className }: Footer18Props) => {
             <a href={HOME_LINK}>
               <img
                 src={LOGO}
-                alt="Shadcnblocks"
-                title="Shadcnblocks"
+                alt="Kata"
+                title="Kata"
                 className="h-11"
               />
             </a>
@@ -452,7 +452,7 @@ const Footer18 = ({ className }: Footer18Props) => {
         <div className="mt-8 flex items-center justify-between gap-4">
           <div className="flex items-center justify-between gap-4">
             <p className="text-sm leading-normal font-medium text-foreground">
-              © 2025 shadcnblocks.com
+              © 2025 Kata
             </p>
           </div>
           <Button variant="link" className="px-0!">

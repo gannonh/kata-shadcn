@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Download all shadcnblocks component JSONs into public/r/ for self-hosted registry.
+"""Download component JSONs from upstream registry into public/r/ for self-hosted registry.
 
-Rate limit aware: ~300 requests per ~40 minutes per API key.
+One-time use for initial population. Rate limit aware: ~300 requests per ~40 minutes per API key.
 Runs sequentially with 2s delay to stay under limits.
+
+Set REGISTRY_URL (e.g. https://example.com/r) and REGISTRY_API_KEY for the source.
 """
 
 import asyncio
@@ -16,8 +18,8 @@ from pathlib import Path
 
 import certifi
 
-API_KEY = os.environ.get("SHADCNBLOCKS_API_KEY", "")
-BASE_URL = "https://www.shadcnblocks.com/r"
+API_KEY = os.environ.get("REGISTRY_API_KEY", "")
+BASE_URL = (os.environ.get("REGISTRY_URL") or "https://example.com").rstrip("/") + "/r"
 OUTPUT_DIR = Path("shadcn-registry/public/r")
 COMPONENTS_FILE = Path("components.txt")
 REQUEST_DELAY = 1.5  # seconds between requests to avoid rate limiting
@@ -59,7 +61,7 @@ async def fetch_component(session, name):
 
 async def main():
     if not API_KEY:
-        print("ERROR: SHADCNBLOCKS_API_KEY not set", file=sys.stderr)
+        print("ERROR: REGISTRY_API_KEY not set", file=sys.stderr)
         sys.exit(1)
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

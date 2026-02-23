@@ -25,7 +25,7 @@ const Feature13 = ({
       description:
         "Hundreds of finely crafted components for shadcn/ui available in Figma. Easily modify the design system to your brand.",
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
-      url: "https://shadcnblocks.com",
+      url: "#",
     },
     {
       id: "feature-2",
@@ -34,7 +34,7 @@ const Feature13 = ({
       description:
         "Finely crafted components built with React, Tailwind and Shadcn UI. Developers can copy and paste these blocks directly into their project.",
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-2.svg",
-      url: "https://shadcnblocks.com",
+      url: "#",
     },
     {
       id: "feature-3",
@@ -43,7 +43,7 @@ const Feature13 = ({
       description:
         "Components designed with user experience in mind. Every block is tested for usability and optimized for conversion rates.",
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-3.svg",
-      url: "https://shadcnblocks.com",
+      url: "#",
     },
     {
       id: "feature-4",
@@ -52,7 +52,7 @@ const Feature13 = ({
       description:
         "High-converting landing pages, email templates, and marketing components that drive engagement and boost your campaigns.",
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-4.svg",
-      url: "https://shadcnblocks.com",
+      url: "#",
     },
   ],
   className,

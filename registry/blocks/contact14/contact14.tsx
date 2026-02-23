@@ -20,13 +20,13 @@ const Contact14 = ({ className }: Contact14Props) => {
             <div className="grid grid-cols-1 items-end gap-8 md:grid-cols-2">
               <div className="flex flex-col justify-center space-y-6">
                 <p className="text-sm font-semibold tracking-tight text-muted-foreground">
-                  SHADCNBLOCKS.COM
+                  Kata
                 </p>
                 <div className="relative flex size-30 items-center justify-center rounded-3xl bg-foreground p-2.5 shadow-xl">
                   <div className="flex size-full items-center justify-center rounded-2xl bg-background p-4">
                     <Avatar className="size-full">
                       <AvatarImage
-                        src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-1.webp"
+                        src="https://deifkwefumgah.cloudfront.net/Kata/block/avatar-1.webp"
                         alt="avatar"
                         className="object-cover"
                       />
@@ -42,7 +42,7 @@ const Contact14 = ({ className }: Contact14Props) => {
                   <li className="flex items-center">
                     <span className="mr-2 font-bold">Email:</span>{" "}
                     <span className="text-foreground/80 underline">
-                      example@shadcnblocks.com
+                      example@Kata
                     </span>
                   </li>
                   <li className="flex items-center">

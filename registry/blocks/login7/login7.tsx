@@ -17,7 +17,7 @@ const Login7 = ({ className }: Login7Props) => {
           <Card className="mx-auto w-full max-w-[380px]">
             <CardHeader className="items-center justify-center">
               <a
-                href="https://www.shadcnblocks.com"
+                href="#"
                 className="flex items-center gap-2"
               >
                 <img
@@ -26,7 +26,7 @@ const Login7 = ({ className }: Login7Props) => {
                   alt="Shadcn UI Navbar"
                 />
                 <span className="text-lg font-semibold tracking-tighter">
-                  Shadcnblocks.com
+                  Kata
                 </span>
               </a>
             </CardHeader>

@@ -27,7 +27,7 @@ const Industries3 = ({
       description: "Innovative consumer electronics and smart device solutions",
       imageSrc: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/artistic-portrait-glitch-yqp6z.png",
       imageAlt: "TechFlow automation platform",
-      url: "http://shadcnblocks.com/blocks",
+      url: "#/blocks",
     },
     {
       year: "/2023",
@@ -36,7 +36,7 @@ const Industries3 = ({
         "Cutting-edge biotechnology research and pharmaceutical development",
       imageSrc: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/alvin-engler-bIhpiQA009k-unsplash.jpg",
       imageAlt: "DataViz Pro analytics dashboard",
-      url: "http://shadcnblocks.com/blocks",
+      url: "#/blocks",
     },
     {
       year: "/2023",
@@ -44,7 +44,7 @@ const Industries3 = ({
       description: "Enterprise-grade security solution for data protection",
       imageSrc: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/futuristic-device-design-qcufu.png",
       imageAlt: "SecureVault security platform",
-      url: "http://shadcnblocks.com/blocks",
+      url: "#/blocks",
     },
     {
       year: "/2022",
@@ -52,7 +52,7 @@ const Industries3 = ({
       description: "Integrated healthcare management system with telemedicine",
       imageSrc: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/israel-andrade-YI_9SivVt_s-unsplash.jpg",
       imageAlt: "HealthConnect medical platform",
-      url: "http://shadcnblocks.com/blocks",
+      url: "#/blocks",
     },
   ],
 }: Industries3Props) => {

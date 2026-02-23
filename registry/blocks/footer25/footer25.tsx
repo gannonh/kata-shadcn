@@ -6,8 +6,8 @@ const data = {
   logo: {
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg",
     alt: "blocks for shadcn/ui",
-    title: "Shadcnblocks.com",
-    url: "https://www.shadcnblocks.com",
+    title: "Kata",
+    url: "#",
   },
   tagline: "Let's Connect",
   personalMessage:
@@ -38,7 +38,7 @@ const data = {
       ],
     },
   ],
-  copyright: "© 2025 Shadcnblocks.com. All rights reserved.",
+  copyright: "© 2025 Kata. All rights reserved.",
   bottomLinks: [
     { text: "Terms and Conditions", url: "#" },
     { text: "Privacy Policy", url: "#" },

@@ -71,4 +71,4 @@ fs.writeFileSync(
   "utf8"
 )
 
-console.log(`Generated registry.json with ${newItems.length} shadcnblocks + ${templateItems.length} template items`)
+console.log(`Generated registry.json with ${newItems.length} registry + ${templateItems.length} template items`)

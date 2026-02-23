@@ -31,7 +31,7 @@ import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-import { LogoImage, LogoText } from '@/components/shadcnblocks/logo';
+import { LogoImage, LogoText } from '@/components/shared/logo';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -618,7 +618,7 @@ function AppSidebar({
                         />{' '}
                         {!isCollapsed && (
                           <>
-                            <span className="font-semibold">Shadcnblocks</span>
+                            <span class="font-semibold">Kata</span>
                             <ChevronDown className="size-3 text-muted-foreground" />
                           </>
                         )}

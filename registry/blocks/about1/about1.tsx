@@ -15,7 +15,7 @@ const About1 = ({ className }: About1Props) => {
             About Us
           </h1>
           <p className="max-w-xl text-xl">
-            Shadcnblocks.com makes it easy to build customer portals, CRMs,
+            Kata makes it easy to build customer portals, CRMs,
             internal tools, and other business applications for your team. In
             minutes, not months.
           </p>

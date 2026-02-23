@@ -2,7 +2,7 @@ import { Eye, ShoppingCart } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-import { Price, PriceValue } from "@/components/shadcnblocks/price";
+import { Price, PriceValue } from "@/components/shared/price";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

@@ -36,11 +36,11 @@ const Hero3 = ({
   buttons = {
     primary: {
       text: "Sign Up",
-      url: "https://www.shadcnblocks.com",
+      url: "#",
     },
     secondary: {
       text: "Get Started",
-      url: "https://www.shadcnblocks.com",
+      url: "#",
     },
   },
   reviews = {

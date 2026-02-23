@@ -17,32 +17,32 @@ interface Gallery31Props {
 const defaultFeatureData: FeatureData[] = [
   {
     imgClass: "md:h-70 w-full rounded-3xl md:w-full",
-    imgsrc: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img7.jpeg",
+    imgsrc: "https://deifkwefumgah.cloudfront.net/Kata/block/guri3/img7.jpeg",
     ptitle: "Gaming Controller",
     pdes: "$199",
   },
   {
     imgClass: "md:h-70 w-full rounded-3xl md:w-full lg:col-span-2",
-    imgsrc: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img6.jpeg",
+    imgsrc: "https://deifkwefumgah.cloudfront.net/Kata/block/guri3/img6.jpeg",
     ptitle: "Wireless Headphones",
     pdes: "$189",
   },
   {
     imgClass:
       "md:h-70 col-span-1 h-full w-full rounded-3xl md:w-full lg:row-span-2 lg:h-full",
-    imgsrc: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img11.jpeg",
+    imgsrc: "https://deifkwefumgah.cloudfront.net/Kata/block/guri3/img11.jpeg",
     ptitle: "Smart Watch",
     pdes: "$249",
   },
   {
     imgClass: "md:h-70 w-full rounded-3xl md:w-full lg:col-span-2",
-    imgsrc: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img14.jpeg",
+    imgsrc: "https://deifkwefumgah.cloudfront.net/Kata/block/guri3/img14.jpeg",
     ptitle: "Bluetooth Speaker",
     pdes: "$179",
   },
   {
     imgClass: "md:h-70 w-full rounded-3xl md:w-full",
-    imgsrc: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img13.jpeg",
+    imgsrc: "https://deifkwefumgah.cloudfront.net/Kata/block/guri3/img13.jpeg",
     ptitle: "Mechanical Keyboard",
     pdes: "$219",
   },
@@ -60,7 +60,7 @@ const Gallery31: React.FC<Gallery31Props> = ({
             CATALOG
           </p>
           <h2 className="text-center font-calSans text-5xl font-medium md:text-6xl">
-            Exclusive shadcnblocks
+            Exclusive Kata
           </h2>
           <p className="text-center text-muted-foreground">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,

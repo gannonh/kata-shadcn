@@ -230,7 +230,7 @@ const Navbar7 = ({ className }: Navbar7Props) => {
                 alt="Shadcn UI Navbar"
               />
               <span className="text-lg font-semibold tracking-tighter">
-                Shadcnblocks.com
+                Kata
               </span>
             </a>
             <NavigationMenuList className="hidden lg:flex">

@@ -118,7 +118,7 @@ const Footer27 = ({ className }: Footer27Props) => {
                   <span className="text-muted-foreground">
                     Made by{" "}
                     <motion.a
-                      href="https://x.com/shadcnblocks"
+                      href="#"
                       className="underline underline-offset-4 transition-colors hover:text-foreground"
                       whileHover={{ scale: 1.05 }}
                       transition={{
@@ -127,7 +127,7 @@ const Footer27 = ({ className }: Footer27Props) => {
                         damping: 20,
                       }}
                     >
-                      shadcnblocks
+                      Kata
                     </motion.a>
                   </span>
                 </div>

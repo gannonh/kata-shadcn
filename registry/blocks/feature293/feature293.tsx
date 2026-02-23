@@ -3,7 +3,7 @@ import React from "react";
 
 import { cn } from "@/lib/utils";
 
-import { SparklesCore } from "@/components/shadcnblocks/sparkles";
+import { SparklesCore } from "@/components/shared/sparkles";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 

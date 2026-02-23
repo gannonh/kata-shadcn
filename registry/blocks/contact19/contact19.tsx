@@ -41,7 +41,7 @@ const Contact19 = ({ className }: Contact19Props) => {
                 href=""
                 className="flex items-center gap-4 text-4xl font-medium tracking-tighter"
               >
-                hi@shadcnblocks.com
+                hi@Kata
               </a>
             </div>
           </div>

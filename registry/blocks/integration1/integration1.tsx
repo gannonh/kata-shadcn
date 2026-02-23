@@ -131,7 +131,7 @@ const Integration1 = ({ className }: Integration1Props) => {
           Have a tool you'd like to integrate?
         </span>
         <Button asChild>
-          <a href="https://shadcnblocks.com">Request an Integration</a>
+          <a href="#">Request an Integration</a>
         </Button>
       </div>
     </section>

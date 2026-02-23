@@ -13,7 +13,7 @@ const Community1 = ({ className }: Community1Props) => {
     <section className={cn("py-32", className)}>
       <div className="container">
         <div className="flex flex-col items-center gap-5">
-          <img src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg" alt="logo" className="size-10" />
+          <img src="https://deifkwefumgah.cloudfront.net/Kata/block/block-1.svg" alt="logo" className="size-10" />
           <h2 className="text-center text-3xl font-semibold">
             Join our community
             <br />
@@ -24,7 +24,7 @@ const Community1 = ({ className }: Community1Props) => {
           <div className="flex items-center gap-4">
             <Button size="lg" variant="outline" asChild>
               <a
-                href="https://x.com/shadcnblocks"
+                href="https://x.com/Kata"
                 target="_blank"
                 className="size-10"
               >
@@ -33,7 +33,7 @@ const Community1 = ({ className }: Community1Props) => {
             </Button>
             <Button size="lg" variant="outline" asChild>
               <a
-                href="https://github.com/shadcnblocks"
+                href="https://github.com/Kata"
                 target="_blank"
                 className="size-10"
               >
@@ -42,7 +42,7 @@ const Community1 = ({ className }: Community1Props) => {
             </Button>
             <Button size="lg" variant="outline" asChild>
               <a
-                href="https://shadcnblocks.com"
+                href="#"
                 target="_blank"
                 className="size-10"
               >

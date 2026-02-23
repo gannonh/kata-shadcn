@@ -27,7 +27,7 @@ const DATA: DataItem[] = [
     title: "Smart AI Assistant",
     description:
       "Powered by advanced language models to handle complex queries, automate tasks, and provide intelligent responses with high accuracy.",
-    href: "https://www.shadcnblocks.com",
+    href: "#",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-2.svg",
   },
   {
@@ -35,7 +35,7 @@ const DATA: DataItem[] = [
     title: "Data Analytics",
     description:
       "Transform raw data into actionable insights using machine learning algorithms and predictive analytics for informed decision-making.",
-    href: "https://www.shadcnblocks.com",
+    href: "#",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg",
   },
   {
@@ -43,7 +43,7 @@ const DATA: DataItem[] = [
     title: "Process Automation",
     description:
       "Streamline workflows and automate repetitive tasks with intelligent process automation, increasing efficiency and reducing errors.",
-    href: "https://www.shadcnblocks.com",
+    href: "#",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-3.svg",
   },
   {
@@ -51,7 +51,7 @@ const DATA: DataItem[] = [
     title: "Knowledge Base",
     description:
       "Access and manage comprehensive information with our AI-powered knowledge base that learns and improves from each interaction.",
-    href: "https://www.shadcnblocks.com",
+    href: "#",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-4.svg",
   },
   {
@@ -59,7 +59,7 @@ const DATA: DataItem[] = [
     title: "API Integration",
     description:
       "Seamlessly integrate with existing systems through our robust API framework, enabling smooth data exchange and functionality extension.",
-    href: "https://www.shadcnblocks.com",
+    href: "#",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-5.svg",
   },
   {
@@ -67,7 +67,7 @@ const DATA: DataItem[] = [
     title: "Security & Compliance",
     description:
       "Ensure data security and compliance with industry standards through our comprehensive security measures and protocols.",
-    href: "https://www.shadcnblocks.com",
+    href: "#",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-6.svg",
   },
   {
@@ -75,7 +75,7 @@ const DATA: DataItem[] = [
     title: "Customizable Dashboards",
     description:
       "Create and customize dashboards to visualize key metrics and performance indicators, providing real-time insights at a glance.",
-    href: "https://www.shadcnblocks.com",
+    href: "#",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-4.svg",
   },
   {
@@ -83,7 +83,7 @@ const DATA: DataItem[] = [
     title: "Collaboration Tools",
     description:
       "Enhance team collaboration with integrated tools for communication, project management, and file sharing.",
-    href: "https://www.shadcnblocks.com",
+    href: "#",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg",
   },
 ];

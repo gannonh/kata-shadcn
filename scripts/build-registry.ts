@@ -15,7 +15,7 @@ const templateNames = new Set(["hello-world", "example-form", "complex-component
 
 // Map registry source paths → original consumer paths
 // registry/blocks/about1/about1.tsx → block/about1.tsx
-// registry/components/shadcnblocks/logo.tsx → components/shadcnblocks/logo.tsx
+// registry/components/shared/logo.tsx → components/shared/logo.tsx
 function toConsumerPath(registryPath: string): string {
   if (registryPath.startsWith("registry/blocks/")) {
     return `block/${path.basename(registryPath)}`

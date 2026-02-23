@@ -2,7 +2,7 @@
 
 ## Overview
 
-Shadcnblocks supports Base UI as an alternative to Radix UI, letting you choose which primitive library powers your shadcn/ui components.
+The registry supports Base UI as an alternative to Radix UI, letting you choose which primitive library powers your shadcn/ui components.
 
 ## What is Base UI?
 
@@ -57,7 +57,7 @@ npx shadcn@latest add --all --overwrite
 ### 3. Install Blocks
 
 ```bash
-npx shadcn@latest add @shadcnblocks/hero1
+npx shadcn@latest add @kata-shadcn/hero1
 ```
 
 ## asChild vs render
@@ -82,8 +82,8 @@ The CLI handles this conversion automatically. Manual copy/paste requires manual
 
 ## Block Compatibility
 
-Most blocks require no changes when switching libraries. For edge cases, dedicated Base UI versions are available via `@shadcnblocks/base/` prefix:
+Most blocks require no changes when switching libraries. For edge cases, dedicated Base UI versions are available via `@kata-shadcn/base/` prefix:
 
 ```bash
-npx shadcn@latest add @shadcnblocks/base/sidebar1
+npx shadcn@latest add @kata-shadcn/base/sidebar1
 ```

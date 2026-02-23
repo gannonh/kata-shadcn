@@ -33,11 +33,11 @@ const Hero2 = ({
   buttons = {
     primary: {
       text: "Discover all components",
-      url: "https://www.shadcnblocks.com",
+      url: "#",
     },
     secondary: {
       text: "View on GitHub",
-      url: "https://www.shadcnblocks.com",
+      url: "#",
     },
   },
   image = {

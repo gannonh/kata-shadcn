@@ -6,7 +6,7 @@ Lenses: Monetization, Growth, Competitive Positioning
 
 ## Central Thesis
 
-No individual feature constitutes a durable moat. Every enrichment the registry builds, shadcnblocks.com can replicate from a stronger position. The defensible strategy is to use feature-driven head starts to accumulate switching costs (configuration lock-in, import paths, workflow integration, institutional knowledge) before the upstream vendor closes each gap. The enrichment advantage window is 6-12 months.
+No individual feature constitutes a durable moat. Every enrichment the registry builds, Kata can replicate from a stronger position. The defensible strategy is to use feature-driven head starts to accumulate switching costs (configuration lock-in, import paths, workflow integration, institutional knowledge) before the upstream vendor closes each gap. The enrichment advantage window is 6-12 months.
 
 Revenue is 6-12 months away. The Discovery & Growth milestone should build the infrastructure for monetization without implementing billing. Billing activates when external consumers exist, validated by demand signals.
 
@@ -67,11 +67,11 @@ Revenue is 6-12 months away. The Discovery & Growth milestone should build the i
 
 ## Open Risk: Licensing
 
-The 2555 components are licensed from shadcnblocks.com. The monetization strategy sells enrichment (semantic descriptions, metadata, previews, curation), not the components themselves. Before activating external billing or publishing public metadata pages, verify that the shadcnblocks license permits:
+The 2555 components are licensed from Kata. The monetization strategy sells enrichment (semantic descriptions, metadata, previews, curation), not the components themselves. Before activating external billing or publishing public metadata pages, verify that the component license permits:
 1. Commercial resale of derived metadata
 2. Public documentation pages with screenshots (no source code)
 
-This is a legal question requiring an email to shadcnblocks support. Resolve in week 1.
+This is a legal question requiring an email to the component vendor. Resolve in week 1.
 
 ## Consolidated Execution Sequence
 
@@ -79,7 +79,7 @@ This is a legal question requiring an email to shadcnblocks support. Resolve in 
 Week 1     Free tier Phase 1 (static token + 50-component allowlist)
            kata-init onboarding script
            Cursor rules file
-           Email shadcnblocks re: license terms for public metadata
+           Email the vendor re: license terms for public metadata
            Per-team token infrastructure (Vercel KV)
 
 Week 2     Search endpoint (/r/search.json)
@@ -112,7 +112,7 @@ Phase 2 (conditional):
 
 ## Decisions Required
 
-1. **License terms** -- Email shadcnblocks about public metadata and derived-data resale. Blocks SEO strategy and external monetization.
+1. **License terms** -- Email the vendor about public metadata and derived-data resale. Blocks SEO strategy and external monetization.
 2. **Free subset composition** -- Which 50 components? 1-2 per major category, quality demonstrates value, gaps motivate upgrade.
 3. **Template repo naming** -- "shadcn-registry-template" (searchable) vs "kata-registry-template" (branded)?
 4. **Free tier distribution** -- Manual form in week 1, automated provisioning later?

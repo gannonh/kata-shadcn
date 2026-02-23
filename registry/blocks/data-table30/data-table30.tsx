@@ -57,7 +57,7 @@ const DEFAULT_ROW_HEIGHT = 56;
 const DEFAULT_OVERSCAN = 8;
 const SEARCH_SHORTCUT_KEY = "k";
 const DATA_URL =
-  "https://raw.githubusercontent.com/zerostaticthemes/shadcnblocks-library-data/refs/heads/main/data/orders-ecommerce-1000.json";
+  "https://raw.githubusercontent.com/zerostaticthemes/Kata-library-data/refs/heads/main/data/orders-ecommerce-1000.json";
 
 type CellMatch = {
   rowIndex: number;

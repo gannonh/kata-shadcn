@@ -51,7 +51,7 @@ const DashedLine = ({
 };
 
 const Hero261 = ({
-  heading = 'Build faster with Shadcnblocks',
+  heading = 'Build faster with Kata',
   description = 'Components and blocks built with shadcn/ui, Tailwind CSS & React for modern product teams.',
   buttonPrimary = {
     text: 'Get started',
@@ -85,7 +85,7 @@ const Hero261 = ({
   ],
   images = [
     {
-      src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/kanban-ui-dashboard-mainline.png',
+      src: 'https://deifkwefumgah.cloudfront.net/Kata/block/dashboard/kanban-ui-dashboard-mainline.png',
       alt: 'Product dashboard preview',
     },
   ],

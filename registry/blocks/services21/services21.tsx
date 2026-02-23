@@ -6,7 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
-import { BorderButton } from "@/components/shadcnblocks/border-button";
+import { BorderButton } from "@/components/shared/border-button";
 
 // Custom hook to get previous value
 const usePrevious = <T,>(value: T): T | undefined => {

@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
-import { Price, PriceValue } from "@/components/shadcnblocks/price";
-import { Rating } from "@/components/shadcnblocks/rating";
+import { Price, PriceValue } from "@/components/shared/price";
+import { Rating } from "@/components/shared/rating";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface ProductPrice {

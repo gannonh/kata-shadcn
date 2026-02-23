@@ -3,7 +3,7 @@ import React from "react";
 
 import { cn } from "@/lib/utils";
 
-import { LinkPreview } from "@/components/shadcnblocks/link-preview";
+import { LinkPreview } from "@/components/shared/link-preview";
 
 interface Feature289Props {
   className?: string;
@@ -15,7 +15,7 @@ const Feature289 = ({ className }: Feature289Props) => {
       <div className="relative z-20 container flex w-full flex-col items-center justify-between gap-10 md:flex-row">
         <div>
           <h1 className="justify-center text-5xl font-semibold tracking-tighter md:text-6xl lg:text-8xl">
-            Explore <br /> ShadcnBlocks
+            Explore <br /> Kata
           </h1>
 
           <div className="mt-18 max-w-md">
@@ -31,10 +31,10 @@ const Feature289 = ({ className }: Feature289Props) => {
           <ul>
             <li>
               <LinkPreview
-                url="https://shadcnblocks.com"
+                url="#"
                 className="opacity-40 hover:opacity-100"
               >
-                ShadcnBlocks
+                Kata
               </LinkPreview>
             </li>
             <li>

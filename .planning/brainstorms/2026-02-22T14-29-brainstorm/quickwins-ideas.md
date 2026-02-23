@@ -33,7 +33,7 @@ Date: 2026-02-22
 
 **What:** Add static preview thumbnail images for each component. Run a headless browser script (Playwright) that renders each component in isolation and captures a screenshot. Store as `public/r/previews/{name}.png`. Expose the preview URL in the agent index and browser UI.
 
-**Why:** The browser UI currently shows only text (name + description + install command). A thumbnail preview transforms the browsing experience from "read 2555 descriptions" to "scan visual grid." For agents, an image URL in the index enables multimodal AI to visually match components to design mockups. The preview link currently points to shadcnblocks.com, which requires the user to leave the registry.
+**Why:** The browser UI currently shows only text (name + description + install command). A thumbnail preview transforms the browsing experience from "read 2555 descriptions" to "scan visual grid." For agents, an image URL in the index enables multimodal AI to visually match components to design mockups. The preview link currently points to Kata, which requires the user to leave the registry.
 
 **Scope:** 1-2 days. The script needs a minimal render harness (wrap each component in a page with Tailwind), run Playwright across all components, and store output. Build script needs minor updates to include preview URLs.
 

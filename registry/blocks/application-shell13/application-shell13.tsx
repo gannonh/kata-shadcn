@@ -68,7 +68,7 @@ const data = {
     avatar: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-1.webp",
   },
   organization: {
-    name: "Shadcnblocks",
+    name: "Kata",
     logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg",
   },
 };

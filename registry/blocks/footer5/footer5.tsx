@@ -142,7 +142,7 @@ const Footer5 = ({ className }: Footer5Props) => {
           </div>
           <div className="mt-24 border-t pt-8">
             <p className="text-center text-sm font-medium text-muted-foreground">
-              © 2024 Shadcnblocks.com. All rights reserved.
+              © 2024 Kata. All rights reserved.
             </p>
           </div>
         </footer>

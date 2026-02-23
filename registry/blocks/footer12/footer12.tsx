@@ -64,7 +64,7 @@ const Footer12 = ({ className }: Footer12Props) => {
       </nav>
       <img
         src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/shadcnblocks-giant-text.png"
-        alt="Shadcnblocks"
+        alt="Kata"
         width={1570}
         height={375}
         className="mt-10 md:mt-14 lg:mt-20"

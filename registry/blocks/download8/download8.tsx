@@ -51,7 +51,7 @@ const Download8 = ({ className }: Download8Props) => {
             </GlareCard>
           </div>
           <h1 className="text-4xl font-semibold sm:text-5xl">
-            Shadcnblocks.com
+            Kata
           </h1>
         </div>
         <div className="mt-11 flex flex-col items-center justify-center gap-4">

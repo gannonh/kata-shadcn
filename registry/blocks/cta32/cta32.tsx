@@ -21,11 +21,11 @@ const Cta32 = ({
   buttons = {
     primary: {
       text: "Get Started",
-      url: "https://www.shadcnblocks.com",
+      url: "#",
     },
     secondary: {
       text: "Learn More",
-      url: "https://www.shadcnblocks.com",
+      url: "#",
     },
   },
   stats = [

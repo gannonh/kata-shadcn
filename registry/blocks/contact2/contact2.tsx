@@ -22,8 +22,8 @@ const Contact2 = ({
   phone = "(123) 34567890",
   email = "email@example.com",
   web = {
-    label: "shadcnblocks.com",
-    url: "https://shadcnblocks.com",
+    label: "Kata",
+    url: "#",
   },
   className,
 }: Contact2Props) => {

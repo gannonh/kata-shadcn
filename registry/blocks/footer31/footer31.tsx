@@ -45,7 +45,7 @@ const Footer31 = ({ className }: Footer31Props) => {
             </p>
             <div className="space-y-1 text-sm font-light tracking-tight lg:text-base">
               <p>Get Support : </p>
-              <a href="#">hi@shadcnblocks.com</a>
+              <a href="#">hi@Kata</a>
             </div>
           </div>
           <div className="grid w-full max-w-xs grid-cols-2 gap-10 text-sm font-light lg:text-base">

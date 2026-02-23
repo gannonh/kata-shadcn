@@ -54,7 +54,7 @@ Debate rounds: 3
 
 **What**: Generate static screenshot images for the top 200 components. Display in the browser UI as a visual grid. Include thumbnail URLs in the agent index.
 
-**Why**: The browser UI currently shows component names and text descriptions with no visuals. Preview links point to shadcnblocks.com, which only works for unmodified upstream components and requires leaving the registry. Visual previews make the registry self-contained and dramatically improve component discovery for both humans and agents.
+**Why**: The browser UI currently shows component names and text descriptions with no visuals. Preview links point to Kata, which only works for unmodified upstream components and requires leaving the registry. Visual previews make the registry self-contained and dramatically improve component discovery for both humans and agents.
 
 **Scope constraints**:
 - Render the top 200 components, not all 2539. Prioritize using analytics data (from item #1) if available; otherwise select ~5 representatives per category (~40 categories)
@@ -102,7 +102,7 @@ Debate rounds: 3
 - The current build model (single `registry.json` → static files in `public/r/`) doesn't scale to multi-tenancy without fundamental rearchitecture. Multi-tenancy requires either N separate builds or a dynamic serving model.
 - The 2-3 week estimate was unrealistic. Postgres, tenant provisioning, admin UI, billing, onboarding, data isolation testing is 2-3 months of work. And then you're operating a SaaS, not building a registry.
 - Unvalidated demand. The shadcn CLI already supports custom registries. Teams that care enough have already self-hosted.
-- Competes directly with shadcnblocks.com, who could trivially add hosted registry support on their own platform.
+- Competes directly with Kata, who could trivially add hosted registry support on their own platform.
 
 ### Private Component Marketplace with License Management
 
@@ -110,7 +110,7 @@ Debate rounds: 3
 
 **Why killed**:
 - License enforcement is unenforceable. Components are source code. Once downloaded via `npx shadcn add`, the code lives in the consumer's repo permanently. No runtime check, no obfuscation. The entire license model is a gentleman's agreement.
-- Cold-start problem: a marketplace needs both supply (component authors) and demand (paying consumers) simultaneously. For an internal tool with licensed shadcnblocks content, the contributor pool is the internal team. A marketplace with one supplier isn't a marketplace.
+- Cold-start problem: a marketplace needs both supply (component authors) and demand (paying consumers) simultaneously. For an internal tool with licensed component content, the contributor pool is the internal team. A marketplace with one supplier isn't a marketplace.
 - 3-4 week estimate was unrealistic. License model, access control, publishing workflow, review system, billing, contributor dashboard, admin interface — each is a week individually. Realistic timeline: 3+ months.
 - Revenue sharing with external contributors adds legal, tax, and accounting complexity that is an entirely different business problem.
 

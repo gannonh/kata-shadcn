@@ -2012,7 +2012,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/logo.tsx",
+          "path": "registry/components/shared/logo.tsx",
           "type": "registry:component"
         }
       ]
@@ -2224,7 +2224,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/logo.tsx",
+          "path": "registry/components/shared/logo.tsx",
           "type": "registry:component"
         }
       ]
@@ -2257,7 +2257,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/logo.tsx",
+          "path": "registry/components/shared/logo.tsx",
           "type": "registry:component"
         }
       ]
@@ -2964,7 +2964,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/avatar-group.tsx",
+          "path": "registry/components/shared/avatar-group.tsx",
           "type": "registry:component"
         }
       ]
@@ -2987,7 +2987,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/avatar-group.tsx",
+          "path": "registry/components/shared/avatar-group.tsx",
           "type": "registry:component"
         }
       ]
@@ -3010,7 +3010,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/avatar-group.tsx",
+          "path": "registry/components/shared/avatar-group.tsx",
           "type": "registry:component"
         }
       ]
@@ -3033,7 +3033,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/avatar-group.tsx",
+          "path": "registry/components/shared/avatar-group.tsx",
           "type": "registry:component"
         }
       ]
@@ -3056,7 +3056,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/avatar-group.tsx",
+          "path": "registry/components/shared/avatar-group.tsx",
           "type": "registry:component"
         }
       ]
@@ -3079,7 +3079,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/avatar-group.tsx",
+          "path": "registry/components/shared/avatar-group.tsx",
           "type": "registry:component"
         }
       ]
@@ -3102,7 +3102,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/avatar-group.tsx",
+          "path": "registry/components/shared/avatar-group.tsx",
           "type": "registry:component"
         }
       ]
@@ -3125,7 +3125,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/avatar-group.tsx",
+          "path": "registry/components/shared/avatar-group.tsx",
           "type": "registry:component"
         }
       ]
@@ -3149,7 +3149,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/avatar-group.tsx",
+          "path": "registry/components/shared/avatar-group.tsx",
           "type": "registry:component"
         }
       ]
@@ -3167,7 +3167,7 @@
       ],
       "files": [
         {
-          "path": "registry/components/shadcnblocks/avatar-group.tsx",
+          "path": "registry/components/shared/avatar-group.tsx",
           "type": "registry:component"
         }
       ]
@@ -3269,7 +3269,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3290,7 +3290,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3311,7 +3311,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3332,7 +3332,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3353,7 +3353,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3374,7 +3374,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3395,7 +3395,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3416,7 +3416,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3437,7 +3437,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3458,7 +3458,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3479,7 +3479,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3500,7 +3500,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3521,7 +3521,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3542,7 +3542,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3563,7 +3563,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3584,7 +3584,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3605,7 +3605,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3626,7 +3626,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3647,7 +3647,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3668,7 +3668,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3689,7 +3689,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3710,7 +3710,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3731,7 +3731,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3752,7 +3752,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3773,7 +3773,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3794,7 +3794,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3815,7 +3815,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3836,7 +3836,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3857,7 +3857,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3878,7 +3878,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3899,7 +3899,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3920,7 +3920,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3941,7 +3941,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3962,7 +3962,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -3983,7 +3983,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -4004,7 +4004,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -4025,7 +4025,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -4046,7 +4046,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -4067,7 +4067,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -4088,7 +4088,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -4103,7 +4103,7 @@
       ],
       "files": [
         {
-          "path": "registry/components/shadcnblocks/background.tsx",
+          "path": "registry/components/shared/background.tsx",
           "type": "registry:component"
         }
       ]
@@ -5228,7 +5228,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/border-button.tsx",
+          "path": "registry/components/shared/border-button.tsx",
           "type": "registry:component"
         }
       ]
@@ -5244,7 +5244,7 @@
       ],
       "files": [
         {
-          "path": "registry/components/shadcnblocks/border-button.tsx",
+          "path": "registry/components/shared/border-button.tsx",
           "type": "registry:component"
         }
       ]
@@ -6793,7 +6793,7 @@
       ],
       "files": [
         {
-          "path": "registry/components/shadcnblocks/button-link.tsx",
+          "path": "registry/components/shared/button-link.tsx",
           "type": "registry:component"
         }
       ]
@@ -10055,15 +10055,15 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/logo.tsx",
+          "path": "registry/components/shared/logo.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/components/shadcnblocks/quantity-input.tsx",
+          "path": "registry/components/shared/quantity-input.tsx",
           "type": "registry:component"
         }
       ]
@@ -10097,15 +10097,15 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/logo.tsx",
+          "path": "registry/components/shared/logo.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/components/shadcnblocks/quantity-input.tsx",
+          "path": "registry/components/shared/quantity-input.tsx",
           "type": "registry:component"
         }
       ]
@@ -10140,11 +10140,11 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/components/shadcnblocks/quantity-input.tsx",
+          "path": "registry/components/shared/quantity-input.tsx",
           "type": "registry:component"
         }
       ]
@@ -10175,11 +10175,11 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/components/shadcnblocks/quantity-input.tsx",
+          "path": "registry/components/shared/quantity-input.tsx",
           "type": "registry:component"
         }
       ]
@@ -10238,7 +10238,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -13611,11 +13611,11 @@
       ],
       "files": [
         {
-          "path": "registry/components/shadcnblocks/cover.tsx",
+          "path": "registry/components/shared/cover.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/components/shadcnblocks/sparkles.tsx",
+          "path": "registry/components/shared/sparkles.tsx",
           "type": "registry:component"
         }
       ]
@@ -16902,7 +16902,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/emoji-picker.tsx",
+          "path": "registry/components/shared/emoji-picker.tsx",
           "type": "registry:component"
         }
       ]
@@ -16929,7 +16929,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/emoji-picker.tsx",
+          "path": "registry/components/shared/emoji-picker.tsx",
           "type": "registry:component"
         }
       ]
@@ -16956,7 +16956,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/emoji-picker.tsx",
+          "path": "registry/components/shared/emoji-picker.tsx",
           "type": "registry:component"
         }
       ]
@@ -16985,7 +16985,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/emoji-picker.tsx",
+          "path": "registry/components/shared/emoji-picker.tsx",
           "type": "registry:component"
         }
       ]
@@ -17012,7 +17012,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/emoji-picker.tsx",
+          "path": "registry/components/shared/emoji-picker.tsx",
           "type": "registry:component"
         }
       ]
@@ -17039,7 +17039,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/emoji-picker.tsx",
+          "path": "registry/components/shared/emoji-picker.tsx",
           "type": "registry:component"
         }
       ]
@@ -17062,7 +17062,7 @@
       ],
       "files": [
         {
-          "path": "registry/components/shadcnblocks/emoji-picker.tsx",
+          "path": "registry/components/shared/emoji-picker.tsx",
           "type": "registry:component"
         }
       ]
@@ -19802,7 +19802,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/scrollable-tabslist.tsx",
+          "path": "registry/components/shared/scrollable-tabslist.tsx",
           "type": "registry:component"
         }
       ]
@@ -21374,7 +21374,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/link-preview.tsx",
+          "path": "registry/components/shared/link-preview.tsx",
           "type": "registry:component"
         }
       ]
@@ -21399,7 +21399,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/link-preview.tsx",
+          "path": "registry/components/shared/link-preview.tsx",
           "type": "registry:component"
         }
       ]
@@ -21460,7 +21460,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/sparkles.tsx",
+          "path": "registry/components/shared/sparkles.tsx",
           "type": "registry:component"
         }
       ]
@@ -21482,7 +21482,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/sparkles.tsx",
+          "path": "registry/components/shared/sparkles.tsx",
           "type": "registry:component"
         }
       ]
@@ -24424,7 +24424,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/logo.tsx",
+          "path": "registry/components/shared/logo.tsx",
           "type": "registry:component"
         }
       ]
@@ -24621,7 +24621,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/logo.tsx",
+          "path": "registry/components/shared/logo.tsx",
           "type": "registry:component"
         }
       ]
@@ -24720,7 +24720,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/logo.tsx",
+          "path": "registry/components/shared/logo.tsx",
           "type": "registry:component"
         }
       ]
@@ -24805,7 +24805,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/logo.tsx",
+          "path": "registry/components/shared/logo.tsx",
           "type": "registry:component"
         }
       ]
@@ -26522,7 +26522,7 @@
       ],
       "files": [
         {
-          "path": "registry/components/shadcnblocks/github-stars.tsx",
+          "path": "registry/components/shared/github-stars.tsx",
           "type": "registry:component"
         }
       ]
@@ -27184,7 +27184,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/avatar-group.tsx",
+          "path": "registry/components/shared/avatar-group.tsx",
           "type": "registry:component"
         }
       ]
@@ -28793,7 +28793,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/cover.tsx",
+          "path": "registry/components/shared/cover.tsx",
           "type": "registry:component"
         }
       ]
@@ -33344,7 +33344,7 @@
       ],
       "files": [
         {
-          "path": "registry/components/shadcnblocks/link-preview.tsx",
+          "path": "registry/components/shared/link-preview.tsx",
           "type": "registry:component"
         }
       ]
@@ -33626,7 +33626,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/logo.tsx",
+          "path": "registry/components/shared/logo.tsx",
           "type": "registry:component"
         }
       ]
@@ -33649,7 +33649,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/logo.tsx",
+          "path": "registry/components/shared/logo.tsx",
           "type": "registry:component"
         }
       ]
@@ -33672,7 +33672,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/logo.tsx",
+          "path": "registry/components/shared/logo.tsx",
           "type": "registry:component"
         }
       ]
@@ -33691,7 +33691,7 @@
       ],
       "files": [
         {
-          "path": "registry/components/shadcnblocks/logo.tsx",
+          "path": "registry/components/shared/logo.tsx",
           "type": "registry:component"
         }
       ]
@@ -34328,7 +34328,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/logo.tsx",
+          "path": "registry/components/shared/logo.tsx",
           "type": "registry:component"
         }
       ]
@@ -35512,7 +35512,7 @@
       ],
       "files": [
         {
-          "path": "registry/components/shadcnblocks/pattern-placeholder.tsx",
+          "path": "registry/components/shared/pattern-placeholder.tsx",
           "type": "registry:component"
         }
       ]
@@ -35528,7 +35528,7 @@
       ],
       "files": [
         {
-          "path": "registry/components/shadcnblocks/pattern-template.tsx",
+          "path": "registry/components/shared/pattern-template.tsx",
           "type": "registry:component"
         }
       ]
@@ -35910,7 +35910,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -35929,7 +35929,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -35944,7 +35944,7 @@
       ],
       "files": [
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -36798,7 +36798,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -36827,7 +36827,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -36850,7 +36850,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -36873,7 +36873,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -36896,11 +36896,11 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/components/shadcnblocks/rating.tsx",
+          "path": "registry/components/shared/rating.tsx",
           "type": "registry:component"
         }
       ]
@@ -36921,7 +36921,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -36950,7 +36950,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -36983,7 +36983,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -37017,7 +37017,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -37046,7 +37046,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -37568,7 +37568,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -37594,7 +37594,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -37617,7 +37617,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -37640,7 +37640,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -37664,11 +37664,11 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/components/shadcnblocks/rating.tsx",
+          "path": "registry/components/shared/rating.tsx",
           "type": "registry:component"
         }
       ]
@@ -37690,7 +37690,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -37720,7 +37720,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -37753,7 +37753,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -37787,7 +37787,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -37819,7 +37819,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -37849,7 +37849,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -37885,15 +37885,15 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/components/shadcnblocks/quantity-input.tsx",
+          "path": "registry/components/shared/quantity-input.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/components/shadcnblocks/rating.tsx",
+          "path": "registry/components/shared/rating.tsx",
           "type": "registry:component"
         }
       ]
@@ -37926,11 +37926,11 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/components/shadcnblocks/rating.tsx",
+          "path": "registry/components/shared/rating.tsx",
           "type": "registry:component"
         },
         {
@@ -37969,7 +37969,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         }
       ]
@@ -39497,7 +39497,7 @@
       ],
       "files": [
         {
-          "path": "registry/components/shadcnblocks/quantity-input.tsx",
+          "path": "registry/components/shared/quantity-input.tsx",
           "type": "registry:component"
         }
       ]
@@ -39694,7 +39694,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/border-button.tsx",
+          "path": "registry/components/shared/border-button.tsx",
           "type": "registry:component"
         },
         {
@@ -39720,7 +39720,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/rating.tsx",
+          "path": "registry/components/shared/rating.tsx",
           "type": "registry:component"
         }
       ]
@@ -39742,7 +39742,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/rating.tsx",
+          "path": "registry/components/shared/rating.tsx",
           "type": "registry:component"
         }
       ]
@@ -39760,7 +39760,7 @@
       ],
       "files": [
         {
-          "path": "registry/components/shadcnblocks/rating.tsx",
+          "path": "registry/components/shared/rating.tsx",
           "type": "registry:component"
         }
       ]
@@ -39956,7 +39956,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/rating.tsx",
+          "path": "registry/components/shared/rating.tsx",
           "type": "registry:component"
         }
       ]
@@ -39984,7 +39984,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/rating.tsx",
+          "path": "registry/components/shared/rating.tsx",
           "type": "registry:component"
         }
       ]
@@ -40009,7 +40009,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/rating.tsx",
+          "path": "registry/components/shared/rating.tsx",
           "type": "registry:component"
         }
       ]
@@ -40060,7 +40060,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/rating.tsx",
+          "path": "registry/components/shared/rating.tsx",
           "type": "registry:component"
         }
       ]
@@ -40085,7 +40085,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/rating.tsx",
+          "path": "registry/components/shared/rating.tsx",
           "type": "registry:component"
         }
       ]
@@ -40112,7 +40112,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/rating.tsx",
+          "path": "registry/components/shared/rating.tsx",
           "type": "registry:component"
         }
       ]
@@ -40136,11 +40136,11 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/components/shadcnblocks/rating.tsx",
+          "path": "registry/components/shared/rating.tsx",
           "type": "registry:component"
         }
       ]
@@ -40166,7 +40166,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/rating.tsx",
+          "path": "registry/components/shared/rating.tsx",
           "type": "registry:component"
         }
       ]
@@ -40190,7 +40190,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/rating.tsx",
+          "path": "registry/components/shared/rating.tsx",
           "type": "registry:component"
         }
       ]
@@ -40334,7 +40334,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/scrollable-tabslist.tsx",
+          "path": "registry/components/shared/scrollable-tabslist.tsx",
           "type": "registry:component"
         }
       ]
@@ -40349,7 +40349,7 @@
       ],
       "files": [
         {
-          "path": "registry/components/shadcnblocks/scrollable-tabslist.tsx",
+          "path": "registry/components/shared/scrollable-tabslist.tsx",
           "type": "registry:component"
         }
       ]
@@ -40975,7 +40975,7 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/border-button.tsx",
+          "path": "registry/components/shared/border-button.tsx",
           "type": "registry:component"
         }
       ]
@@ -42415,11 +42415,11 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/components/shadcnblocks/quantity-input.tsx",
+          "path": "registry/components/shared/quantity-input.tsx",
           "type": "registry:component"
         }
       ]
@@ -42456,11 +42456,11 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/components/shadcnblocks/quantity-input.tsx",
+          "path": "registry/components/shared/quantity-input.tsx",
           "type": "registry:component"
         }
       ]
@@ -42494,11 +42494,11 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/components/shadcnblocks/quantity-input.tsx",
+          "path": "registry/components/shared/quantity-input.tsx",
           "type": "registry:component"
         }
       ]
@@ -42535,11 +42535,11 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/components/shadcnblocks/quantity-input.tsx",
+          "path": "registry/components/shared/quantity-input.tsx",
           "type": "registry:component"
         }
       ]
@@ -42682,11 +42682,11 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/components/shadcnblocks/price.tsx",
+          "path": "registry/components/shared/price.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/components/shadcnblocks/quantity-input.tsx",
+          "path": "registry/components/shared/quantity-input.tsx",
           "type": "registry:component"
         }
       ]
@@ -44790,7 +44790,7 @@
       ],
       "files": [
         {
-          "path": "registry/components/shadcnblocks/sparkles.tsx",
+          "path": "registry/components/shared/sparkles.tsx",
           "type": "registry:component"
         }
       ]

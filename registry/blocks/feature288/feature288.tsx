@@ -2,7 +2,7 @@ import React from "react";
 
 import { cn } from "@/lib/utils";
 
-import { LinkPreview } from "@/components/shadcnblocks/link-preview";
+import { LinkPreview } from "@/components/shared/link-preview";
 
 interface Feature288Props {
   className?: string;
@@ -14,8 +14,8 @@ const Feature288 = ({ className }: Feature288Props) => {
       <div className="container w-full">
         <h1 className="mt-10 text-center text-3xl font-semibold tracking-tight text-muted-foreground/40 md:text-4xl">
           Build faster with
-          <LinkPreview url="https://shadcnblocks.com" className="px-1">
-            Shadcnblocks
+          <LinkPreview url="#" className="px-1">
+            Kata
           </LinkPreview>{" "}
           designed for real-world apps. Whether you're using{" "}
           <LinkPreview url="https://tailwindcss.com" className="px-1">

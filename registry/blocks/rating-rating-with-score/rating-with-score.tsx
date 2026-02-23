@@ -1,4 +1,4 @@
-import { Rating } from '@/components/shadcnblocks/rating';
+import { Rating } from '@/components/shared/rating';
 
 const RatingExample = () => {
   return <Rating rate={5.0} showScore description="from 200+ reviews" />;

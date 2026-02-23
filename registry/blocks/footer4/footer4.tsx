@@ -6,7 +6,7 @@ import {
   Logo,
   LogoImageDesktop,
   LogoImageMobile,
-} from "@/components/shadcnblocks/logo";
+} from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
@@ -56,11 +56,11 @@ interface Footer4Props {
 }
 const Footer4 = ({
   logo = {
-    url: "https://www.shadcnblocks.com",
+    url: "#",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo-word.svg",
     srcMobile: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg",
     alt: "logo",
-    title: "Shadcnblocks.com",
+    title: "Kata",
   },
   className,
 }: Footer4Props) => {
@@ -70,7 +70,7 @@ const Footer4 = ({
         <footer>
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
             <div className="col-span-2 flex h-full items-center justify-between md:items-start lg:col-span-3 lg:flex-col">
-              <Logo url="https://shadcnblocks.com">
+              <Logo url="#">
                 <LogoImageDesktop
                   src={logo.src}
                   alt={logo.alt}
@@ -140,7 +140,7 @@ const Footer4 = ({
                 <a href="#"> Privacy Policy</a>
               </li>
             </ul>
-            <p>© 2024 Shadcnblocks.com. All rights reserved.</p>
+            <p>© 2024 Kata. All rights reserved.</p>
           </div>
         </footer>
       </div>

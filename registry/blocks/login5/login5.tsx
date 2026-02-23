@@ -25,17 +25,17 @@ interface Login5Props {
 const Login5 = ({
   heading = "Login",
   logo = {
-    url: "https://www.shadcnblocks.com",
+    url: "#",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg",
     alt: "logo",
-    title: "shadcnblocks.com",
+    title: "Kata",
   },
   buttonText = "Login",
   facebookText = "Facebook",
   googleText = "Google",
   githubText = "GitHub",
   signupText = "Need an account?",
-  signupUrl = "https://shadcnblocks.com",
+  signupUrl = "#",
   className,
 }: Login5Props) => {
   return (

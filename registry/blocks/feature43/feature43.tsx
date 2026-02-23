@@ -66,7 +66,7 @@ const Feature43 = ({
     },
   ],
   buttonText = "More Features",
-  buttonUrl = "https://shadcnblocks.com",
+  buttonUrl = "#",
   className,
 }: Feature43Props) => {
   return (

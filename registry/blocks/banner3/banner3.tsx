@@ -20,7 +20,7 @@ const Banner3 = ({
   title = "Black Friday Sale! 🎉",
   description = "Up to 70% off on all components. Limited time only!",
   buttonText = "Shop Now",
-  buttonUrl = "https://shadcnblocks.com",
+  buttonUrl = "#",
   defaultVisible = true,
   className,
 }: Banner3Props) => {

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
-import { Rating } from "@/components/shadcnblocks/rating";
+import { Rating } from "@/components/shared/rating";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,

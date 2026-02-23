@@ -2,20 +2,20 @@ import {
   Logo,
   LogoImageDesktop,
   LogoImageMobile,
-} from "@/components/shadcnblocks/logo";
+} from "@/components/shared/logo";
 
 const LogoStandardExample = () => {
   return (
-    <Logo url="https://shadcnblocks.com">
+    <Logo url="#">
       <LogoImageDesktop
         src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo-word.png"
         alt="logo"
-        title="Shadcnblocks.com"
+        title="Kata"
       />
       <LogoImageMobile
         src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.png"
         alt="logo"
-        title="Shadcnblocks.com"
+        title="Kata"
       />
     </Logo>
   );

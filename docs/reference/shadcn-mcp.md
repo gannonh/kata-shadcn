@@ -66,44 +66,36 @@ args = ["shadcn@latest", "mcp"]
 
 Restart your IDE after configuration changes.
 
-## Shadcnblocks Integration
+## Kata Registry Integration
 
 Configure in `components.json`:
 
 ```json
 {
   "registries": {
-    "@shadcnblocks": "https://shadcnblocks.com/r/{name}"
-  }
-}
-```
-
-### Example Prompts
-
-- "Show me hero blocks from shadcnblocks"
-- "Add a pricing section with comparison table"
-- "Install a testimonial carousel"
-- "Find blocks for a SaaS landing page"
-
-### Pro Blocks Authentication
-
-```json
-{
-  "registries": {
-    "@shadcnblocks": {
-      "url": "https://shadcnblocks.com/r/{name}",
+    "@kata-shadcn": {
+      "url": "https://shadcn-registry-eight.vercel.app/r/{name}.json",
       "headers": {
-        "Authorization": "Bearer ${SHADCNBLOCKS_API_KEY}"
+        "x-registry-token": "${REGISTRY_TOKEN}"
       }
     }
   }
 }
 ```
 
+Add `REGISTRY_TOKEN=<token>` to `.env`.
+
+### Example Prompts
+
+- "Show me hero blocks"
+- "Add a pricing section with comparison table"
+- "Install a testimonial carousel"
+- "Find blocks for a SaaS landing page"
+
 ## Supported Registries
 
 - **shadcn/ui** — Official components
-- **Shadcnblocks** — 500+ production-ready blocks
+- **Kata** — 2500+ production-ready blocks
 - **Third-Party** — Any shadcn-compatible registry
 - **Private** — Internal company libraries with authentication
 

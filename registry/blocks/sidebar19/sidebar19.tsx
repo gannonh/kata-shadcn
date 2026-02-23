@@ -117,7 +117,7 @@ type UserData = {
 const workspaces: Workspace[] = [
   {
     id: "1",
-    name: "Shadcnblocks",
+    name: "Kata",
     logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg",
     plan: "Enterprise",
   },

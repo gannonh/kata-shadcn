@@ -67,7 +67,7 @@ const FOOTER_LINKS = [
 
 const COMPANY_LINKS = [
   { label: "+1 (120) 233-01231", href: "#" },
-  { label: "2025© Shadcnblocks.com", href: "#" },
+  { label: "2025© Kata", href: "#" },
 ];
 
 interface Navbar29Props {
@@ -81,7 +81,7 @@ const Navbar29 = ({ className }: Navbar29Props) => {
     <section className={cn("", className)}>
       <nav className="relative">
         <ul className="relative z-1 flex w-full items-center justify-between gap-4 p-6 text-lg font-semibold tracking-tight">
-          <li className="w-35">Shadcnblocks</li>
+          <li className="w-35">Kata</li>
           {NAV_ITEMS.map((item, index) => (
             <li key={index} className="hidden w-32 lg:block">
               <a
@@ -117,7 +117,7 @@ const Navbar29 = ({ className }: Navbar29Props) => {
                 </ul>
               </div>
               <div className="hidden w-full items-center justify-between gap-4 lg:flex">
-                <div className="w-35 opacity-0">Shadcnblocks</div>
+                <div className="w-35 opacity-0">Kata</div>
                 {MEGA_MENU_ITEMS.map((section, sectionIndex) => (
                   <ul key={sectionIndex} className="space-y-5">
                     {section.map((item, itemIndex) => (

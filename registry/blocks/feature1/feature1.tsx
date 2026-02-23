@@ -25,11 +25,11 @@ const Feature1 = ({
   imageAlt = "placeholder hero",
   buttonPrimary = {
     text: "Get Started",
-    href: "https://shadcnblocks.com",
+    href: "#",
   },
   buttonSecondary = {
     text: "Learn More",
-    href: "https://shadcnblocks.com",
+    href: "#",
   },
   className,
 }: Feature1Props) => {

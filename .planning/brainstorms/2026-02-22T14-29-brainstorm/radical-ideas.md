@@ -33,7 +33,7 @@ This goes further: the playground generates a project-specific `tailwind.config`
 **Scope:** Medium-large. Requires: (1) a theming abstraction layer over the components, (2) an iframe-based renderer, (3) a token editor UI, (4) export logic for config files. The shadcn ecosystem already uses CSS variables extensively, so the foundation exists. 2-4 months for core functionality.
 
 **Risks:**
-- Many shadcnblocks components may use hardcoded styles that resist theming
+- Many Kataponents may use hardcoded styles that resist theming
 - Rendering 2555 components live is a performance challenge (would need virtualization)
 - Maintaining visual fidelity across all components when tokens change is fragile
 - Could become a design tool maintenance burden rather than a registry feature

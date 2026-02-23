@@ -24,10 +24,10 @@ const Signup4 = ({
   className,
   heading = "Signup",
   logo = {
-    url: "https://www.shadcnblocks.com",
+    url: "#",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg",
     alt: "logo",
-    title: "shadcnblocks.com",
+    title: "Kata",
   },
   signupText = "Create an account",
   googleText = "Google",
@@ -43,7 +43,7 @@ const Signup4 = ({
           <div className="flex flex-col items-center gap-y-2">
             {/* Logo */}
             <div className="flex items-center gap-1 lg:justify-start">
-              <a href="https://shadcnblocks.com">
+              <a href="#">
                 <img
                   src={logo.src}
                   alt={logo.alt}

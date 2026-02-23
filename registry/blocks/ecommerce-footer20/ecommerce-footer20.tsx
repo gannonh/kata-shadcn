@@ -296,7 +296,7 @@ const EcommerceFooter20 = ({
               <Separator />
               <div className="space-y-8">
                 <FooterSubMenu links={submenuLinks} />
-                <p className="text-sm font-light">© 2025 Shadcnblocks.com</p>
+                <p className="text-sm font-light">© 2025 Kata</p>
               </div>
             </div>
           </div>

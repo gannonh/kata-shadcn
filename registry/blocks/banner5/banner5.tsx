@@ -20,7 +20,7 @@ const Banner5 = ({
   title = "Version 2.0 is now available!",
   description = "Check out all the new features.",
   buttonText = "Learn More",
-  buttonUrl = "https://shadcnblocks.com",
+  buttonUrl = "#",
   defaultVisible = true,
   className,
 }: Banner5Props) => {

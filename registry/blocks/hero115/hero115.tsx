@@ -27,7 +27,7 @@ const Hero115 = ({
   button = {
     text: "Discover Features",
     icon: <Zap className="ml-2 size-4" />,
-    url: "https://www.shadcnblocks.com",
+    url: "#",
   },
   trustText = "Trusted by 25.000+ Businesses Worldwide",
   imageSrc = "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",

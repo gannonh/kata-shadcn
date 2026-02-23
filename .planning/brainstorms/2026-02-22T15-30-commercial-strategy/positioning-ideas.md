@@ -20,7 +20,7 @@ Key prior findings from the radical-ideas brainstorm:
 
 Every component gets a machine-readable knowledge card: what it does, what props it exposes, what layout patterns it implements, what UI category it belongs to, and a natural-language description written for LLM context windows. Agents can query semantically ("I need a pricing page with toggle billing and feature comparison") and get ranked results with enough metadata to make installation decisions without human intervention.
 
-**Why:** Current component registries (shadcn/ui, shadcnblocks.com, community registries) serve humans first. Their discovery surfaces are designed for browsing: search by name, filter by category, view a screenshot. AI coding tools (Cursor, v0, Bolt, Lovable) are increasingly the primary consumers of component libraries, but they currently treat components as opaque code blobs. They lack structured knowledge about what a component does, what it looks like, or how it relates to other components.
+**Why:** Current component registries (shadcn/ui, Kata, community registries) serve humans first. Their discovery surfaces are designed for browsing: search by name, filter by category, view a screenshot. AI coding tools (Cursor, v0, Bolt, Lovable) are increasingly the primary consumers of component libraries, but they currently treat components as opaque code blobs. They lack structured knowledge about what a component does, what it looks like, or how it relates to other components.
 
 By building a rich knowledge layer on top of the 2555 components, the registry occupies a position no competitor fills: the component library that AI agents can reason about. This is hard to replicate because it requires (a) the licensed library, (b) the AST extraction pipeline, (c) the LLM enrichment pass, and (d) the embedding infrastructure. Any competitor can build (b)-(d), but they cannot replicate (a) without licensing the same components.
 
@@ -39,7 +39,7 @@ By building a rich knowledge layer on top of the 2555 components, the registry o
 
 The distinction from a raw component library: the registry embeds design opinion. A hero + feature grid + pricing table + CTA + footer is not just five components; it is a tested, balanced page composition. The registry becomes a design system for full pages, not individual blocks.
 
-**Why:** The market gap is at the page level, not the component level. shadcn/ui provides primitives (buttons, inputs, cards). shadcnblocks.com provides blocks (a hero section, a pricing table). Neither provides page-level composition guidance. AI tools generate page layouts, but their quality varies and they lack the curation that comes from a human-reviewed library of 2555 blocks.
+**Why:** The market gap is at the page level, not the component level. shadcn/ui provides primitives (buttons, inputs, cards). Kata provides blocks (a hero section, a pricing table). Neither provides page-level composition guidance. AI tools generate page layouts, but their quality varies and they lack the curation that comes from a human-reviewed library of 2555 blocks.
 
 The registry has the raw material: 268 feature blocks, 173 hero blocks, 37 pricing blocks, 26 CTA blocks, 26 footer blocks. These cover the full anatomy of common page types. Packaging them into curated, tested page recipes creates value that is hard to replicate without the same breadth of component library.
 
@@ -60,7 +60,7 @@ Add visual search: upload a screenshot or describe a UI, get matching components
 
 **Why:** The fundamental problem with component libraries is that you cannot see what you are getting until after you install and render it. Names like `hero47` or `feature112` convey zero information. Descriptions help but cannot substitute for seeing the actual rendered output.
 
-shadcnblocks.com has live previews on their marketing site, but those previews are not accessible programmatically or from the `npx shadcn add` workflow. The registry can differentiate by making visual previews a first-class part of the discovery and selection process, available to both the browser UI and AI agents (vision-capable LLMs can evaluate screenshots).
+Kata has live previews on their marketing site, but those previews are not accessible programmatically or from the `npx shadcn add` workflow. The registry can differentiate by making visual previews a first-class part of the discovery and selection process, available to both the browser UI and AI agents (vision-capable LLMs can evaluate screenshots).
 
 **Scope:** 1-2 months (aligns with milestone 3, Visual Catalog). Playwright rendering harness, GitHub Actions CI for screenshot generation, `/r/{name}/preview.png` static serving, browser UI with thumbnail grid, enriched index with preview URLs.
 
@@ -68,7 +68,7 @@ shadcnblocks.com has live previews on their marketing site, but those previews a
 - ~10-20% of components may not render in isolation (missing providers, required data).
 - Screenshot storage and CDN costs for 2555+ images.
 - Build-time rendering adds CI complexity and cost.
-- shadcnblocks.com could expose their own preview images via API, removing the visual advantage.
+- Kata could expose their own preview images via API, removing the visual advantage.
 
 ---
 
@@ -102,7 +102,7 @@ The positioning: "The component library that works with your AI coding tool." In
 
 The registry already has AGENTS.md and a JSON agent index. The next step is active integration: MCP tools that let agents search the registry, Cursor rules that reference the install workflow, and context files that describe what components are available.
 
-The competitive advantage: agents work better with structured, pre-indexed component metadata than with raw component library websites. The registry's enriched knowledge layer (from Proposal 1) compounds with tool integrations. A Cursor user gets better component suggestions from the registry than from manually browsing shadcnblocks.com.
+The competitive advantage: agents work better with structured, pre-indexed component metadata than with raw component library websites. The registry's enriched knowledge layer (from Proposal 1) compounds with tool integrations. A Cursor user gets better component suggestions from the registry than from manually browsing Kata.
 
 **Scope:** 2-3 weeks. MCP server definition for registry search and component retrieval. Cursor rules file for the `@kata-shadcn` install workflow. Documentation for integrating with v0 and Bolt context APIs. Agent-optimized component descriptions (concise, structured, fits context windows).
 
@@ -125,7 +125,7 @@ This strategy multiplies the registry's addressable market without adding new co
 **Scope:** 3-4 weeks. Define 5-6 verticals. Tag components by vertical relevance (can be partially automated via LLM classification of component descriptions and content). Build vertical landing pages. Create vertical-specific page recipes.
 
 **Risks:**
-- Vertical tagging may be shallow (most shadcnblocks components are generic, not domain-specific).
+- Vertical tagging may be shallow (most Kataponents are generic, not domain-specific).
 - Marketing multiple verticals requires more content and positioning effort.
 - Consumers may see through the repackaging if the components are clearly generic.
 - Maintaining vertical accuracy as components are added or modified.

@@ -40,10 +40,10 @@ interface Footer8Props {
 }
 const Footer8 = ({
   logo = {
-    url: "https://www.shadcnblocks.com",
+    url: "#",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
     alt: "logo",
-    title: "Shadcnblocks.com",
+    title: "Kata",
   },
   className,
 }: Footer8Props) => {
@@ -55,7 +55,7 @@ const Footer8 = ({
             <div className="col-span-4 flex w-full flex-col gap-6 lg:col-span-2">
               {/* Logo */}
               <div className="flex items-center gap-2 lg:justify-start">
-                <a href="https://shadcnblocks.com">
+                <a href="#">
                   <img
                     src={logo.src}
                     alt={logo.alt}
@@ -126,7 +126,7 @@ const Footer8 = ({
           <div className="mt-20 flex flex-col justify-between gap-4 border-t pt-8 text-sm font-medium text-muted-foreground lg:flex-row lg:items-center lg:text-left">
             <p>
               <span className="mr-1 font-bold text-primary">
-                Shadcnblocks.com
+                Kata
               </span>
               © All rights reserved.
             </p>

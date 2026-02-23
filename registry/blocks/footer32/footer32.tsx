@@ -30,7 +30,7 @@ interface Footer32Props {
 
 const Footer32 = ({
   preHeading = "Let's connect",
-  heading1 = "You want to scale faster? Try Shadcnblocks today.",
+  heading1 = "You want to scale faster? Try Kata today.",
   description = "Join thousands of companies already using our platform to scale their operations",
   buttonText = "Get Started Now",
   buttonUrl = "#",

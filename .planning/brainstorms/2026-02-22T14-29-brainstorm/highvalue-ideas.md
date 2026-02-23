@@ -4,7 +4,7 @@
 
 **What**: Transform the single-tenant registry into a multi-tenant platform where multiple organizations can host their own private shadcn registries. Each tenant gets an isolated namespace (`/r/{tenant}/{name}.json`), separate auth tokens, and an admin dashboard for managing components, tokens, and team access.
 
-**Why**: The hardest part of this project (the build pipeline, shadcn CLI compatibility, auth middleware, agent index) is already solved. Multi-tenancy turns that infrastructure into a product. Organizations building design systems with shadcn already need private registries, and the current options are either self-hosting (which requires DevOps effort) or paying shadcnblocks for a pro plan (which doesn't support custom components). A hosted multi-tenant registry fills a real gap: teams get private component hosting without managing infrastructure.
+**Why**: The hardest part of this project (the build pipeline, shadcn CLI compatibility, auth middleware, agent index) is already solved. Multi-tenancy turns that infrastructure into a product. Organizations building design systems with shadcn already need private registries, and the current options are either self-hosting (which requires DevOps effort) or paying the component vendor for a pro plan (which doesn't support custom components). A hosted multi-tenant registry fills a real gap: teams get private component hosting without managing infrastructure.
 
 **Scope**: 2-3 weeks. Key work includes: tenant data model (Postgres via Drizzle or Prisma), per-tenant namespace routing, tenant-scoped token management, admin UI for CRUD operations on components and API keys, onboarding flow, and billing integration (Stripe). The existing middleware pattern extends naturally to per-tenant token validation.
 
@@ -13,7 +13,7 @@
 - Requires a database, which the project currently avoids entirely
 - Billing/payment handling is a product concern that pulls focus from the core technical value
 - Tenant isolation bugs could expose one org's proprietary components to another
-- Competes directly with shadcnblocks.com pro features if they expand their offering
+- Competes directly with Kata pro features if they expand their offering
 
 ---
 
@@ -21,7 +21,7 @@
 
 **What**: Generate static screenshots or live interactive previews for every component in the registry. The build pipeline would render each component in isolation (using Playwright or a headless browser), capture screenshots at multiple viewport widths, and store them alongside the component JSON. The browser UI gets a visual grid view where users can see what components look like before installing. Agent workflows get image URLs in the index for visual context.
 
-**Why**: The current browser UI shows component names and descriptions but no visuals. This forces users to click through to shadcnblocks.com for previews, and those links only work for the original upstream components (not for any modified or custom components). Agents selecting components currently work blind, picking based on text descriptions alone. Visual previews make the registry self-contained and dramatically improve both human and agent component selection. Preview images also enable similarity search and visual comparison across the 2539 blocks.
+**Why**: The current browser UI shows component names and descriptions but no visuals. This forces users to click through to Kata for previews, and those links only work for the original upstream components (not for any modified or custom components). Agents selecting components currently work blind, picking based on text descriptions alone. Visual previews make the registry self-contained and dramatically improve both human and agent component selection. Preview images also enable similarity search and visual comparison across the 2539 blocks.
 
 **Scope**: 1-2 weeks. Key work includes: a preview rendering script (Playwright + a minimal Next.js app shell), screenshot storage (local filesystem for now, S3 later), build pipeline integration, browser UI grid/gallery view, and thumbnail URLs in the agent index. The rendering script is the bulk of the work; the UI changes are straightforward.
 
@@ -106,7 +106,7 @@
 
 **What**: Build a marketplace layer where component authors (internal teams or external contributors) can publish components to the registry with license terms and access controls. Each component or bundle gets a license type (free, team, enterprise), and access is gated by the consumer's subscription tier. An admin dashboard manages component publishing workflows (submit, review, approve, publish), license assignment, and revenue sharing for external contributors.
 
-**Why**: The current registry is a flat collection of 2555 components with uniform access. A marketplace adds economic structure: some components can be free (driving adoption), others premium (driving revenue). This creates a flywheel: revenue funds better components, better components attract more consumers, more consumers justify premium pricing. License management also solves the compliance question for enterprises: "what components are we using and are we licensed for them?" The publishing workflow enables growth beyond the initial shadcnblocks corpus, allowing custom components to enter the registry through a governed process.
+**Why**: The current registry is a flat collection of 2555 components with uniform access. A marketplace adds economic structure: some components can be free (driving adoption), others premium (driving revenue). This creates a flywheel: revenue funds better components, better components attract more consumers, more consumers justify premium pricing. License management also solves the compliance question for enterprises: "what components are we using and are we licensed for them?" The publishing workflow enables growth beyond the initial component corpus, allowing custom components to enter the registry through a governed process.
 
 **Scope**: 3-4 weeks. Key work includes: license model and schema, access control layer in middleware (check license entitlement per component), publishing workflow UI, review/approval system, Stripe integration for subscription billing, contributor dashboard, and admin management interface.
 
@@ -115,5 +115,5 @@
 - License enforcement at the middleware level can be circumvented once source code is downloaded (components are source code, not SaaS)
 - Publishing workflow requires moderation effort and quality standards, which is operational overhead
 - Revenue sharing with external contributors adds legal and tax complexity
-- Competing with shadcnblocks.com's own marketplace directly
+- Competing with Kata's own marketplace directly
 - Enterprise license management is a deep product area that can consume unlimited engineering effort

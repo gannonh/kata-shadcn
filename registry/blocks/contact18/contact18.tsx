@@ -47,7 +47,7 @@ const Contact18 = ({ className }: Contact18Props) => {
               href=""
               className="flex items-center gap-4 text-4xl font-medium tracking-tighter"
             >
-              hi@shadcnblocks.com
+              hi@Kata
             </a>
           </div>
           <div className="col-span-4 flex w-full flex-col gap-2 lg:pl-10">

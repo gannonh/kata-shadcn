@@ -30,7 +30,7 @@ interface Gallery6Props {
 
 const Gallery6 = ({
   heading = "Gallery",
-  demoUrl = "https://www.shadcnblocks.com",
+  demoUrl = "#",
   items = [
     {
       id: "item-1",

@@ -51,7 +51,7 @@ const Resources5 = ({
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
       cta: {
         text: "Start",
-        url: "https://www.shadcnblocks.com",
+        url: "#",
       },
     },
     {
@@ -72,7 +72,7 @@ const Resources5 = ({
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg",
       cta: {
         text: "Start",
-        url: "https://www.shadcnblocks.com",
+        url: "#",
       },
     },
   ],

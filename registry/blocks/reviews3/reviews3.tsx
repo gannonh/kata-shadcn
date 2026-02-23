@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 
-import { Rating } from "@/components/shadcnblocks/rating";
+import { Rating } from "@/components/shared/rating";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";

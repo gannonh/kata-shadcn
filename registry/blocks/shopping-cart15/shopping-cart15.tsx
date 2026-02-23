@@ -13,8 +13,8 @@ import {
 } from "react-hook-form";
 import z from "zod";
 
-import { Price, PriceValue } from "@/components/shadcnblocks/price";
-import QuantityInput from "@/components/shadcnblocks/quantity-input";
+import { Price, PriceValue } from "@/components/shared/price";
+import QuantityInput from "@/components/shared/quantity-input";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardTitle } from "@/components/ui/card";

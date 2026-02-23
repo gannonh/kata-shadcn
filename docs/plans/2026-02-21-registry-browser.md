@@ -17,7 +17,7 @@
 **Files:**
 - Create: `scripts/extract-sources.ts`
 
-This is a one-time migration. It reads every `public/r/*.json` that came from shadcnblocks, extracts the inline `content` from each file entry, and writes it to `registry/blocks/{name}/` or `registry/components/` depending on the file type. Shared helper files (same path appearing in multiple components) are deduplicated — written once, not once per component.
+This is a one-time migration. It reads every `public/r/*.json` that came from the component source, extracts the inline `content` from each file entry, and writes it to `registry/blocks/{name}/` or `registry/components/` depending on the file type. Shared helper files (same path appearing in multiple components) are deduplicated — written once, not once per component.
 
 **Step 1: Create the script**
 
@@ -71,7 +71,7 @@ for (const file of files) {
       destPath = path.join(destDir, basename)
     } else {
       // Shared helper → registry/components/{original-path-relative}
-      // e.g. components/shadcnblocks/logo.tsx → registry/components/shadcnblocks/logo.tsx
+      // e.g. components/shared/logo.tsx → registry/components/shared/logo.tsx
       const relative = filePath.replace(/^components\//, "")
       destDir = path.join(REGISTRY_COMPONENTS, path.dirname(relative))
       destPath = path.join(REGISTRY_COMPONENTS, relative)
@@ -121,7 +121,7 @@ Expected: directories like `about1/`, `hero1/`, each containing a `.tsx` file wi
 ```bash
 cd shadcn-registry
 git add registry/ scripts/extract-sources.ts
-git commit -m "feat: extract shadcnblocks sources into registry/"
+git commit -m "feat: extract registry sources into registry/"
 ```
 
 ---
@@ -211,7 +211,7 @@ fs.writeFileSync(
   "utf8"
 )
 
-console.log(`Generated registry.json with ${newItems.length} shadcnblocks + ${templateItems.length} template items`)
+console.log(`Generated registry.json with ${newItems.length} registry + ${templateItems.length} template items`)
 ```
 
 **Step 2: Run the script**
@@ -220,7 +220,7 @@ console.log(`Generated registry.json with ${newItems.length} shadcnblocks + ${te
 cd shadcn-registry && npx tsx scripts/generate-manifest.ts
 ```
 
-Expected: `Generated registry.json with 1409 shadcnblocks + 4 template items`
+Expected: `Generated registry.json with 1409 registry + 4 template items`
 
 **Step 3: Spot-check registry.json**
 
@@ -230,7 +230,7 @@ import json
 with open('registry.json') as f:
     d = json.load(f)
 print('Total items:', len(d['items']))
-# Print first shadcnblocks entry
+# Print first registry entry
 sb = [i for i in d['items'] if i['name'] not in ['hello-world','example-form','complex-component','example-with-css']]
 import json; print(json.dumps(sb[0], indent=2))
 "
@@ -254,7 +254,7 @@ git commit -m "feat: generate registry.json with 1409 component manifest"
 - Create: `scripts/build-registry.ts`
 - Modify: `package.json`
 
-Replaces `shadcn build`. Reads `registry.json`, reads source files from `registry/`, embeds content into `public/r/{name}.json` using the original shadcnblocks consumer paths (preserving `block/` and `components/shadcnblocks/` paths). Also generates `lib/component-index.json` for the browser.
+Replaces `shadcn build`. Reads `registry.json`, reads source files from `registry/`, embeds content into `public/r/{name}.json` using the original consumer paths (preserving `block/` and `components/shared/` paths). Also generates `lib/component-index.json` for the browser.
 
 **Step 1: Create the build script**
 
@@ -275,7 +275,7 @@ const templateNames = new Set(["hello-world", "example-form", "complex-component
 
 // Map registry source paths back to original consumer paths
 // registry/blocks/{name}/{file}.tsx → block/{file}.tsx
-// registry/components/shadcnblocks/{file}.tsx → components/shadcnblocks/{file}.tsx
+// registry/components/shared/{file}.tsx → components/shared/{file}.tsx
 function toConsumerPath(registryPath: string): string {
   if (registryPath.startsWith("registry/blocks/")) {
     // registry/blocks/about1/about1.tsx → block/about1.tsx
@@ -283,7 +283,7 @@ function toConsumerPath(registryPath: string): string {
     return `block/${basename}`
   }
   if (registryPath.startsWith("registry/components/")) {
-    // registry/components/shadcnblocks/logo.tsx → components/shadcnblocks/logo.tsx
+    // registry/components/shared/logo.tsx → components/shared/logo.tsx
     return registryPath.replace("registry/components/", "components/")
   }
   return registryPath
@@ -655,7 +655,7 @@ function ComponentCard({ component }: { component: Component }) {
     setTimeout(() => setCopied(false), 1500)
   }
 
-  const previewUrl = `https://www.shadcnblocks.com/blocks/${component.category}#${component.name}`
+  const previewUrl = `#`
 
   return (
     <div className="flex flex-col gap-3 rounded-lg border p-4 text-sm">

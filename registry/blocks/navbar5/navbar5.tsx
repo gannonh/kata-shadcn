@@ -71,7 +71,7 @@ const Navbar5 = ({ className }: Navbar5Props) => {
       <div className="container">
         <nav className="flex items-center justify-between">
           <a
-            href="https://www.shadcnblocks.com"
+            href="#"
             className="flex items-center gap-2"
           >
             <img
@@ -80,7 +80,7 @@ const Navbar5 = ({ className }: Navbar5Props) => {
               alt="Shadcn UI Navbar"
             />
             <span className="text-lg font-semibold tracking-tighter">
-              Shadcnblocks.com
+              Kata
             </span>
           </a>
           <NavigationMenu className="hidden lg:block">
@@ -148,7 +148,7 @@ const Navbar5 = ({ className }: Navbar5Props) => {
               <SheetHeader>
                 <SheetTitle>
                   <a
-                    href="https://www.shadcnblocks.com"
+                    href="#"
                     className="flex items-center gap-2"
                   >
                     <img
@@ -157,7 +157,7 @@ const Navbar5 = ({ className }: Navbar5Props) => {
                       alt="Shadcn UI Navbar"
                     />
                     <span className="text-lg font-semibold tracking-tighter">
-                      Shadcnblocks.com
+                      Kata
                     </span>
                   </a>
                 </SheetTitle>

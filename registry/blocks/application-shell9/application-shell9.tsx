@@ -93,7 +93,7 @@ const fileTreeData: TreeItem[] = [
 function Logo({ className }: { className?: string }) {
   return (
     <img
-      src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg"
+      src="https://deifkwefumgah.cloudfront.net/Kata/block/block-1.svg"
       alt="Logo"
       className={cn("size-5", className)}
     />
@@ -158,7 +158,7 @@ export function AppSidebar({
                   <Logo className="size-5" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">Shadcnblocks</span>
+                  <span class="font-semibold">Kata</span>
                   <span className="truncate text-xs">my-project</span>
                 </div>
               </a>
@@ -564,7 +564,7 @@ export function ApplicationShell9() {
               <ScrollArea className="flex-1 p-4">
                 <div className="flex justify-end">
                   <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-primary px-4 py-3 text-sm text-primary-foreground">
-                    Build me a landing page for shadcnblocks with a hero
+                    Build me a landing page for Kata with a hero
                     section, features grid, and pricing table
                   </div>
                 </div>
@@ -597,11 +597,11 @@ export function ApplicationShell9() {
           <nav className="flex items-center gap-1 text-sm">
             <span className="flex items-center gap-1.5">
               <img
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-3.svg"
+                src="https://deifkwefumgah.cloudfront.net/Kata/block/block-3.svg"
                 alt="Logo"
                 className="size-4"
               />
-              <span className="font-medium">Shadcnblocks</span>
+              <span class="font-semibold">Kata</span>
             </span>
             <ChevronRight className="size-4 text-muted-foreground" />
             <span className="text-muted-foreground">my-project</span>
@@ -673,7 +673,7 @@ export function ApplicationShell9() {
                   <ScrollArea className="flex-1 p-4">
                     <div className="flex justify-end">
                       <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-primary px-4 py-3 text-sm text-primary-foreground">
-                        Build me a landing page for shadcnblocks with a hero
+                        Build me a landing page for Kata with a hero
                         section, features grid, and pricing table
                       </div>
                     </div>

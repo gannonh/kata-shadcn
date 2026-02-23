@@ -8,8 +8,8 @@ import {
   Price,
   type PriceType,
   PriceValue,
-} from "@/components/shadcnblocks/price";
-import { Rating } from "@/components/shadcnblocks/rating";
+} from "@/components/shared/price";
+import { Rating } from "@/components/shared/rating";
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
 import {
   Carousel,

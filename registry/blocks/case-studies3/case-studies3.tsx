@@ -26,7 +26,7 @@ const defaultFeaturedCasestudy: CaseStudyItem = {
   title: "Workflow Automation for the Digital Age.",
   subtitle: "How to automate your workflow with AI.",
   image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
-  link: "https://shadcnblocks.com",
+  link: "#",
 };
 
 const defaultCasestudies: CaseStudyItem[] = [
@@ -37,7 +37,7 @@ const defaultCasestudies: CaseStudyItem[] = [
     title: "Enhance data migration with AI.",
     subtitle: "A data migration platform toward a data-driven future.",
     image: "",
-    link: "https://shadcnblocks.com",
+    link: "#",
   },
   {
     logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-3.svg",
@@ -46,7 +46,7 @@ const defaultCasestudies: CaseStudyItem[] = [
     title: "Strategic AI for a future-proof business.",
     subtitle: "Mastering AI for more efficient operations.",
     image: "",
-    link: "https://shadcnblocks.com",
+    link: "#",
   },
 ];
 

@@ -22,10 +22,10 @@ interface Contact7Props {
 
 const Contact7 = ({
   title = "Contact Us",
-  description = "Contact the support team at Shadcnblocks.",
+  description = "Contact the support team at Kata.",
   emailLabel = "Email",
   emailDescription = "We respond to all emails within 24 hours.",
-  email = "example@shadcnblocks.com",
+  email = "example@Kata",
   officeLabel = "Office",
   officeDescription = "Drop by our office for a chat.",
   officeAddress = "1 Eagle St, Brisbane, QLD, 4000",

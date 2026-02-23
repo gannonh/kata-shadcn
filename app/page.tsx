@@ -112,7 +112,7 @@ function ComponentCard({ component }: { component: Component }) {
     setTimeout(() => setCopied(false), 1500)
   }
 
-  const previewUrl = `https://www.shadcnblocks.com/blocks/${component.category}#${component.name}`
+  const previewUrl = "#"
 
   return (
     <div className="flex flex-col gap-3 rounded-lg border p-4 text-sm">
@@ -127,7 +127,7 @@ function ComponentCard({ component }: { component: Component }) {
           href={previewUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Preview ${component.name} on shadcnblocks.com (opens in new tab)`}
+          aria-label={`Preview ${component.name} (opens in new tab)`}
           className="text-xs text-muted-foreground underline-offset-2 hover:underline shrink-0"
         >
           Preview <span aria-hidden="true">↗</span>

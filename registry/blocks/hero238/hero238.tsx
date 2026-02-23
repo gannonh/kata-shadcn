@@ -73,7 +73,7 @@ const Hero238 = ({ className }: Hero238Props) => {
               className="absolute right-0 bottom-0 w-[210px] rounded-2xl bg-primary p-4 text-sm text-secondary"
             >
               <span className="mr-3 inline-block size-2 rounded-full bg-orange-500" />
-              <span className="font-semibold">ShadcnBlocks</span>
+              <span className="font-semibold">Kata</span>
               <span className="text-muted-foreground">
                 — blocks Lorem ipsum dolor sit amet, consectetur amor{" "}
               </span>

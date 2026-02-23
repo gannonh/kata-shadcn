@@ -75,31 +75,31 @@ const Download5 = ({ className }: Download5Props) => {
                     <SnippetCopyButton
                       onCopy={() =>
                         console.log(
-                          `Copied "curl -f https://shadcnblocks.com/install.sh | bash" to clipboard`,
+                          `Copied "curl -f #/install.sh | bash" to clipboard`,
                         )
                       }
                       onError={() =>
                         console.error(
-                          `Failed to copy "curl -f https://shadcnblocks.com/install.sh | bash" to clipboard`,
+                          `Failed to copy "curl -f #/install.sh | bash" to clipboard`,
                         )
                       }
                       value={
                         linuxVersion === "stable"
-                          ? "curl -f https://shadcnblocks.com/install.sh | bash"
-                          : "curl -f https://shadcnblocks.com/preview.sh | bash"
+                          ? "curl -f #/install.sh | bash"
+                          : "curl -f #/preview.sh | bash"
                       }
                     />
                   </SnippetHeader>
                   <SnippetTabsContent value="stable">
-                    curl -f https://shadcnblocks.com/install.sh | bash
+                    curl -f #/install.sh | bash
                   </SnippetTabsContent>
                   <SnippetTabsContent value="preview">
-                    curl -f https://shadcnblocks.com/preview.sh | bash
+                    curl -f #/preview.sh | bash
                   </SnippetTabsContent>
                 </Snippet>
                 <p className="text-xs text-muted-foreground">
                   You can also download the package{" "}
-                  <a href="https://shadcnblocks.com" className="underline">
+                  <a href="#" className="underline">
                     manually
                   </a>
                 </p>

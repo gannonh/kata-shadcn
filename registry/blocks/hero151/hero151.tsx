@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-import { AvatarGroup } from "@/components/shadcnblocks/avatar-group";
+import { AvatarGroup } from "@/components/shared/avatar-group";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";

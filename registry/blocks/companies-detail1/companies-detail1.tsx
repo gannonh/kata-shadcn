@@ -165,7 +165,7 @@ const CompaniesDetail1 = ({
       categories: ["Technology", "Enterprise"],
       owner: {
         name: "John Smith",
-        image: "https://shadcnblocks.com/images/block/avatar-1.webp",
+        image: "#/images/block/avatar-1.webp",
       },
     },
     {
@@ -178,7 +178,7 @@ const CompaniesDetail1 = ({
       categories: ["SaaS", "Startup"],
       owner: {
         name: "Sarah Johnson",
-        image: "https://shadcnblocks.com/images/block/avatar-2.webp",
+        image: "#/images/block/avatar-2.webp",
       },
     },
     {
@@ -191,7 +191,7 @@ const CompaniesDetail1 = ({
       categories: ["Cloud", "Infrastructure"],
       owner: {
         name: "Michael Chen",
-        image: "https://shadcnblocks.com/images/block/avatar-3.webp",
+        image: "#/images/block/avatar-3.webp",
       },
     },
     {
@@ -204,7 +204,7 @@ const CompaniesDetail1 = ({
       categories: ["Analytics", "Sustainability"],
       owner: {
         name: "Emily Davis",
-        image: "https://shadcnblocks.com/images/block/avatar-4.webp",
+        image: "#/images/block/avatar-4.webp",
       },
     },
     {
@@ -217,7 +217,7 @@ const CompaniesDetail1 = ({
       categories: ["Marketing", "Agency"],
       owner: {
         name: "David Wilson",
-        image: "https://shadcnblocks.com/images/block/avatar-5.webp",
+        image: "#/images/block/avatar-5.webp",
       },
     },
   ],

@@ -78,7 +78,7 @@ const COUNTRIES = [
 ];
 
 const DEFAULT_ORDER: OrderSummary = {
-  companyName: "Shadcnblocks.com",
+  companyName: "Kata",
   items: [
     {
       id: "pro-subscription",

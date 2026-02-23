@@ -21,7 +21,7 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-import { LogoImage, LogoText } from "@/components/shadcnblocks/logo";
+import { LogoImage, LogoText } from "@/components/shared/logo";
 import {
   Drawer,
   DrawerContent,
@@ -288,11 +288,11 @@ export function AppSidebar({
                   <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                     <LogoImage
                       src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg"
-                      alt="Shadcnblocks"
+                      alt="Kata"
                       className="h-8 w-8 rounded-sm bg-muted p-1"
                     />
                   </div>
-                  <LogoText>Shadcnblocks</LogoText>
+                  <LogoText>Kata</LogoText>
                 </a>
               </SidebarMenuButton>
             </SidebarMenuItem>

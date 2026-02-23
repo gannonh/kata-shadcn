@@ -67,7 +67,7 @@ const Hero206 = ({ className }: Hero206Props) => {
         <div className="relative mt-12 flex h-full w-full flex-col items-center justify-center">
           <BrowserMockup
             className="w-full"
-            url="https://shadcnblocks.com/block/hero206"
+            url="#/block/hero206"
             DahboardUrlDesktop="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/dashboard-1.png"
             DahboardUrlMobile="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/dashboard-mobile-1.png"
           />
@@ -82,7 +82,7 @@ export { Hero206 };
 
 const BrowserMockup = ({
   className = "",
-  url = "https://shadcnblocks.com/block/hero206",
+  url = "#/block/hero206",
   DahboardUrlDesktop = "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/dashboard-1.png",
   DahboardUrlMobile = "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/dashboard-mobile-1.png",
 }) => (

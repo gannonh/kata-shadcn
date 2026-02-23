@@ -43,10 +43,10 @@ interface Footer23Props {
 }
 const Footer23 = ({
   logo = {
-    url: "https://www.shadcnblocks.com",
+    url: "#",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
     alt: "logo",
-    title: "Shadcnblocks.com",
+    title: "Kata",
   },
   className,
 }: Footer23Props) => {
@@ -58,7 +58,7 @@ const Footer23 = ({
           <div className="flex flex-col items-center justify-between gap-6 lg:flex-row">
             <div className="lg:max-w-md">
               <div className="flex items-center justify-start gap-2">
-                <a href="https://shadcnblocks.com">
+                <a href="#">
                   <img
                     src={logo.src}
                     alt={logo.alt}

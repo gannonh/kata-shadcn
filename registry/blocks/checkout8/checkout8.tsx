@@ -14,7 +14,7 @@ import z from "zod";
 
 import { cn } from "@/lib/utils";
 
-import { Price, PriceType, PriceValue } from "@/components/shadcnblocks/price";
+import { Price, PriceType, PriceValue } from "@/components/shared/price";
 import {
   Accordion,
   AccordionContent,

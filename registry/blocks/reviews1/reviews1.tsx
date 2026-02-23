@@ -2,7 +2,7 @@ import { BadgeCheck } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-import { Rating } from "@/components/shadcnblocks/rating";
+import { Rating } from "@/components/shared/rating";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 

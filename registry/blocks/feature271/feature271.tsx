@@ -34,7 +34,7 @@ const Feature271 = ({ className }: Feature271Props) => {
               variant="outline"
               className="mb-5 w-fit rounded-full bg-background/70 px-4 py-1 text-sm tracking-tight"
             >
-              Shadcnblocks
+              Kata
             </Badge>
             <h1 className="w-full max-w-xl text-center text-5xl font-medium font-semibold tracking-tighter lg:text-6xl">
               Start Using The free Blocks Now

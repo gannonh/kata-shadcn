@@ -144,7 +144,7 @@ interface InviteUser4Props {
 
 const InviteUser4 = ({
   heading = "Invite User",
-  inviteLink = "https://www.shadcnblocks.com",
+  inviteLink = "#",
   className,
 }: InviteUser4Props) => {
   const users: User[] = [

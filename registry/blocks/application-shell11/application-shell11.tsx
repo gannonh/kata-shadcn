@@ -78,7 +78,7 @@ const data = {
   user: {
     name: "Jordan Lee",
     email: "jordan@zerotube.io",
-    avatar: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar1.jpg",
+    avatar: "https://deifkwefumgah.cloudfront.net/Kata/block/avatar/avatar1.jpg",
   },
   navPrimary: [
     { title: "Home", url: "#", icon: Home, isActive: true },
@@ -396,12 +396,12 @@ function SiteHeader() {
       <div className="flex h-(--header-height) items-center pr-4">
         <a href="#" className="flex items-center gap-2">
           <img
-            src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg"
-            alt="Shadcnblocks"
+            src="https://deifkwefumgah.cloudfront.net/Kata/block/logos/Kata-logo.svg"
+            alt="Kata"
             className="size-8"
           />
           <span className="hidden text-lg font-semibold sm:block">
-            Shadcnblocks
+            Kata
           </span>
         </a>
       </div>

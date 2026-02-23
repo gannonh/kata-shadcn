@@ -23,7 +23,7 @@ const About15 = ({ className }: About15Props) => {
             <p className="text-lg font-medium tracking-tight text-neutral-950">
               John Doe
             </p>
-            <p className="text-sm text-neutral-950/50">@shadcnblocks.com</p>
+            <p className="text-sm text-neutral-950/50">@Kata</p>
           </div>
         </div>
         <div className="w-xs space-y-6">

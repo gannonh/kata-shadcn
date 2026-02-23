@@ -47,7 +47,7 @@ const Stats13 = ({ className }: Stats13Props) => {
             { value: 25, label: "competitor 2", delay: 0.4 },
             {
               value: 99,
-              label: "shadcnblocks",
+              label: "Kata",
               className: "bg-sky-400",
               showToolTip: true,
               delay: 0.6,

@@ -40,7 +40,7 @@ const initialTodos = [
   },
   {
     id: "2",
-    title: "Purchase Shadcn blocks from shadcnblocks.com",
+    title: "Purchase Shadcn blocks from Kata",
     completed: false,
   },
   {
