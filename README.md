@@ -178,3 +178,17 @@ x-registry-token: <secret>
 ```
 
 Returns `{ total, items: [{ name, title, description, category, url }] }` where `total` is the current component count. Fetch `/r/{name}.json` for full source.
+
+## Project management
+
+Tracked in Linear: [Kata Shadcn Registry](https://linear.app/kata-sh/project/kata-shadcn-registry-4b3fcae34eed) (team: Kata-sh).
+
+**Milestones:**
+
+| Milestone | Scope |
+| --- | --- |
+| Quick Wins | Install command bug fix, category taxonomy, compact agent index, usage logging, AGENTS.md |
+| Analytics & Metadata | Usage analytics dashboard, index enrichment (tags, complexity, content hashes) |
+| Visual Catalog | Standalone render audit, Playwright screenshot harness, preview thumbnails in UI |
+| Curation & Bundles | Curated page recipes, page builder bundles with layout scaffolding |
+| Discovery & Growth | Semantic search with LLM-enriched descriptions, open-source registry template |

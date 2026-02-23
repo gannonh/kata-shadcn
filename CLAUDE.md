@@ -51,3 +51,16 @@ Edit: modify files in `registry/blocks/{name}/` or `registry/components/`, run `
 Add: create `registry/blocks/{name}/{name}.tsx`, add entry to `registry.json`, run `pnpm registry:build`, deploy.
 
 Consumers install with: `npx shadcn add @kata-shadcn/{name}` (requires `components.json` registry config and `REGISTRY_TOKEN` in env).
+
+## Project management
+
+Linear project: [Kata Shadcn Registry](https://linear.app/kata-sh/project/kata-shadcn-registry-4b3fcae34eed) in team Kata-sh.
+
+When starting work on an issue, use `/kata-linear start KAT-N` to create a branch and move the issue to In Progress. When done, use `/kata-linear end KAT-N` to wrap up.
+
+Milestones (in execution order):
+1. **Quick Wins** — bug fixes, category cleanup, compact agent index, usage logging, AGENTS.md
+2. **Analytics & Metadata** — usage dashboard, index enrichment (tags, complexity, hashes)
+3. **Visual Catalog** — render audit, Playwright screenshot harness, preview thumbnails
+4. **Curation & Bundles** — page recipes, page builder bundles with layout scaffolding
+5. **Discovery & Growth** — semantic search with LLM-enriched descriptions, OSS template
