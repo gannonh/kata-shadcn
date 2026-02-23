@@ -119,6 +119,21 @@ fs.writeFileSync(
   "utf8"
 )
 
+// Compact agent index (name, category, url only; minified)
+const compactIndex = {
+  total: index.length,
+  items: index.map((c) => ({
+    name: c.name,
+    category: c.category,
+    url: `/r/${c.name}.json`,
+  })),
+}
+fs.writeFileSync(
+  path.join(PUBLIC_R, "index-compact.json"),
+  JSON.stringify(compactIndex) + "\n",
+  "utf8"
+)
+
 console.log(`Built ${built} components. Skipped ${skipped} templates. Missing sources: ${missing}. Index: ${index.length} entries.`)
 if (missing > 0) {
   console.error(`Error: ${missing} source file(s) missing. Fix registry.json or restore missing files.`)
