@@ -4,7 +4,7 @@ Guidance for Claude Code (claude.ai/code), Cursor agents, and humans working in 
 
 ## What this is
 
-Private self-hosted shadcn component registry with 2555 components. Deployed at https://shadcn-registry-eight.vercel.app (auto-deploys on push to main).
+Large private self-hosted shadcn component registry (~2500 components; see `lib/component-index.json` for current count). Deployed at https://shadcn-registry-eight.vercel.app (auto-deploys on push to main).
 
 ## Commands
 
@@ -19,9 +19,9 @@ pnpm test                 # Unit tests (Node test runner): build-registry output
 pnpm test:e2e             # E2E tests (Playwright): browser UI component cards
 ```
 
-**Tests:** Unit test in `scripts/build-registry.test.mjs` (Node `--test`) asserts `lib/component-index.json` uses `@kata-shadcn` scope. E2E in `tests/e2e/` (Playwright) assert the browser UI shows correct install commands.
+**Tests:** Unit test in `scripts/build-registry.test.mjs` (Node `--test`) asserts `lib/component-index.json` is non-empty, every `installCommand` uses `@kata-shadcn` scope, and no entry contains the legacy `@ourorg` scope. E2E in `tests/e2e/` (Playwright) assert the browser UI shows correct install commands.
 
-**CI:** GitHub Actions (`.github/workflows/ci.yml`) runs on push/PR to `main`: lint, unit tests, build, then E2E (Playwright Chromium). Dependabot (`.github/dependabot.yml`) opens weekly PRs for npm and GitHub Actions updates.
+**CI:** Two jobs: `lint-build-test` (lint, unit tests, Next build) and `e2e` (depends on `lint-build-test`; runs `pnpm build` then Playwright Chromium E2E tests against the production server). Dependabot (`.github/dependabot.yml`) opens weekly PRs for npm and GitHub Actions updates.
 
 ## Architecture
 
@@ -29,13 +29,13 @@ pnpm test:e2e             # E2E tests (Playwright): browser UI component cards
 
 **Source of truth:** `registry/` directory. `registry.json` is the manifest. Each component lives in `registry/blocks/{name}/{name}.tsx`. Shared helpers in `registry/components/`. Generated output in `public/r/` is gitignored.
 
-**Path mapping at build time:** `registry/blocks/about1/about1.tsx` → `block/about1.tsx` in the consumer-facing JSON. `registry/components/foo.tsx` → `components/foo.tsx`.
+**Path mapping at build time:** `registry/blocks/about1/about1.tsx` → `block/about1.tsx` in the consumer-facing JSON. `registry/components/foo.tsx` → `components/foo.tsx`. Nested paths are preserved: `registry/components/shadcnblocks/logo.tsx` → `components/shadcnblocks/logo.tsx`.
 
 **Auth (middleware.ts):** All `/r/*` requests require `x-registry-token` header matching `REGISTRY_TOKEN` env var. Public passthroughs (no token): `/r/styles/*`, `/r/colors/*`, `/r/icons/*`. If `REGISTRY_TOKEN` is unset, all requests are allowed (local dev mode).
 
 **Browser UI:** `app/page.tsx` renders a client-side searchable component index loaded from `lib/component-index.json`.
 
-**Compatibility routes:** `app/styles/*` and `app/r/styles/*` proxy to upstream shadcn registry for unscoped dependencies. `app/r/colors/*` and `app/r/icons/*` pass through to upstream.
+**Compatibility routes:** `app/styles/*`, `app/r/styles/*`, `app/r/colors/*`, and `app/r/icons/*` all proxy to the upstream shadcn registry. The middleware also skips token validation for `/r/styles/*`, `/r/colors/*`, and `/r/icons/*`.
 
 ## Project structure
 
@@ -47,7 +47,7 @@ pnpm test:e2e             # E2E tests (Playwright): browser UI component cards
 
 ## Tech stack
 
-Next.js 15 (App Router), React 19, TypeScript 5.9, Tailwind CSS 4, pnpm. Path alias: `@/*` → `./`.
+Next.js 15 (App Router), React 19, TypeScript 5, Tailwind CSS 4, pnpm. Path alias: `@/*` → `./`.
 
 `registry/blocks/` and `registry/components/` are excluded from tsconfig (they're raw component sources, not part of the app build).
 
@@ -86,7 +86,7 @@ Consumers install with: `npx shadcn add @kata-shadcn/{name}` (requires `componen
 
 - Follow conventional commit prefixes: `feat:`, `fix:`, `docs:`, `chore:`.
 - Keep commits scoped to one change.
-- If `registry/` or `registry.json` changes, commit regenerated artifacts from `public/r/` and `lib/component-index.json`.
+- If `registry/` or `registry.json` changes, commit the regenerated `lib/component-index.json`. (`public/r/` is gitignored and not committed.)
 - PRs should include: summary, impacted paths, verification commands/results, linked issue, and UI screenshots when relevant.
 
 ## Security & configuration
@@ -101,7 +101,7 @@ Linear project: [Kata Shadcn Registry](https://linear.app/kata-sh/project/kata-s
 When starting work on an issue, use `/kata-linear start KAT-N` to create a branch and move the issue to In Progress. When done, use `/kata-linear end KAT-N` to wrap up.
 
 **Milestones (in execution order):**
-1. **Quick Wins** — bug fixes, category cleanup, compact agent index, usage logging, AGENTS.md
+1. **Quick Wins** — bug fixes, category cleanup, compact agent index, usage logging
 2. **Analytics & Metadata** — usage dashboard, index enrichment (tags, complexity, hashes)
 3. **Visual Catalog** — render audit, Playwright screenshot harness, preview thumbnails
 4. **Curation & Bundles** — page recipes, page builder bundles with layout scaffolding

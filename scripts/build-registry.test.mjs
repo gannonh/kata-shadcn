@@ -11,7 +11,11 @@ const componentIndexPath = path.join(root, "lib", "component-index.json")
 
 describe("build-registry", () => {
   before(() => {
-    execSync("pnpm registry:build", { encoding: "utf-8", cwd: root })
+    try {
+      execSync("pnpm registry:build", { encoding: "utf-8", cwd: root, stdio: "pipe" })
+    } catch (err) {
+      throw new Error(`registry:build failed (exit ${err.status}):\nSTDOUT: ${err.stdout}\nSTDERR: ${err.stderr}`)
+    }
   })
 
   it("writes component-index.json with install commands using @kata-shadcn scope", () => {
@@ -19,16 +23,12 @@ describe("build-registry", () => {
     const raw = fs.readFileSync(componentIndexPath, "utf-8")
     const index = JSON.parse(raw)
 
-    assert.ok(index.length > 0)
+    assert.ok(
+      index.length > 0,
+      `component-index.json is empty — registry:build produced 0 entries`
+    )
     for (const entry of index) {
-      assert.ok(
-        entry.installCommand.includes("@kata-shadcn"),
-        `expected @kata-shadcn in ${entry.installCommand}`
-      )
-      assert.ok(
-        !entry.installCommand.includes("@ourorg"),
-        `expected no @ourorg in ${entry.installCommand}`
-      )
+      assert.ok(entry.name, `entry missing name field: ${JSON.stringify(entry)}`)
       assert.strictEqual(
         entry.installCommand,
         `npx shadcn add @kata-shadcn/${entry.name}`

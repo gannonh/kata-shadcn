@@ -58,7 +58,10 @@ for (const item of manifest.items) {
     })
   }
 
-  if (builtFiles.length === 0) continue
+  if (builtFiles.length === 0) {
+    console.warn(`  Skipping ${item.name}: all source files missing`)
+    continue
+  }
 
   const registryItem: any = {
     $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -117,3 +120,7 @@ fs.writeFileSync(
 )
 
 console.log(`Built ${built} components. Skipped ${skipped} templates. Missing sources: ${missing}. Index: ${index.length} entries.`)
+if (missing > 0) {
+  console.error(`Error: ${missing} source file(s) missing. Fix registry.json or restore missing files.`)
+  process.exit(1)
+}

@@ -16,7 +16,7 @@ test.describe("Component registry browser UI", () => {
     await expect(installCommands.first()).toBeVisible({ timeout: 10000 })
 
     const count = await installCommands.count()
-    expect(count).toBeGreaterThanOrEqual(3)
+    expect(count).toBeGreaterThanOrEqual(10)
 
     for (let i = 0; i < Math.min(count, 5); i++) {
       const text = await installCommands.nth(i).textContent()
@@ -34,11 +34,10 @@ test.describe("Component registry browser UI", () => {
       name: "Search components by name, description, or category",
     })
     await search.fill("hero1")
-    await expect(page.getByText("hero1").first()).toBeVisible({ timeout: 5000 })
 
     const heroCommand = page.getByText("npx shadcn add @kata-shadcn/hero1", {
       exact: true,
     })
-    await expect(heroCommand).toBeVisible()
+    await expect(heroCommand).toBeVisible({ timeout: 5000 })
   })
 })
