@@ -17,9 +17,9 @@ const existing = JSON.parse(
 )
 
 const templateNames = new Set(["hello-world", "example-form", "complex-component", "example-with-css"])
-const templateItems = existing.items.filter((item: any) => templateNames.has(item.name))
+const templateItems = existing.items.filter((item: { name: string }) => templateNames.has(item.name))
 
-const newItems: any[] = []
+const newItems: Array<Record<string, unknown>> = []
 
 const files = fs.readdirSync(PUBLIC_R).filter(
   (f) => f.endsWith(".json") && !SKIP.has(f)
@@ -30,7 +30,7 @@ for (const file of files) {
   const item = JSON.parse(raw)
   const name = item.name as string
 
-  const registryFiles = (item.files ?? []).map((entry: any) => {
+  const registryFiles = (item.files ?? []).map((entry: { path: string; type: string }) => {
     const type: string = entry.type
     let registryPath: string
 

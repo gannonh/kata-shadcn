@@ -59,7 +59,6 @@ describe("build-registry", () => {
       "compact index total must match component-index.json length"
     )
 
-    const allowedKeys = new Set(["name", "category", "url"])
     for (const item of compact.items) {
       const keys = Object.keys(item).sort()
       assert.deepStrictEqual(

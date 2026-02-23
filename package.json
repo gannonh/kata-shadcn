@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "npx tsx scripts/build-registry.ts && next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "registry:build": "npx tsx scripts/build-registry.ts",
     "test": "node --test scripts/build-registry.test.mjs",
     "test:coverage": "COVERAGE_RUN=1 c8 npx tsx scripts/build-registry.ts && COVERAGE_RUN=1 node --test scripts/build-registry.test.mjs",
