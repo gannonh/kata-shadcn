@@ -5,6 +5,7 @@ import * as path from "path"
 const REGISTRY_JSON = path.join(process.cwd(), "registry.json")
 const PUBLIC_R = path.join(process.cwd(), "public/r")
 const LIB = path.join(process.cwd(), "lib")
+const REGISTRY_SCOPE = "@kata-shadcn"
 
 fs.mkdirSync(PUBLIC_R, { recursive: true })
 fs.mkdirSync(LIB, { recursive: true })
@@ -84,7 +85,7 @@ for (const item of manifest.items) {
     title: item.title,
     description: item.description,
     category,
-    installCommand: `npx shadcn add @ourorg/${item.name}`,
+    installCommand: `npx shadcn add ${REGISTRY_SCOPE}/${item.name}`,
   })
 
   built++

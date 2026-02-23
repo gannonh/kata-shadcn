@@ -13,9 +13,11 @@ pnpm dev                # Next.js dev server (Turbopack)
 pnpm build              # registry:build + next build
 pnpm lint               # ESLint
 pnpm registry:build     # Regenerate public/r/ and lib/component-index.json from registry/ sources
+pnpm test              # Unit tests (Node test runner): build-registry output / install commands
+pnpm test:e2e          # E2E tests (Playwright): browser UI component cards
 ```
 
-No test suite exists.
+**Tests:** Unit test in `scripts/build-registry.test.mjs` (Node `--test`) asserts `lib/component-index.json` uses `@kata-shadcn` scope. E2E in `tests/e2e/` (Playwright) assert the browser UI shows correct install commands.
 
 ## Architecture
 

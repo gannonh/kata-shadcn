@@ -14,6 +14,8 @@
 - `pnpm build`: run registry generation, then production Next.js build.
 - `pnpm start`: run the production server.
 - `pnpm lint`: run ESLint (`next/core-web-vitals` + TypeScript rules).
+- `pnpm test`: run unit tests (Node test runner; build-registry install-command assertions).
+- `pnpm test:e2e`: run E2E tests (Playwright; browser UI component cards).
 
 ## Coding Style & Naming Conventions
 - Stack: TypeScript, React 19, Next.js 15.
@@ -23,8 +25,9 @@
 - Use existing registry naming patterns (example: `registry/blocks/hero1/hero1.tsx`).
 
 ## Testing Guidelines
-- There is currently no dedicated `*.test.*` / `*.spec.*` suite.
-- Before opening a PR, run `pnpm lint` and `pnpm build`.
+- Unit: `scripts/build-registry.test.mjs` (Node `--test`) checks registry build output uses `@kata-shadcn` scope.
+- E2E: `tests/e2e/` (Playwright) checks the browser UI shows correct install commands on component cards.
+- Before opening a PR, run `pnpm lint`, `pnpm test`, `pnpm build`, and optionally `pnpm test:e2e`.
 - For registry or auth changes, manually verify endpoints, for example:
   - `curl -H "x-registry-token: $REGISTRY_TOKEN" http://localhost:3000/r/index.json`
 - Include clear reproduction and verification steps in PR descriptions.

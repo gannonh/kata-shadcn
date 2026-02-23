@@ -7,7 +7,9 @@
     "build": "npx tsx scripts/build-registry.ts && next build",
     "start": "next start",
     "lint": "next lint",
-    "registry:build": "npx tsx scripts/build-registry.ts"
+    "registry:build": "npx tsx scripts/build-registry.ts",
+    "test": "node --test scripts/build-registry.test.mjs",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.7",
@@ -25,6 +27,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
+    "@playwright/test": "^1.49.0",
     "@tailwindcss/postcss": "^4.1.11",
     "@types/node": "^20.19.9",
     "@types/react": "19.1.2",
