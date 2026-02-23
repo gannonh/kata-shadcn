@@ -5,6 +5,7 @@ import * as path from "path"
 const REGISTRY_JSON = path.join(process.cwd(), "registry.json")
 const PUBLIC_R = path.join(process.cwd(), "public/r")
 const LIB = path.join(process.cwd(), "lib")
+const REGISTRY_SCOPE = "@kata-shadcn"
 
 fs.mkdirSync(PUBLIC_R, { recursive: true })
 fs.mkdirSync(LIB, { recursive: true })
@@ -57,7 +58,10 @@ for (const item of manifest.items) {
     })
   }
 
-  if (builtFiles.length === 0) continue
+  if (builtFiles.length === 0) {
+    console.warn(`  Skipping ${item.name}: all source files missing`)
+    continue
+  }
 
   const registryItem: any = {
     $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -84,7 +88,7 @@ for (const item of manifest.items) {
     title: item.title,
     description: item.description,
     category,
-    installCommand: `npx shadcn add @ourorg/${item.name}`,
+    installCommand: `npx shadcn add ${REGISTRY_SCOPE}/${item.name}`,
   })
 
   built++
@@ -116,3 +120,7 @@ fs.writeFileSync(
 )
 
 console.log(`Built ${built} components. Skipped ${skipped} templates. Missing sources: ${missing}. Index: ${index.length} entries.`)
+if (missing > 0) {
+  console.error(`Error: ${missing} source file(s) missing. Fix registry.json or restore missing files.`)
+  process.exit(1)
+}

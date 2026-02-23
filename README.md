@@ -1,12 +1,7 @@
 # Kata Shadcn Registry
 
-Private component registry hosting 2555 licensed [shadcnblocks.com](https://shadcnblocks.com) blocks. Deployed at [shadcn-registry-eight.vercel.app](https://shadcn-registry-eight.vercel.app).
+A self-hosted shadcn registry containing 2555 components and deployed at [shadcn-registry-eight.vercel.app](https://shadcn-registry-eight.vercel.app).. Source files live in `registry/` under version control. The registry JSON served to the shadcn CLI is generated at build time and protected by a secret token.
 
-## What this is
-
-A self-hosted shadcn registry containing 2555 shadcnblocks components. Source files live in `registry/` under version control. The registry JSON served to the shadcn CLI is generated at build time and protected by a secret token.
-
-We own these sources going forward — components can be modified, extended, or made public.
 
 ## Structure
 
@@ -20,16 +15,16 @@ app/
 components/              # shared UI components
 docs/
   plans/                 # design docs and implementation plans
-  reference/             # shadcnblocks and shadcn CLI reference
+  reference/             # shadcn CLI reference
   components.txt         # full component list
-  registry-manifest.json # original manifest from shadcnblocks API
+  registry-manifest.json # original manifest 
 lib/
   component-index.json   # generated browser index (gitignored)
 middleware.ts            # protects /r/* with x-registry-token header
 public/r/                # generated output (gitignored)
 registry/
   blocks/                # one directory per component (e.g. hero1/, about1/)
-  components/            # shared helpers (e.g. shadcnblocks/logo.tsx)
+  components/            # shared helpers
 registry.json            # component manifest
 scripts/
   build-registry.ts      # regenerates public/r/ from registry/ sources
@@ -178,3 +173,17 @@ x-registry-token: <secret>
 ```
 
 Returns `{ total, items: [{ name, title, description, category, url }] }` where `total` is the current component count. Fetch `/r/{name}.json` for full source.
+
+## Project management
+
+Tracked in Linear: [Kata Shadcn Registry](https://linear.app/kata-sh/project/kata-shadcn-registry-4b3fcae34eed) (team: Kata-sh).
+
+**Milestones:**
+
+| Milestone            | Scope                                                                                     |
+| -------------------- | ----------------------------------------------------------------------------------------- |
+| Quick Wins           | Install command bug fix, category taxonomy, compact agent index, usage logging, AGENTS.md |
+| Analytics & Metadata | Usage analytics dashboard, index enrichment (tags, complexity, content hashes)            |
+| Visual Catalog       | Standalone render audit, Playwright screenshot harness, preview thumbnails in UI          |
+| Curation & Bundles   | Curated page recipes, page builder bundles with layout scaffolding                        |
+| Discovery & Growth   | Semantic search with LLM-enriched descriptions, open-source registry template             |
