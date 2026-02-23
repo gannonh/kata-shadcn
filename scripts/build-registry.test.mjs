@@ -8,6 +8,8 @@ import { fileURLToPath } from "node:url"
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const root = path.join(__dirname, "..")
 const componentIndexPath = path.join(root, "lib", "component-index.json")
+const compactIndexPath = path.join(root, "public", "r", "index-compact.json")
+const MAX_COMPACT_INDEX_BYTES = 300 * 1024 // 300KB; at ~2555 entries with full keys we exceed 150KB
 
 describe("build-registry", () => {
   before(() => {
@@ -34,5 +36,39 @@ describe("build-registry", () => {
         `npx shadcn add @kata-shadcn/${entry.name}`
       )
     }
+  })
+
+  it("writes index-compact.json with name, category, url only and size under limit", () => {
+    assert.ok(fs.existsSync(compactIndexPath), "index-compact.json missing after registry:build")
+    const raw = fs.readFileSync(compactIndexPath, "utf-8")
+    const compact = JSON.parse(raw)
+
+    assert.strictEqual(
+      compact.items.length,
+      compact.total,
+      "index-compact.json items.length must equal total"
+    )
+    const componentIndex = JSON.parse(fs.readFileSync(componentIndexPath, "utf-8"))
+    assert.strictEqual(
+      compact.total,
+      componentIndex.length,
+      "compact index total must match component-index.json length"
+    )
+
+    const allowedKeys = new Set(["name", "category", "url"])
+    for (const item of compact.items) {
+      const keys = Object.keys(item).sort()
+      assert.deepStrictEqual(
+        keys,
+        ["category", "name", "url"],
+        `each compact item must have only name, category, url; got ${keys.join(", ")}`
+      )
+    }
+
+    const sizeBytes = fs.statSync(compactIndexPath).size
+    assert.ok(
+      sizeBytes < MAX_COMPACT_INDEX_BYTES,
+      `index-compact.json size ${(sizeBytes / 1024).toFixed(1)}KB must be under ${MAX_COMPACT_INDEX_BYTES / 1024}KB`
+    )
   })
 })
