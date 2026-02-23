@@ -1,6 +1,6 @@
 "use client";
 
-import { AvatarGroup } from "@/components/shadcnblocks/avatar-group";
+import { AvatarGroup } from "@/components/shared/avatar-group";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const title = "Loose Spacing with Borders";

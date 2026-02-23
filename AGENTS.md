@@ -4,7 +4,7 @@ Guidance for Claude Code (claude.ai/code), Cursor agents, and humans working in 
 
 ## What this is
 
-Large private self-hosted shadcn component registry (~2500 components; see `lib/component-index.json` for current count). Deployed at https://shadcn-registry-eight.vercel.app (auto-deploys on push to main).
+Private component registry optimized for AI agent discovery (~2500 components; see `lib/component-index.json` for current count). Deployed at https://shadcn-registry-eight.vercel.app (auto-deploys on push to main).
 
 ## Commands
 
@@ -29,7 +29,7 @@ pnpm test:e2e             # E2E tests (Playwright): browser UI component cards
 
 **Source of truth:** `registry/` directory. `registry.json` is the manifest. Each component lives in `registry/blocks/{name}/{name}.tsx`. Shared helpers in `registry/components/`. Generated output in `public/r/` is gitignored.
 
-**Path mapping at build time:** `registry/blocks/about1/about1.tsx` → `block/about1.tsx` in the consumer-facing JSON. `registry/components/foo.tsx` → `components/foo.tsx`. Nested paths are preserved: `registry/components/shadcnblocks/logo.tsx` → `components/shadcnblocks/logo.tsx`.
+**Path mapping at build time:** `registry/blocks/about1/about1.tsx` → `block/about1.tsx` in the consumer-facing JSON. `registry/components/foo.tsx` → `components/foo.tsx`. Nested paths are preserved: `registry/components/shared/logo.tsx` → `components/shared/logo.tsx`.
 
 **Auth (middleware.ts):** All `/r/*` requests require `x-registry-token` header matching `REGISTRY_TOKEN` env var. Public passthroughs (no token): `/r/styles/*`, `/r/colors/*`, `/r/icons/*`. If `REGISTRY_TOKEN` is unset, all requests are allowed (local dev mode).
 
@@ -55,7 +55,6 @@ Next.js 15 (App Router), React 19, TypeScript 5, Tailwind CSS 4, pnpm. Path alia
 
 - `REGISTRY_TOKEN` — secret for `/r/*` auth (required in production)
 - `REGISTRY_URL` — deployed base URL
-- `SHADCNBLOCKS_API_KEY` — shadcnblocks.com API key (download scripts only)
 - `SHADCN_FALLBACK_REGISTRY_URL` — override for unscoped dependency proxy (defaults to `https://ui.shadcn.com/r`)
 
 ## Component workflow

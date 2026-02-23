@@ -59,7 +59,7 @@ const Signup10 = ({ className }: Signup10Props) => {
           </Button>
 
           <p className="mb-8 w-full text-center text-sm tracking-tight text-foreground/40">
-            <span>By proceeding, you accept the shadcnblocks.com</span>{" "}
+            <span>By proceeding, you accept the Kata</span>{" "}
             <span className="cursor-pointer underline">Terms</span>
             <span> and </span>
             <span className="cursor-pointer underline">Privacy Policy</span>

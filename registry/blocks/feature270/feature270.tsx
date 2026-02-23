@@ -53,7 +53,7 @@ const Feature270 = () => {
             <PinContainer
               key={index}
               title="Learn More"
-              href="https://www.shadcnblocks.com/blocks"
+              href="#/blocks"
               className="w-full rounded-3xl !bg-muted/70 p-4"
             >
               <div className="flex flex-col">

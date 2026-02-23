@@ -21,15 +21,15 @@ interface Signup6Props {
 const Signup6 = ({
   className,
   logo = {
-    url: "https://www.shadcnblocks.com",
+    url: "#",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo-word.svg",
     alt: "logo",
-    title: "shadcnblocks.com",
+    title: "Kata",
   },
   buttonText = "Create Account",
   googleText = "Signup with Google",
   signupText = "Already a user?",
-  signupUrl = "https://shadcnblocks.com",
+  signupUrl = "#",
 }: Signup6Props) => {
   return (
     <section className={cn("h-screen bg-background", className)}>

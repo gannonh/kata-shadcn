@@ -14,25 +14,25 @@ Integration with shadcn CLI v3.0, featuring namespaced registries and private re
   "style": "radix-vega",
   "rsc": false,
   "registries": {
-    "@shadcnblocks": {
-      "url": "https://shadcnblocks.com/r/{name}",
+    "@kata-shadcn": {
+      "url": "https://shadcn-registry-eight.vercel.app/r/{name}.json",
       "headers": {
-        "Authorization": "Bearer ${SHADCNBLOCKS_API_KEY}"
+        "x-registry-token": "${REGISTRY_TOKEN}"
       }
     }
   }
 }
 ```
 
-### 2. Generate API Key
+### 2. Set REGISTRY_TOKEN
 
-Visit the dashboard's API Keys section to create a new key with an optional expiration date.
+Add `REGISTRY_TOKEN=<token>` to `.env` (obtain from the registry admin).
 
 ### 3. Install Components
 
 ```bash
-npx shadcn add @shadcnblocks/hero125
-npx shadcn add @shadcnblocks/pricing3
+npx shadcn add @kata-shadcn/hero1
+npx shadcn add @kata-shadcn/pricing3
 ```
 
 ## Supported Technologies

@@ -41,7 +41,7 @@ export const defaultEntries: ChangelogEntry[] = [
     ],
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-aspect-video-1.svg",
     button: {
-      url: "https://shadcnblocks.com",
+      url: "#",
       text: "Learn more",
     },
   },
@@ -80,7 +80,7 @@ export const defaultEntries: ChangelogEntry[] = [
       "Introducing a new platform to help you manage your projects and tasks. We are excited to launch our platform and help you get started. We are always working to improve our platform and your experience.",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-aspect-video-1.svg",
     button: {
-      url: "https://shadcnblocks.com",
+      url: "#",
       text: "Learn more",
     },
   },

@@ -21,7 +21,7 @@ const data = [
     description:
       "Powered by advanced language models to handle complex queries, automate tasks, and provide intelligent responses with high accuracy.",
     label: "Core AI",
-    href: "https://www.shadcnblocks.com",
+    href: "#",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
   },
   {
@@ -30,7 +30,7 @@ const data = [
     description:
       "Transform raw data into actionable insights using machine learning algorithms and predictive analytics for informed decision-making.",
     label: "Analytics",
-    href: "https://www.shadcnblocks.com",
+    href: "#",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
   },
   {
@@ -39,7 +39,7 @@ const data = [
     description:
       "Streamline workflows and automate repetitive tasks with intelligent process automation, increasing efficiency and reducing errors.",
     label: "Automation",
-    href: "https://www.shadcnblocks.com",
+    href: "#",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
   },
   {
@@ -48,7 +48,7 @@ const data = [
     description:
       "Access and manage comprehensive information with our AI-powered knowledge base that learns and improves from each interaction.",
     label: "Learning",
-    href: "https://www.shadcnblocks.com",
+    href: "#",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
   },
   {
@@ -57,7 +57,7 @@ const data = [
     description:
       "Seamlessly integrate with existing systems through our robust API framework, enabling smooth data exchange and functionality extension.",
     label: "Integration",
-    href: "https://www.shadcnblocks.com",
+    href: "#",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
   },
 ];

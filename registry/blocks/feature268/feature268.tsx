@@ -62,7 +62,7 @@ const Feature268 = ({ className }: Feature268Props) => {
           <ul className="space-y-4">
             <li className="mb-3">
               <p className="font-semibold tracking-tight opacity-50">
-                ShadcnBlocks Perks
+                Kata Perks
               </p>
             </li>
             {features.map((feature) => (
@@ -97,7 +97,7 @@ const Feature268 = ({ className }: Feature268Props) => {
             </CardItem>
             <CardItem translateZ="60" className="mt-4 w-full max-w-[1000px]">
               <img
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img27.jpeg"
+                src="https://deifkwefumgah.cloudfront.net/Kata/block/guri3/img27.jpeg"
                 height="1000"
                 width="1000"
                 className="h-82 w-full rounded-3xl object-cover group-hover/card:shadow-xl lg:h-60"

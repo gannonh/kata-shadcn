@@ -27,7 +27,7 @@ registry/
     hero1/
       hero1.tsx
   components/
-    shadcnblocks/
+    shared/
       logo.tsx         ← shared helpers, deduplicated
 registry.json          ← manifest, version controlled
 public/r/              ← GENERATED output, gitignored
@@ -91,7 +91,7 @@ Client component. Static import of `component-index.json` (baked into build). Re
 
 Layout: search bar → category filter chips → component card grid.
 
-**Card:** name, category badge, description, copy-to-clipboard install command, link to shadcnblocks.com for visual preview.
+**Card:** name, category badge, description, copy-to-clipboard install command, link for visual preview (placeholder until milestone 3).
 
 ## Files
 

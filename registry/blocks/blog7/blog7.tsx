@@ -37,7 +37,7 @@ const Blog7 = ({
   heading = "Blog Posts",
   description = "Discover the latest trends, tips, and best practices in modern web development. From UI components to design systems, stay updated with our expert insights.",
   buttonText = "View all articles",
-  buttonUrl = "https://shadcnblocks.com",
+  buttonUrl = "#",
   posts = [
     {
       id: "post-1",
@@ -47,7 +47,7 @@ const Blog7 = ({
       label: "Tutorial",
       author: "Sarah Chen",
       published: "1 Jan 2024",
-      url: "https://shadcnblocks.com",
+      url: "#",
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
     },
     {
@@ -58,7 +58,7 @@ const Blog7 = ({
       label: "Accessibility",
       author: "Marcus Rodriguez",
       published: "1 Jan 2024",
-      url: "https://shadcnblocks.com",
+      url: "#",
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
     },
     {
@@ -69,7 +69,7 @@ const Blog7 = ({
       label: "Design Systems",
       author: "Emma Thompson",
       published: "1 Jan 2024",
-      url: "https://shadcnblocks.com",
+      url: "#",
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
     },
   ],

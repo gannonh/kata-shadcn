@@ -19,9 +19,9 @@ import {
   Logo,
   LogoImageDesktop,
   LogoImageMobile,
-} from "@/components/shadcnblocks/logo";
-import { Price, PriceValue } from "@/components/shadcnblocks/price";
-import QuantityInput from "@/components/shadcnblocks/quantity-input";
+} from "@/components/shared/logo";
+import { Price, PriceValue } from "@/components/shared/price";
+import QuantityInput from "@/components/shared/quantity-input";
 import {
   Accordion,
   AccordionContent,
@@ -252,16 +252,16 @@ const Checkout1 = ({ cartItems = CART_ITEMS, className }: Checkout1Props) => {
       <div className="container">
         <div className="flex flex-col gap-6 pb-8 md:flex-row md:items-center md:justify-between md:gap-8">
           <div className="flex flex-col gap-4">
-            <Logo url="https://shadcnblocks.com" className="mb-2">
+            <Logo url="#" className="mb-2">
               <LogoImageDesktop
                 src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.png"
                 alt="logo"
-                title="Shadcnblocks.com"
+                title="Kata"
               />
               <LogoImageMobile
                 src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.png"
                 alt="logo"
-                title="Shadcnblocks.com"
+                title="Kata"
               />
             </Logo>
             <div className="flex flex-col gap-2">

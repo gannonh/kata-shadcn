@@ -62,9 +62,9 @@ const defaultTabs: Tab[] = [
 
 const Hero195 = ({
   title = "Beautiful blocks for Shadcn UI.",
-  description = "Shadcnblocks.com offers the best collection of components and blocks for shadcn/ui.",
+  description = "Kata offers the best collection of components and blocks for shadcn/ui.",
   primaryButtonText = "Download",
-  primaryButtonUrl = "https://shadcnblocks.com",
+  primaryButtonUrl = "#",
   secondaryButtonUrl,
   secondaryButtonText,
   tabs = defaultTabs,

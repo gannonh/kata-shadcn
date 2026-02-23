@@ -17,7 +17,7 @@ const Hero200 = ({ className }: Hero200Props) => {
       <div className="border-b border-foreground/40">
         <div className="container flex flex-col items-center justify-center gap-4 text-center">
           <h2 className="font-semibold tracking-tighter text-foreground/80 md:text-2xl">
-            Shadcnblocks.com
+            Kata
           </h2>
           <h1 className="font-playfair text-4xl tracking-tighter text-foreground md:text-7xl">
             Blocks Built With

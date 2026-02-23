@@ -26,16 +26,16 @@ interface Login9Props {
 const Login9 = ({
   heading = "Log In",
   logo = {
-    url: "https://www.shadcnblocks.com",
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg",
-    alt: "shadcnblocks logo",
-    title: "shadcnblocks.com",
+    url: "#",
+    src: "https://deifkwefumgah.cloudfront.net/Kata/block/logos/Kata-logo.svg",
+    alt: "Kata logo",
+    title: "Kata",
   },
   googleText = "Continue with Google",
   githubText = "Continue with GitHub",
   linkedInText = "Continue with LinkedIn",
   emailText = "Continue with email",
-  signupText = "New to shadcnblocks?",
+  signupText = "New to Kata?",
   signupUrl = "#",
   className,
 }: Login9Props) => {

@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-import { PatternPlaceholder } from "@/components/shadcnblocks/pattern-placeholder";
+import { PatternPlaceholder } from "@/components/shared/pattern-placeholder";
 
 interface BackgroundPattern22Props {
   className?: string;

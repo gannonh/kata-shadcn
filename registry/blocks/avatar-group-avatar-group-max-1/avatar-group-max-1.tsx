@@ -3,7 +3,7 @@
 import {
   AvatarGroup,
   AvatarMore,
-} from "@/components/shadcnblocks/avatar-group";
+} from "@/components/shared/avatar-group";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const title = "With Max Limit";

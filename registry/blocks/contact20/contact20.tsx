@@ -43,7 +43,7 @@ const Contact20 = ({ className }: Contact20Props) => {
                 (403) 123 4123
               </p>
               <p className="mt-2 text-4xl font-semibold tracking-tight">
-                hi@shadcnblocks.com
+                hi@Kata
               </p>
             </div>
             <form className="mt-10 grid grid-cols-2 gap-5 lg:col-span-3 lg:grid-cols-3">

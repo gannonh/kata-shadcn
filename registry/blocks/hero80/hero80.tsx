@@ -26,10 +26,10 @@ const Hero80 = ({ className }: Hero80Props) => {
           {/* Left Column */}
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
             <a
-              href="https://www.shadcnblocks.com"
+              href="#"
               className="my-6 text-xs font-bold tracking-[0.3em] text-muted-foreground uppercase hover:underline"
             >
-              shadcnblocks.com
+              Kata
             </a>
 
             {/* Heading */}

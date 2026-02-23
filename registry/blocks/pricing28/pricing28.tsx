@@ -425,8 +425,8 @@ const Pricing28 = ({ className }: Pricing28Props) => {
           <Lock className="size-4" />
           <span className="ml-2 text-sm">
             Secure payment. Powered by{" "}
-            <a href="https://shadcnblocks.com" className="underline">
-              shadcnblocks.com
+            <a href="#" className="underline">
+              Kata
             </a>
           </span>
         </div>

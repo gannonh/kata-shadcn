@@ -60,11 +60,11 @@ const Hero247 = ({
   heading = "Hello, I'm Marcus, a Seattle based visual designer shaping memorable brand identities.",
   secondaryButton = {
     text: "See my work",
-    url: "https://www.shadcnblocks.com",
+    url: "#",
   },
   primaryButton = {
     text: "Let's collaborate",
-    url: "https://www.shadcnblocks.com",
+    url: "#",
   },
 }: Hero247Props) => {
   return (

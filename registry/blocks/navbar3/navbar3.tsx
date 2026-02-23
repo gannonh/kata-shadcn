@@ -27,7 +27,7 @@ import {
   Logo,
   LogoImageDesktop,
   LogoImageMobile,
-} from "@/components/shadcnblocks/logo";
+} from "@/components/shared/logo";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -158,7 +158,7 @@ const Navbar3 = ({ className }: Navbar3Props) => {
             <div>
               {(!open || !submenu) && (
                 <>
-                  <Logo url="https://shadcnblocks.com">
+                  <Logo url="#">
                     <LogoImageDesktop
                       src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo-word.svg"
                       className="h-7 dark:invert"

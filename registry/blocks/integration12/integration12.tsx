@@ -32,20 +32,20 @@ const Integration12 = ({ className }: Integration12Props) => {
             <div className="mt-2 mb-2 flex items-center justify-center gap-4">
               <div className="flex h-12 w-12 items-center justify-center rounded-lg border bg-background p-3 shadow">
                 <img
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcn-ui-icon.svg"
+                  src="https://deifkwefumgah.cloudfront.net/Kata/block/logos/shadcn-ui-icon.svg"
                   alt="shadcn/ui"
                 />
               </div>
               <ArrowLeftRight className="size-4" />
               <div className="flex h-12 w-12 items-center justify-center rounded-lg border bg-background p-3 shadow">
                 <img
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
+                  src="https://deifkwefumgah.cloudfront.net/Kata/block/logos/Katacom-icon.svg"
                   alt="shadcn/ui"
                 />
               </div>
             </div>
             <h1 className="text-center text-2xl font-semibold">
-              Link shadcn/ui to Shadcnblocks
+              Link shadcn/ui to Kata
             </h1>
             <p className="mt-1 text-center text-base text-muted-foreground">
               Empower your team with seamless project tracking and real-time

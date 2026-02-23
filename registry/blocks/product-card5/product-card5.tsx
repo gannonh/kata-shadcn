@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-import { Price, PriceValue } from "@/components/shadcnblocks/price";
+import { Price, PriceValue } from "@/components/shared/price";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 

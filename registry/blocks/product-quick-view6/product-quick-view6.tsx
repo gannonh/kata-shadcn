@@ -7,8 +7,8 @@ import z from "zod";
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
-import { Price, PriceValue } from "@/components/shadcnblocks/price";
-import { Rating } from "@/components/shadcnblocks/rating";
+import { Price, PriceValue } from "@/components/shared/price";
+import { Rating } from "@/components/shared/rating";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

@@ -272,7 +272,7 @@ const CompaniesCreate2 = ({
     {
       label: "Company name",
       name: "name",
-      placeholder: "shadcnblocks",
+      placeholder: "Kata",
       icon: Building2,
       required: true,
     },

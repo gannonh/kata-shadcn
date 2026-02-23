@@ -1,4 +1,4 @@
-import { BorderButton } from "@/components/shadcnblocks/border-button";
+import { BorderButton } from "@/components/shared/border-button";
 
 const BorderButtonExample = () => {
   return <BorderButton>Button</BorderButton>;

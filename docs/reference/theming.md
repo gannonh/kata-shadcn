@@ -2,7 +2,7 @@
 
 ## Overview
 
-Shadcnblocks uses the standard shadcn/ui theming system built on CSS variables and Tailwind CSS.
+The registry uses the standard shadcn/ui theming system built on CSS variables and Tailwind CSS.
 
 ## Getting Started
 

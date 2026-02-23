@@ -8,8 +8,8 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 
 const GITHUB_PROFILE = {
-  name: "shadcnblocks",
-  url: "https://github.com/shadcnblocks",
+  name: "Kata",
+  url: "https://github.com/kata-sh",
   description: "Open-source UI blocks for your next project.",
   stats: {
     stars: "4.2k",

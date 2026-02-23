@@ -30,7 +30,7 @@ const Waitlist3 = ({
     "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/portraits/nima-motaghian-nejad-_omdf_EgRUo-unsplash.jpg",
   ],
   companyName = "Ramp",
-  companyUrl = "https://shadcnblocks.com",
+  companyUrl = "#",
   image = "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/Geometric Staircase and Concrete Wall.jpeg",
   className,
 }: Waitlist3Props) => {

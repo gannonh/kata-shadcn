@@ -47,7 +47,7 @@ Seven paradigm-shift proposals were evaluated through adversarial debate. Three 
 **Key design decisions from debate:**
 - **Build-time, not runtime.** Vercel serverless has a 50MB compressed limit; Playwright requires ~130MB Chromium. Runtime rendering on Vercel is not viable. Static PNGs generated during a build step are the correct approach.
 - **Separate CI job, not Vercel build.** Rendering 2555 components at ~2s each = ~85 minutes. Vercel build limits are 10min (free) / 45min (Pro). This must run as a GitHub Actions job that uploads screenshots to a CDN or commits them to the repo.
-- **Audit standalone-render coverage first.** Many shadcnblocks components have default prop values and render in isolation (e.g., `about1.tsx` has all props defaulted). Components with required props, context providers, or data dependencies will crash. The first step is auditing how many of the 2555 components render standalone. Codebase inspection during the debate suggests ~80-90% of shadcnblocks components render standalone (they are designed as self-contained demo blocks with hardcoded sample content). The remaining ~10-20% likely need a wrapper with mock providers (router, theme). This is manageable with a standard provider harness.
+- **Audit standalone-render coverage first.** Many Kataponents have default prop values and render in isolation (e.g., `about1.tsx` has all props defaulted). Components with required props, context providers, or data dependencies will crash. The first step is auditing how many of the 2555 components render standalone. Codebase inspection during the debate suggests ~80-90% of Kataponents render standalone (they are designed as self-contained demo blocks with hardcoded sample content). The remaining ~10-20% likely need a wrapper with mock providers (router, theme). This is manageable with a standard provider harness.
 
 **Agreed scope (v1, 1-2 months, after audit):**
 1. Audit: attempt headless render of all 2555 components, record success/failure/error for each.
@@ -93,7 +93,7 @@ Seven paradigm-shift proposals were evaluated through adversarial debate. Three 
 
 **Original proposal:** Live component playground with hot-wired design tokens.
 
-**Why it was downgraded:** Challenger demonstrated that shadcnblocks components use hardcoded Tailwind classes (e.g., `text-4xl font-semibold tracking-tighter`), not CSS custom properties. Refactoring 2555 components for token-based theming is out of scope. The "shadcn ecosystem uses CSS variables" argument applies to shadcn/ui primitives, not to the blocks layer built on top of them.
+**Why it was downgraded:** Challenger demonstrated that Kataponents use hardcoded Tailwind classes (e.g., `text-4xl font-semibold tracking-tighter`), not CSS custom properties. Refactoring 2555 components for token-based theming is out of scope. The "shadcn ecosystem uses CSS variables" argument applies to shadcn/ui primitives, not to the blocks layer built on top of them.
 
 **Revised scope:** After visual previews (#2) exist, add a theme switcher (light/dark/2-3 preset palettes) that applies CSS variable overrides to the preview rendering. This gives ~80% of the value (seeing components in different visual contexts) at ~10% of the cost (no component refactoring needed).
 

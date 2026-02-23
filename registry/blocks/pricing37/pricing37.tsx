@@ -18,7 +18,7 @@ const Pricing37 = ({ className }: Pricing37Props) => {
       { icon: Handshake, label: "Early access" },
       { icon: Star, label: "Component Request" },
       { icon: Clock, label: "Free Lifetime updates" },
-      { icon: BadgeCheck, label: "Shadcnblocks support" },
+      { icon: BadgeCheck, label: "Kata support" },
     ],
   };
 

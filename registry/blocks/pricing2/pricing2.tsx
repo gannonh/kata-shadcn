@@ -58,7 +58,7 @@ const Pricing2 = ({
       ],
       button: {
         text: "Purchase",
-        url: "https://shadcnblocks.com",
+        url: "#",
       },
     },
     {
@@ -75,7 +75,7 @@ const Pricing2 = ({
       ],
       button: {
         text: "Purchase",
-        url: "https://shadcnblocks.com",
+        url: "#",
       },
     },
   ],

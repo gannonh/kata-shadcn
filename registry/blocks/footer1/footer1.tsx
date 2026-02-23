@@ -8,7 +8,7 @@ import {
 
 import { cn } from "@/lib/utils";
 
-import { Logo, LogoImage, LogoText } from "@/components/shadcnblocks/logo";
+import { Logo, LogoImage, LogoText } from "@/components/shared/logo";
 import { Separator } from "@/components/ui/separator";
 
 const sections = [
@@ -56,10 +56,10 @@ interface Footer1Props {
 }
 const Footer1 = ({
   logo = {
-    url: "https://www.shadcnblocks.com",
+    url: "#",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
     alt: "logo",
-    title: "Shadcnblocks.com",
+    title: "Kata",
   },
   className,
 }: Footer1Props) => {
@@ -68,7 +68,7 @@ const Footer1 = ({
       <div className="container">
         <footer>
           <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
-            <Logo url="https://shadcnblocks.com">
+            <Logo url="#">
               <LogoImage
                 src={logo.src}
                 alt={logo.alt}
@@ -155,7 +155,7 @@ const Footer1 = ({
           </div>
           <Separator className="my-14" />
           <p className="text-sm text-muted-foreground">
-            © 2024 Shadcnblocks.com. All rights reserved.
+            © 2024 Kata. All rights reserved.
           </p>
         </footer>
       </div>

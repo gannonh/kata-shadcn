@@ -2,7 +2,7 @@
 
 ## Overview
 
-Shadcnblocks offers five distinct component styles that modify visual appearance while preserving functionality. These align with options in Shadcn UI Create.
+The registry offers five distinct component styles that modify visual appearance while preserving functionality. These align with options in Shadcn UI Create.
 
 ## Available Styles
 
@@ -59,7 +59,7 @@ Styles work with both Radix UI and Base UI. Set in `components.json`:
 
 ```bash
 npx shadcn@latest add button card dialog
-npx shadcn@latest add @shadcnblocks/hero1
+npx shadcn@latest add @kata-shadcn/hero1
 ```
 
 ## Switching Styles

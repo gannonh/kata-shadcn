@@ -9,7 +9,7 @@ const PatternTemplate = () => {
           {/* Left side - Content */}
           <div className="flex flex-col gap-6">
             <Badge variant="secondary" className="w-fit">
-              Shadcnblocks.com
+              Kata
             </Badge>
             <div>
               <h1 className="mb-6 text-4xl font-medium tracking-tight text-pretty text-foreground md:text-5xl lg:text-6xl">

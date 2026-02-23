@@ -255,21 +255,21 @@ const Hero259 = ({
   companyLogo = "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo-word.svg",
   heading = "The components designed for developers",
   buttonText = "Get Started",
-  buttonUrl = "https://www.shadcnblocks.com",
+  buttonUrl = "#",
   companyDescription = "Finely crafted components built with React, Tailwind and Shadcn UI. Developers can copy and paste these blocks directly into their project.",
   incubators = "Backed by Ramp & Mercury",
   links = [
     {
       text: "Documentation",
-      url: "https://www.shadcnblocks.com",
+      url: "#",
     },
     {
       text: "GitHub",
-      url: "https://www.shadcnblocks.com",
+      url: "#",
     },
     {
       text: "Twitter",
-      url: "https://www.shadcnblocks.com",
+      url: "#",
     },
   ],
 }: Hero259Props) => {

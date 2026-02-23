@@ -43,7 +43,7 @@ export const Footer14 = () => {
         {/* Logo and newsletter section */}
         <div className="mb-10 flex flex-col items-start justify-between gap-10 border-b pb-10 sm:mb-16 sm:pb-12 md:flex-row">
           <div className="w-full max-w-full sm:max-w-sm">
-            <a href="https://shadcnblocks.com">
+            <a href="#">
               <img
                 src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
                 alt="Charter logo"
@@ -115,11 +115,11 @@ export const Footer14 = () => {
           <p className="order-2 text-center text-sm text-muted-foreground sm:text-left md:order-1">
             © {new Date().getFullYear()} Charter. All rights reserved.{" "}
             <a
-              href="https://shadcnblocks.com"
+              href="#"
               className="text-foreground underline underline-offset-4 transition-colors hover:text-primary"
               target="_blank"
             >
-              Shadcnblocks.com
+              Kata
             </a>
           </p>
         </div>

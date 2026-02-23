@@ -43,9 +43,9 @@ const Footer10 = ({ className }: Footer10Props) => {
             />
           </div>
           <div className="flex flex-col items-center justify-between py-12 text-muted-foreground md:flex-row">
-            <div>© Shadcnblocks.com 2024</div>
+            <div>© Kata 2024</div>
             <div>Time → {time}</div>
-            <div>example@shadcnblocks.com</div>
+            <div>example@Kata</div>
           </div>
         </footer>
       </div>

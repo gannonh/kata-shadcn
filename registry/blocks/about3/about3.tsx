@@ -133,27 +133,27 @@ export { About3 };
 
 const defaultCompanies = [
   {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-1.svg",
+    src: "https://deifkwefumgah.cloudfront.net/Kata/block/logos/company/fictional-company-logo-1.svg",
     alt: "Arc",
   },
   {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-2.svg",
+    src: "https://deifkwefumgah.cloudfront.net/Kata/block/logos/company/fictional-company-logo-2.svg",
     alt: "Descript",
   },
   {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-3.svg",
+    src: "https://deifkwefumgah.cloudfront.net/Kata/block/logos/company/fictional-company-logo-3.svg",
     alt: "Mercury",
   },
   {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-4.svg",
+    src: "https://deifkwefumgah.cloudfront.net/Kata/block/logos/company/fictional-company-logo-4.svg",
     alt: "Ramp",
   },
   {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-5.svg",
+    src: "https://deifkwefumgah.cloudfront.net/Kata/block/logos/company/fictional-company-logo-5.svg",
     alt: "Retool",
   },
   {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-6.svg",
+    src: "https://deifkwefumgah.cloudfront.net/Kata/block/logos/company/fictional-company-logo-6.svg",
     alt: "Watershed",
   },
 ];
@@ -168,23 +168,23 @@ const defaultAchievements = [
 const defaultProps = {
   title: "About Us",
   description:
-    "Shadcnblocks is a passionate team dedicated to creating innovative solutions that empower businesses to thrive in the digital age.",
+    "Kata is a passionate team dedicated to creating innovative solutions that empower businesses to thrive in the digital age.",
   mainImage: {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
+    src: "https://deifkwefumgah.cloudfront.net/Kata/block/placeholder-1.svg",
     alt: "placeholder",
   },
   secondaryImage: {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg",
+    src: "https://deifkwefumgah.cloudfront.net/Kata/block/placeholder-2.svg",
     alt: "placeholder",
   },
   breakout: {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg",
+    src: "https://deifkwefumgah.cloudfront.net/Kata/block/block-1.svg",
     alt: "logo",
-    title: "Hundreds of blocks at Shadcnblocks.com",
+    title: "Hundreds of blocks at Kata",
     description:
       "Providing businesses with effective tools to improve workflows, boost efficiency, and encourage growth.",
     buttonText: "Discover more",
-    buttonUrl: "https://shadcnblocks.com",
+    buttonUrl: "#",
   },
   companiesTitle: "Valued by clients worldwide",
   companies: defaultCompanies,

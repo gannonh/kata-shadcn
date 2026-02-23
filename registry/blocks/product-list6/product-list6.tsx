@@ -11,7 +11,7 @@ import z from "zod";
 
 import { cn } from "@/lib/utils";
 
-import { Price, PriceValue } from "@/components/shadcnblocks/price";
+import { Price, PriceValue } from "@/components/shared/price";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import {

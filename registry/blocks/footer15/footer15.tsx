@@ -62,11 +62,11 @@ const Footer15 = ({ className }: Footer15Props) => {
         <div className="flex w-full flex-col justify-between gap-y-24 lg:flex-row">
           <div className="flex shrink-0 grow-0 basis-auto flex-col items-start justify-start gap-6">
             {/* Logo */}
-            <a href="https://shadcnblocks.com">
+            <a href="#">
               <img
                 src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-wordmark.svg"
-                alt="Shadcnblocks"
-                title="Shadcnblocks"
+                alt="Kata"
+                title="Kata"
                 className="h-10 dark:invert"
               />
             </a>
@@ -125,7 +125,7 @@ const Footer15 = ({ className }: Footer15Props) => {
         </div>
         <div className="flex flex-col justify-between gap-y-4 md:flex-row">
           <div className="text-sm font-medium text-muted-foreground">
-            © 2025 shadcnblocks.com
+            © 2025 Kata
           </div>
           <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
             Made in the USA{" "}

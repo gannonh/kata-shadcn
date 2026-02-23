@@ -1,8 +1,8 @@
-# Plan: Self-hosted shadcnblocks registry
+# Plan: Self-hosted component registry
 
 ## Context
 
-We have a shadcnblocks.com license (1350 blocks, 1189 components, 12 templates). Goal: download everything and host a private registry so any project can `npx shadcn add @ourorg/hero-1` without hitting shadcnblocks.com or needing their API key.
+We have a license from the component source (1350 blocks, 1189 components, 12 templates). Goal: download everything and host a private registry so any project can `npx shadcn add @ourorg/hero-1` without hitting the upstream vendor or needing their API key.
 
 The shadcn CLI v3 registry system serves components as static JSON files. A self-hosted registry is just a web server returning JSON at `/r/{name}.json`. The official [registry template](https://github.com/shadcn-ui/registry-template) provides the scaffolding.
 
@@ -22,31 +22,31 @@ This gives us:
 - `public/r/` — built JSON output (what the CLI fetches)
 - `shadcn build` — compiles registry sources into distributable JSON
 
-### Step 2: Enumerate all shadcnblocks component names
+### Step 2: Enumerate all component names
 
-This is the main unknown. shadcnblocks doesn't expose a component manifest API. Three approaches, in order of preference:
+This is the main unknown. The component source doesn't expose a component manifest API. Three approaches, in order of preference:
 
-**A. Scrape the blocks page** — Write a script that fetches `https://www.shadcnblocks.com/blocks` (and subpages per category) and extracts component slugs from the DOM. Each block page links to a registry name like `hero-1`, `pricing-3`, etc.
+**A. Scrape the blocks page** — Write a script that fetches the upstream blocks page (and subpages per category) and extracts component slugs from the DOM. Each block page links to a registry name like `hero-1`, `pricing-3`, etc.
 
 **B. Use the shadcn MCP** — Configure the MCP server, then query by category programmatically ("show me all hero blocks", "show me all pricing blocks", etc.) to build the list.
 
-**C. Hit the registry endpoint directly** — Try `https://shadcnblocks.com/r/index.json` or `https://shadcnblocks.com/r/registry.json` with the bearer token. Some registries serve a manifest at the root. If shadcnblocks follows the standard, it may return a full item list.
+**C. Hit the registry endpoint directly** — Try the upstream `/r/index.json` or the upstream `/r/registry.json` with the bearer token. Some registries serve a manifest at the root. If the vendor follows the standard, it may return a full item list.
 
-**D. Ask shadcnblocks support** — Licensed users may be able to request a full manifest.
+**D. Ask the vendor for support** — Licensed users may be able to request a full manifest.
 
 Output: a `components.txt` file with one component name per line.
 
 ### Step 3: Bulk download into staging project
 
-Create a temporary staging project with shadcnblocks registry configured:
+Create a temporary staging project with the upstream registry configured:
 
 ```bash
-# staging project with components.json pointing to shadcnblocks
-SHADCNBLOCKS_API_KEY=sk_live_xxx
+# staging project with components.json pointing to upstream
+REGISTRY_API_KEY=sk_live_xxx
 
 # bulk install
 while read -r name; do
-  npx shadcn add "@shadcnblocks/$name" --yes
+  npx shadcn add "@upstream/$name" --yes
 done < components.txt
 ```
 
@@ -76,7 +76,7 @@ Move downloaded components from the staging project into the registry project's 
 }
 ```
 
-This step can be partially automated: when the shadcn CLI installs a component, the downloaded JSON at `https://shadcnblocks.com/r/{name}.json` contains the full registry-item metadata (dependencies, registryDependencies, files, cssVars). We can cache these JSON responses during the bulk download and use them to generate `registry.json` entries.
+This step can be partially automated: when the shadcn CLI installs a component, the downloaded JSON at the upstream `/r/{name}.json` contains the full registry-item metadata (dependencies, registryDependencies, files, cssVars). We can cache these JSON responses during the bulk download and use them to generate `registry.json` entries.
 
 ### Step 5: Build the registry
 
@@ -121,7 +121,7 @@ Install components: `npx shadcn add @ourorg/hero-1`
 - `curl https://your-registry/r/hero-1.json` returns valid registry-item JSON
 - `npx shadcn add @ourorg/hero-1` installs successfully in a clean test project
 - All components resolve their `registryDependencies` within the private registry
-- No calls to shadcnblocks.com from consuming projects
+- No calls to the upstream vendor from consuming projects
 
 ## Estimated scope
 

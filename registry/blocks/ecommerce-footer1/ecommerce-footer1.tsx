@@ -138,18 +138,18 @@ const FOOTER_LINKS: FooterLinksSection[] = [
 const SOCIAL_ICONS = {
   facebook: {
     title: "Facebook",
-    light: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/facebook-icon.svg",
-    dark: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/facebook-icon.svg",
+    light: "https://deifkwefumgah.cloudfront.net/Kata/block/logos/facebook-icon.svg",
+    dark: "https://deifkwefumgah.cloudfront.net/Kata/block/logos/facebook-icon.svg",
   },
   x: {
     title: "X",
-    light: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/x.svg",
-    dark: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/x.svg",
+    light: "https://deifkwefumgah.cloudfront.net/Kata/block/logos/x.svg",
+    dark: "https://deifkwefumgah.cloudfront.net/Kata/block/logos/x.svg",
   },
   instagram: {
     title: "Instagram",
-    light: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/instagram-icon.svg",
-    dark: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/instagram-icon.svg",
+    light: "https://deifkwefumgah.cloudfront.net/Kata/block/logos/instagram-icon.svg",
+    dark: "https://deifkwefumgah.cloudfront.net/Kata/block/logos/instagram-icon.svg",
   },
 };
 
@@ -228,12 +228,12 @@ const EcommerceFooter1 = ({
               <a href="/">
                 <img
                   className="block dark:hidden"
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcn-ui-wordmark-black.svg"
+                  src="https://deifkwefumgah.cloudfront.net/Kata/block/logos/shadcn-ui-wordmark-black.svg"
                   alt="Logo"
                 />
                 <img
                   className="hidden dark:block"
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcn-ui-wordmark-white.svg"
+                  src="https://deifkwefumgah.cloudfront.net/Kata/block/logos/shadcn-ui-wordmark-white.svg"
                   alt="Logo"
                 />
               </a>
@@ -249,7 +249,7 @@ const EcommerceFooter1 = ({
             orientation="vertical"
             className="!h-4.5 bg-foreground/60 max-sm:hidden"
           />
-          <p className="max-md:text-xs">Powered by Shadcnblocks</p>
+          <p className="max-md:text-xs">Powered by Kata</p>
           <Button size="icon" variant="outline">
             <ChevronUp />
           </Button>

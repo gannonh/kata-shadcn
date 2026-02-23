@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-import { ScrollableTabsList } from "@/components/shadcnblocks/scrollable-tabslist";
+import { ScrollableTabsList } from "@/components/shared/scrollable-tabslist";
 import { ScrollBar } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 

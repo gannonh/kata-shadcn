@@ -54,7 +54,7 @@ const Feature299 = ({ className }: Feature299Props) => {
         </ul>
         <div className="mx-auto w-full max-w-5xl">
           <Safari
-            url="https://www.shadcnblocks.com"
+            url="#"
             mode="simple"
             imageSrc="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/dashboard-1.png"
           />

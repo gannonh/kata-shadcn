@@ -6,7 +6,7 @@ import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 
 import { cn } from "@/lib/utils";
 
-import { Cover } from "@/components/shadcnblocks/cover";
+import { Cover } from "@/components/shared/cover";
 import { Button } from "@/components/ui/button";
 import {
   ChartConfig,

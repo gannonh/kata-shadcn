@@ -3,9 +3,9 @@ import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const footerData = {
-  heading: "Shadcnblocks",
+  heading: "Kata",
   email: {
-    label: "example@shadcnblocks.com",
+    label: "example@Kata",
     href: "#",
   },
   phone: {

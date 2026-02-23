@@ -2,7 +2,7 @@
 
 import { Smile } from "lucide-react";
 
-import EmojiPicker from "@/components/shadcnblocks/emoji-picker";
+import EmojiPicker from "@/components/shared/emoji-picker";
 import { Button } from "@/components/ui/button";
 
 export const title = "Emoji Picker with Different Button Variants";

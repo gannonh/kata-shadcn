@@ -2,18 +2,18 @@ import {
   Logo,
   LogoImageDesktop,
   LogoText,
-} from "@/components/shadcnblocks/logo";
+} from "@/components/shared/logo";
 
 const LogoWordmarkExample = () => {
   return (
-    <Logo url="https://shadcnblocks.com">
+    <Logo url="#">
       <LogoImageDesktop
         src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.png"
         alt="logo"
-        title="Shadcnblocks.com"
+        title="Kata"
         className="h-7"
       />
-      <LogoText>Shadcnblocks</LogoText>
+      <LogoText>Kata</LogoText>
     </Logo>
   );
 };

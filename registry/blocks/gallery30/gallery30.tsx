@@ -17,42 +17,42 @@ const Gallery30 = ({ className }: Gallery30Props) => {
   const images = useMemo(
     () => [
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img2.jpeg",
+        src: "https://deifkwefumgah.cloudfront.net/Kata/block/guri3/img2.jpeg",
         className:
           "  md:w-50 size-47 rotate-7 md:rotate-0  z-1 absolute md:-left-10 md:bottom-1/4 lg:left-0 md:h-72",
       },
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img11.jpeg",
+        src: "https://deifkwefumgah.cloudfront.net/Kata/block/guri3/img11.jpeg",
         className:
           "  md:w-38 size-47 -rotate-7 md:rotate-0  z-1 md:left-1/5 md:h-45 absolute md:-top-10",
       },
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img6.jpeg",
+        src: "https://deifkwefumgah.cloudfront.net/Kata/block/guri3/img6.jpeg",
         className:
           " md:w-50 size-45  z-1 md:right-2/5 absolute md:-top-40 md:h-52",
       },
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img5.jpeg",
+        src: "https://deifkwefumgah.cloudfront.net/Kata/block/guri3/img5.jpeg",
         className:
           "  hidden md:block size-40  z-1 md:-top-42 md:h-42 absolute md:-right-10 md:w-60",
       },
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img7.jpeg",
+        src: "https://deifkwefumgah.cloudfront.net/Kata/block/guri3/img7.jpeg",
         className:
           "  md:w-55 hidden md:block z-1 top-1/5 md:h-65 md:absolute -right-10 lg:right-28",
       },
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img14.jpeg",
+        src: "https://deifkwefumgah.cloudfront.net/Kata/block/guri3/img14.jpeg",
         className:
           "   md:w-50 hidden md:block z-1 md:h-78 md:absolute -bottom-5 -right-40",
       },
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img13.jpeg",
+        src: "https://deifkwefumgah.cloudfront.net/Kata/block/guri3/img13.jpeg",
         className:
           "  hidden md:block z-1 right-1/5 md:absolute -bottom-1/4 md:h-48 md:w-60",
       },
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img12.jpeg",
+        src: "https://deifkwefumgah.cloudfront.net/Kata/block/guri3/img12.jpeg",
         className:
           "  hidden md:block z-1 right-3/5 -bottom-1/6 md:absolute md:h-48 md:w-60",
       },
@@ -84,7 +84,7 @@ const Gallery30 = ({ className }: Gallery30Props) => {
       <div className="relative container flex h-full w-full flex-col items-center justify-center">
         <div className="relative z-10 flex flex-col items-center justify-center gap-5">
           <h1 className="max-w-xl text-center text-4xl font-medium tracking-tighter uppercase lg:text-6xl">
-            exclusive shadcnblocks
+            exclusive Kata
           </h1>
           <p className="max-w-md text-center text-sm text-muted-foreground/70 lg:text-base">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,

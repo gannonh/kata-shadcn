@@ -25,10 +25,10 @@ interface Signup3Props {
 const Signup3 = ({
   heading = "Signup",
   logo = {
-    url: "https://www.shadcnblocks.com",
+    url: "#",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
     alt: "logo",
-    title: "shadcnblocks.com",
+    title: "Kata",
   },
   buttonText = "Create Account",
   googleText = "Google",
@@ -43,7 +43,7 @@ const Signup3 = ({
           <div className="flex flex-col items-center gap-y-2">
             {/* Logo */}
             <div className="flex items-center gap-1 lg:justify-start">
-              <a href="https://shadcnblocks.com">
+              <a href="#">
                 <img
                   src={logo.src}
                   alt={logo.alt}

@@ -33,7 +33,7 @@ const Industries1 = ({
         "Revolutionary medical solutions and digital health platforms that improve patient outcomes and streamline healthcare delivery.",
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
       imageAlt: "Healthcare technology illustration",
-      url: "http://shadcnblocks.com/blocks",
+      url: "#/blocks",
     },
     {
       name: "Fintech",
@@ -41,7 +41,7 @@ const Industries1 = ({
         "Cutting-edge financial technology solutions that transform banking, payments, and investment management for the digital age.",
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg",
       imageAlt: "Financial technology illustration",
-      url: "http://shadcnblocks.com/blocks",
+      url: "#/blocks",
     },
     {
       name: "E-commerce",
@@ -49,7 +49,7 @@ const Industries1 = ({
         "Comprehensive online retail platforms and marketplace solutions that drive sales and enhance customer experiences.",
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg",
       imageAlt: "E-commerce platform illustration",
-      url: "http://shadcnblocks.com/blocks",
+      url: "#/blocks",
     },
     {
       name: "Education",
@@ -57,7 +57,7 @@ const Industries1 = ({
         "Innovative learning management systems and educational technology that empower students and educators worldwide.",
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg",
       imageAlt: "Educational technology illustration",
-      url: "http://shadcnblocks.com/blocks",
+      url: "#/blocks",
     },
   ],
 }: Industries1Props) => {

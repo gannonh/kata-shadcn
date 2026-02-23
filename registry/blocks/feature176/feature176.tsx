@@ -200,7 +200,7 @@ const Feature176 = ({ className }: Feature176Props) => {
                 <div className="flex flex-row items-center">
                   <ChartCandlestick className="size-6 text-foreground/60" />
                   <span className="ml-4 text-sm text-muted-foreground">
-                    Shadcnblocks.com Stats
+                    Kata Stats
                   </span>
                 </div>
                 <div className="mt-4 grid gap-4 md:grid-cols-3">

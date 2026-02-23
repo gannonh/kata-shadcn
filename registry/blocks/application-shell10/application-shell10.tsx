@@ -27,7 +27,7 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-import { LogoImage } from "@/components/shadcnblocks/logo";
+import { LogoImage } from "@/components/shared/logo";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -387,7 +387,7 @@ function AppSidebar({
                     />
                     {!isCollapsed && (
                       <>
-                        <span className="font-semibold">Shadcnblocks</span>
+                        <span class="font-semibold">Kata</span>
                         <ChevronDown className="size-3 text-muted-foreground" />
                       </>
                     )}
@@ -924,7 +924,7 @@ export function ApplicationShell10() {
           <div className="flex items-center gap-2">
             <LogoImage
               src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg"
-              alt="Shadcnblocks"
+              alt="Kata"
               className="h-8 w-8 rounded-sm bg-muted p-1"
             />
             <span className="font-semibold">

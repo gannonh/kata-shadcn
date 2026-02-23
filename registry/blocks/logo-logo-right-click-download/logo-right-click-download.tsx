@@ -3,34 +3,34 @@ import {
   LogoBrandDownload,
   LogoImageDesktop,
   LogoImageMobile,
-} from "@/components/shadcnblocks/logo";
+} from "@/components/shared/logo";
 
 const LogoRightClickDownloadExample = () => {
   return (
     <LogoBrandDownload
       files={[
         {
-          name: "shadcnblocks-logo-word.svg",
-          path: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo-word.svg",
+          name: "Kata-logo-word.svg",
+          path: "https://deifkwefumgah.cloudfront.net/Kata/block/logos/Kata-logo-word.svg",
           format: "svg",
         },
         {
-          name: "shadcnblocks-logo-word.png",
-          path: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo-word.png",
+          name: "Kata-logo-word.png",
+          path: "https://deifkwefumgah.cloudfront.net/Kata/block/logos/Kata-logo-word.png",
           format: "png",
         },
       ]}
     >
-      <Logo url="https://shadcnblocks.com">
+      <Logo url="#">
         <LogoImageDesktop
-          src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo-word.png"
+          src="https://deifkwefumgah.cloudfront.net/Kata/block/logos/Kata-logo-word.png"
           alt="logo"
-          title="Shadcnblocks.com"
+          title="Kata"
         />
         <LogoImageMobile
-          src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.png"
+          src="https://deifkwefumgah.cloudfront.net/Kata/block/logos/Kata-logo.png"
           alt="logo"
-          title="Shadcnblocks.com"
+          title="Kata"
         />
       </Logo>
     </LogoBrandDownload>

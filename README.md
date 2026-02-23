@@ -41,7 +41,6 @@ Copy `.env.example` to `.env.local` and fill in values:
 | ------------------------------ | -------- | ------------------------------------------------------------------------------------ |
 | `REGISTRY_TOKEN`               | Yes      | Secret protecting `/r/*` endpoints. Set in Vercel project env vars too.              |
 | `REGISTRY_URL`                 | Yes      | Base URL of the deployed registry (e.g. `https://shadcn-registry-eight.vercel.app`). |
-| `SHADCNBLOCKS_API_KEY`         | Yes      | API key for shadcnblocks.com. Used by download scripts.                              |
 | `SHADCN_FALLBACK_REGISTRY_URL` | No       | Override for the unscoped dependency proxy. Defaults to `https://ui.shadcn.com/r`.   |
 
 ## Editing a component

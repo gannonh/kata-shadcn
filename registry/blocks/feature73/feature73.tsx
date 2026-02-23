@@ -24,7 +24,7 @@ interface Feature73Props {
 const Feature73 = ({
   title = "Key Features",
   description = "Discover the powerful features that make our platform stand out from the rest. Built with the latest technology and designed for maximum productivity.",
-  buttonUrl = "https://shadcnblocks.com",
+  buttonUrl = "#",
   buttonText = "Book a demo",
   features = [
     {
@@ -33,7 +33,7 @@ const Feature73 = ({
       description:
         "Clean and intuitive interface built with the latest design principles. Optimized for the best user experience.",
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
-      url: "https://shadcnblocks.com",
+      url: "#",
     },
     {
       id: "feature-2",
@@ -41,7 +41,7 @@ const Feature73 = ({
       description:
         "Fully responsive design that works seamlessly across all devices and screen sizes. Perfect for any platform.",
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg",
-      url: "https://shadcnblocks.com",
+      url: "#",
     },
     {
       id: "feature-3",
@@ -49,7 +49,7 @@ const Feature73 = ({
       description:
         "Simple integration process with comprehensive documentation and dedicated support team.",
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg",
-      url: "https://shadcnblocks.com",
+      url: "#",
     },
   ],
   className,

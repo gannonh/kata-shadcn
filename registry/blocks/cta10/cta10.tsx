@@ -24,7 +24,7 @@ const Cta10 = ({
   buttons = {
     primary: {
       text: "Buy Now",
-      url: "https://www.shadcnblocks.com",
+      url: "#",
     },
   },
   className,

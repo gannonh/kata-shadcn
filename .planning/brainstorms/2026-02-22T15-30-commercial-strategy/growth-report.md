@@ -81,7 +81,7 @@ The recommended execution plan delivers externally visible artifacts (free tier,
 
 **Scope:** 3-5 days.
 
-**What was cut from original #5:** Component submissions to shadcn docs (licensing issue -- these are licensed shadcnblocks components, not original work). Dedicated "2-4 hours per week" community participation commitment. Integration guides (deferred, not killed).
+**What was cut from original #5:** Component submissions to shadcn docs (licensing issue -- these are licensed Kataponents, not original work). Dedicated "2-4 hours per week" community participation commitment. Integration guides (deferred, not killed).
 
 **Community presence note:** Lurk and learn from the shadcn Discord. Post when there's something genuinely useful to share (the template, a theme). Don't allocate dedicated hours or track it as a strategy. It's background activity, not a workstream.
 
@@ -121,9 +121,9 @@ The recommended execution plan delivers externally visible artifacts (free tier,
 
 **Reason:** Strong idea with two hard dependencies and one potential deal-breaker.
 
-**Blocker 1 -- License verification:** Publishing 2555 public metadata pages about licensed shadcnblocks components (even without source code) could violate license terms. This must be verified with shadcnblocks before any work starts. If the answer is "no public metadata," this proposal is dead.
+**Blocker 1 -- License verification:** Publishing 2555 public metadata pages about licensed Kataponents (even without source code) could violate license terms. This must be verified with the component vendor before any work starts. If the answer is "no public metadata," this proposal is dead.
 
-**Blocker 2 -- Upstream milestones:** Quality SEO pages require enriched descriptions (KAT-86, not yet built) and screenshot previews (milestone 3, not yet started). Without these, the pages are thin text-only descriptions that Google will index poorly and that offer a worse experience than shadcnblocks.com itself.
+**Blocker 2 -- Upstream milestones:** Quality SEO pages require enriched descriptions (KAT-86, not yet built) and screenshot previews (milestone 3, not yet started). Without these, the pages are thin text-only descriptions that Google will index poorly and that offer a worse experience than Kata itself.
 
 **If both blockers clear:** Pilot with the top 50 components (1 per category). Measure organic traffic for 4-6 weeks. Scale to 2555 only if the pilot shows meaningful search impressions. Use JSON-LD structured data (SoftwareSourceCode schema). Estimated scope: 2-3 weeks for the pilot.
 
@@ -180,7 +180,7 @@ Phase 2:   #3 SEO pages (only if license verified + KAT-86 + milestone 3 done)
 
 ## Open Items Requiring Decisions
 
-1. **License terms for public component metadata** -- Email shadcnblocks support to verify whether public documentation pages (screenshots + descriptions, no source code) are within license terms. Blocks the SEO strategy entirely. Resolve in week 1.
+1. **License terms for public component metadata** -- Email the vendor to verify whether public documentation pages (screenshots + descriptions, no source code) are within license terms. Blocks the SEO strategy entirely. Resolve in week 1.
 
 2. **Free subset composition** -- Which 50 components? Needs 1-2 per major category, quality high enough to demonstrate value, gaps obvious enough to motivate upgrade. This is a curation decision, not an engineering task.
 

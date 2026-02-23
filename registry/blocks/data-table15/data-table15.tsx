@@ -58,7 +58,7 @@ import {
 } from "@/components/ui/table";
 
 const DATA_URL =
-  "https://raw.githubusercontent.com/zerostaticthemes/shadcnblocks-library-data/refs/heads/main/data/orders-ecommerce-sample.json";
+  "https://example.com/orders-sample.json";
 
 type UseDataTableOptions<TData> = {
   data: Array<TData>;

@@ -22,14 +22,14 @@ interface Signup2Props {
 const Signup2 = ({
   heading = "Signup",
   logo = {
-    url: "https://www.shadcnblocks.com",
+    url: "#",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-wordmark.svg",
     alt: "logo",
-    title: "shadcnblocks.com",
+    title: "Kata",
   },
   buttonText = "Create Account",
   signupText = "Already a user?",
-  signupUrl = "https://shadcnblocks.com",
+  signupUrl = "#",
   className,
 }: Signup2Props) => {
   return (

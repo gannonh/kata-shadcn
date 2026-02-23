@@ -22,14 +22,14 @@ interface Login3Props {
 const Login3 = ({
   heading = "Login",
   logo = {
-    url: "https://www.shadcnblocks.com",
+    url: "#",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg",
     alt: "logo",
-    title: "shadcnblocks.com",
+    title: "Kata",
   },
   buttonText = "Login",
   signupText = "Need an account?",
-  signupUrl = "https://shadcnblocks.com",
+  signupUrl = "#",
   className,
 }: Login3Props) => {
   return (

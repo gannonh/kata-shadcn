@@ -6,7 +6,7 @@ const PatternPlaceholder = () => {
     <div className="relative z-10">
       <div className="container py-28 md:py-32">
         <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
-          <Badge variant="secondary">Shadcnblocks.com</Badge>
+          <Badge variant="secondary">Kata</Badge>
           <div className="max-w-3xl">
             <h1 className="mb-6 text-4xl font-medium tracking-tight text-pretty text-foreground md:text-5xl lg:text-6xl">
               Modern background patterns for any section.

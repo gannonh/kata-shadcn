@@ -88,7 +88,7 @@ Context: Discovery & Growth milestone for Kata Shadcn Registry (2555 licensed co
 
 ## 6. Sponsored Component Slots and Featured Placements
 
-**What**: Allow component library vendors (Tailwind UI, shadcnblocks, other UI kit publishers) to sponsor featured placement in the registry's browser UI and agent index. Sponsored components appear in a "Featured" section, get priority ranking in search results, and include vendor attribution with links. The registry becomes a distribution channel for UI component publishers.
+**What**: Allow component library vendors (Tailwind UI, component vendors, other UI kit publishers) to sponsor featured placement in the registry's browser UI and agent index. Sponsored components appear in a "Featured" section, get priority ranking in search results, and include vendor attribution with links. The registry becomes a distribution channel for UI component publishers.
 
 **Why**: The registry has a captive audience of developers searching for UI components. That attention has advertising value. Component vendors want distribution to developers who are actively looking for components. This aligns incentives: vendors pay for visibility, developers discover new components, the registry generates revenue without gating existing features. Revenue model: monthly sponsorship slots ($500-2000/mo per featured slot) or CPC/CPM pricing on click-throughs.
 

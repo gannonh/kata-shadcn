@@ -64,7 +64,7 @@ const Footer6 = ({ className }: Footer6Props) => {
                     className="size-12 h-full w-full object-contain object-center"
                   />
                 </div>
-                <h3 className="text-xl font-bold">Shadcnblocks.com</h3>
+                <h3 className="text-xl font-bold">Kata</h3>
               </div>
               <p className="text-base font-medium text-muted-foreground">
                 Components made easy.
@@ -96,7 +96,7 @@ const Footer6 = ({ className }: Footer6Props) => {
           </div>
           <div className="flex flex-col items-baseline justify-between gap-8 border-t border-border pt-8 md:flex-row md:gap-16">
             <div className="text-xs text-muted-foreground sm:text-sm">
-              &copy; Shadcnblocks.com 2024
+              &copy; Kata 2024
             </div>
             <div className="flex flex-col items-start gap-4 text-xs text-muted-foreground sm:text-sm md:flex-row lg:items-center">
               <a href="#" className="hover:text-accent-foreground">

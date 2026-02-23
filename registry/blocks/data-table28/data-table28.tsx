@@ -61,7 +61,7 @@ const DEFAULT_ROW_HEIGHT = 56;
 const DEFAULT_OVERSCAN = 8;
 const NON_NAVIGABLE_COLUMN_IDS = ["select", "actions"];
 const DATA_URL =
-  "https://raw.githubusercontent.com/zerostaticthemes/shadcnblocks-library-data/refs/heads/main/data/orders-ecommerce-1000.json";
+  "https://example.com/orders-sample.json";
 
 type ColumnMeta = {
   align?: "left" | "center" | "right";

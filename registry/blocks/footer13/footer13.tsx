@@ -141,11 +141,11 @@ const Footer13 = ({ className }: Footer13Props) => {
               <p className="font-medium text-primary-foreground/80">
                 © {new Date().getFullYear()} Streamline -{" "}
                 <a
-                  href="https://shadcnblocks.com"
+                  href="#"
                   className="underline transition-colors hover:text-primary-foreground"
                   target="_blank"
                 >
-                  Shadcnblocks.com
+                  Kata
                 </a>
               </p>
               <div className="flex items-center gap-6">

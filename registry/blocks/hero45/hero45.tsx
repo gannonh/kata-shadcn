@@ -9,7 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import type { HeroFeatureIconsProps } from "@/lib/hero-feature-icons";
 
 const Hero45 = ({
-  badge = "shadcnblocks.com",
+  badge = "Kata",
   heading = "Blocks built with Shadcn & Tailwind",
   images = [
     {

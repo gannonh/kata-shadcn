@@ -55,7 +55,7 @@ const initialTodos: Todo[] = [
   },
   {
     id: "2",
-    title: "Purchase Shadcn blocks from shadcnblocks.com",
+    title: "Purchase Shadcn blocks from Kata",
     completed: false,
     tags: ["work", "code-review"],
   },

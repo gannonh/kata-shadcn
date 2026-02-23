@@ -39,7 +39,7 @@ const Footer30 = ({ className }: Footer30Props) => {
               className="relative text-3xl font-semibold tracking-tight lg:text-4xl"
               href=""
             >
-              yo@shadcnblocks.com
+              yo@Kata
             </a>
           </div>
           <div className="flex gap-30">
@@ -77,12 +77,12 @@ const Footer30 = ({ className }: Footer30Props) => {
           </div>
         </div>
         <div className="mt-10 text-[13vw] font-semibold tracking-tighter lg:text-right lg:text-[10vw]">
-          Shadcnblocks<sup className="font-light">&reg;</sup>{" "}
+          Kata<sup className="font-light">&reg;</sup>{" "}
         </div>
         <div className="dark relative mt-20 flex h-24 w-full flex-col items-center justify-center gap-2 bg-background text-sm tracking-tight text-foreground lg:h-30 lg:flex-row lg:justify-between lg:gap-4 lg:text-base">
           <div className="relative z-2 flex items-center gap-4 lg:gap-10">
             <p className="text-foreground/50">
-              &copy;2025 shadcnblocks All rights reserved
+              &copy;2025 Kata All rights reserved
             </p>
           </div>
           <div className="relative z-2 flex items-center gap-4 lg:gap-10">

@@ -7,7 +7,7 @@ import { useMemo } from "react";
 import { ControllerRenderProps, useForm } from "react-hook-form";
 import z from "zod";
 
-import { Price, PriceValue } from "@/components/shadcnblocks/price";
+import { Price, PriceValue } from "@/components/shared/price";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

@@ -23,7 +23,7 @@ const Hero32 = ({
   description = "Fully decomposable components, all the images and background patterns are individual images or svgs that can be replaced.",
   button = {
     text: "Discover all components",
-    url: "https://www.shadcnblocks.com",
+    url: "#",
   },
   integrations = [
     [

@@ -25,11 +25,11 @@ const Cta12 = ({
   buttons = {
     primary: {
       text: "Buy Now",
-      url: "https://www.shadcnblocks.com",
+      url: "#",
     },
     secondary: {
       text: "Contact Us",
-      url: "https://www.shadcnblocks.com",
+      url: "#",
     },
   },
   className,

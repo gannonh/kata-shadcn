@@ -73,10 +73,10 @@ interface MobileNavigationMenuProps {
 }
 
 const LOGO = {
-  url: "https://www.shadcnblocks.com",
+  url: "#",
   src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg",
   alt: "logo",
-  title: "Shadcnblocks.com",
+  title: "Kata",
 };
 
 const NAVIGATION: MenuItem[] = [

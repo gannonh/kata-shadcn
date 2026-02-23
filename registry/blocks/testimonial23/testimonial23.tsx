@@ -206,7 +206,7 @@ const Testimonial23 = ({ className }: Testimonial23Props) => {
 
           <div className="mt-4 flex flex-col items-center gap-4 sm:flex-row">
             <span>
-              Discover how <b>Shadcnblocks</b> is transforming workflows across
+              Discover how <b>Kata</b> is transforming workflows across
               industries.
             </span>
           </div>

@@ -29,7 +29,7 @@ const Feature51 = ({
       description:
         "Discover the powerful features that make our platform stand out from the rest.",
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
-      url: "https://shadcnblocks.com",
+      url: "#",
       isDefault: true,
     },
     {
@@ -40,7 +40,7 @@ const Feature51 = ({
       description:
         "Built with the latest technology and designed for maximum productivity.",
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg",
-      url: "https://shadcnblocks.com",
+      url: "#",
       isDefault: false,
     },
     {
@@ -50,7 +50,7 @@ const Feature51 = ({
       description:
         "Create amazing experiences with our comprehensive toolkit and resources.",
       image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg",
-      url: "https://shadcnblocks.com",
+      url: "#",
       isDefault: false,
     },
   ],

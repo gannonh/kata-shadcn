@@ -32,7 +32,7 @@ const Feature292 = ({ className }: Feature292Props) => {
             <PointerHighlight containerClassName="inline-block">
               <span>Production-Ready</span>
             </PointerHighlight>
-            Shadcnblocks
+            Kata
           </h1>
           <p className="mt-10 max-w-lg text-muted-foreground">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo sed
@@ -51,7 +51,7 @@ const Feature292 = ({ className }: Feature292Props) => {
         </div>
         <div className="relative mt-10 flex h-[80vh] w-full items-center justify-center overflow-hidden rounded-4xl border lg:mt-0 lg:h-[70vh]">
           <img
-            src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img7.jpeg"
+            src="https://deifkwefumgah.cloudfront.net/Kata/block/guri3/img7.jpeg"
             alt=""
             className="size-full object-cover"
           />

@@ -142,11 +142,11 @@ const Navbar14 = ({ className }: Navbar14Props) => {
           <div className="flex flex-1 items-center gap-9">
             <a href="#" className="flex items-center gap-2">
               <img
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg"
+                src="https://deifkwefumgah.cloudfront.net/Kata/block/logos/Kata-logo.svg"
                 alt="logo"
                 className="h-8 dark:invert"
               />
-              <span className="text-lg font-semibold">Shadcnblocks</span>
+              <span class="font-semibold">Kata</span>
             </a>
             <div className="hidden items-center gap-1.5 lg:flex">
               <NavigationMenu delayDuration={0}>
@@ -197,7 +197,7 @@ const Navbar14 = ({ className }: Navbar14Props) => {
                               >
                                 <BookOpen className="size-4!" />
                                 <span className="text-sm font-medium whitespace-nowrap">
-                                  Shadcnblocks 101
+                                  Kata 101
                                 </span>
                               </a>
                             </NavigationMenuLink>
@@ -220,7 +220,7 @@ const Navbar14 = ({ className }: Navbar14Props) => {
                             <a href="#">
                               <div className="rounded-lg bg-primary p-3">
                                 <img
-                                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
+                                  src="https://deifkwefumgah.cloudfront.net/Kata/block/placeholder-1.svg"
                                   alt="placeholder"
                                   className="aspect-video min-w-52 rounded-md object-cover"
                                 />
@@ -376,7 +376,7 @@ const Navbar14 = ({ className }: Navbar14Props) => {
                         >
                           <BookOpen className="size-4" />
                           <span className="text-sm font-medium">
-                            Shadcnblocks 101
+                            Kata 101
                           </span>
                         </a>
                         <a

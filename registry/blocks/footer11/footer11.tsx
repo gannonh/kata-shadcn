@@ -41,10 +41,10 @@ interface Footer11Props {
 }
 const Footer11 = ({
   logo = {
-    url: "https://www.shadcnblocks.com",
+    url: "#",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
     alt: "logo",
-    title: "Shadcnblocks.com",
+    title: "Kata",
   },
   className,
 }: Footer11Props) => {
@@ -120,7 +120,7 @@ const Footer11 = ({
           <img
             src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/shadcnblocks-giant-text.png"
             className="w-full"
-            alt="Shadcnblocks"
+            alt="Kata"
           />
         </div>
       </div>

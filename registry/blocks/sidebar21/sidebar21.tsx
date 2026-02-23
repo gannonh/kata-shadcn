@@ -115,8 +115,8 @@ type SidebarData = {
 const sidebarData: SidebarData = {
   logo: {
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg",
-    alt: "Shadcnblocks",
-    title: "Shadcnblocks",
+    alt: "Kata",
+    title: "Kata",
     description: "Build your app",
   },
   navGroups: [
@@ -193,7 +193,7 @@ const sidebarData: SidebarData = {
   workspaces: [
     {
       id: "1",
-      name: "Shadcnblocks",
+      name: "Kata",
       logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg",
       plan: "Enterprise",
     },

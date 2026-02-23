@@ -19,7 +19,7 @@ const Community7 = ({ className }: Community7Props) => {
       icon: <FaXTwitter className="h-8 w-8 text-foreground/80" />,
       title: "Twitter",
       description: "Follow us for updates, insights, and news",
-      link: "https://x.com/shadcnblocks",
+      link: "https://x.com/Kata",
       status: "online",
       followers: 12000,
     },

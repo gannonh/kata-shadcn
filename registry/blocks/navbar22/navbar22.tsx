@@ -54,10 +54,10 @@ const Navbar22 = ({ className }: Navbar22Props) => {
                 <img
                   src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
                   className="max-h-8"
-                  alt="shadcnblocks.com"
+                  alt="Kata"
                 />
                 <span className="text-lg font-semibold tracking-tighter">
-                  Shadcnblocks.com
+                  Kata
                 </span>
               </div>
 
@@ -66,10 +66,10 @@ const Navbar22 = ({ className }: Navbar22Props) => {
                   <img
                     src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
                     className="max-h-8"
-                    alt="shadcnblocks.com"
+                    alt="Kata"
                   />
                   <span className="text-lg font-semibold tracking-tighter">
-                    Shadcnblocks.com
+                    Kata
                   </span>
                 </a>
               </div>
@@ -122,7 +122,7 @@ const Navbar22 = ({ className }: Navbar22Props) => {
                           <img
                             src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
                             className="max-h-8"
-                            alt="shadcnblocks.com"
+                            alt="Kata"
                           />
                         </a>
                       </div>

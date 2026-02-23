@@ -189,10 +189,10 @@ Post-validation (when demand signals are met):
 - **Pricing for enterprise/custom tiers.** Premature without a customer base. Address when the first enterprise prospect appears.
 - **Revenue projections.** With 0 external customers today, any projection is fiction. Focus on demand signal thresholds instead.
 - **Competitive pricing analysis.** The enriched tier has no direct competitor (no one else offers enriched shadcn registry intelligence). Price based on value-to-customer, not market comparison.
-- **Legal/licensing implications of reselling enriched metadata derived from licensed shadcnblocks components.** Requires legal review before external monetization.
+- **Legal/licensing implications of reselling enriched metadata derived from licensed Kataponents.** Requires legal review before external monetization.
 
 ---
 
 ## Open Risk: Licensing
 
-The 2555 components are licensed from shadcnblocks.com. The monetization strategy sells *enrichment* (semantic descriptions, structured metadata, visual previews, curation) rather than the components themselves (which remain freely downloadable in the free tier). However, the enrichment is derived from the licensed source code. Before activating external billing, verify that the shadcnblocks license permits commercial resale of derived metadata. This is a legal question, not a technical one.
+The 2555 components are licensed from Kata. The monetization strategy sells *enrichment* (semantic descriptions, structured metadata, visual previews, curation) rather than the components themselves (which remain freely downloadable in the free tier). However, the enrichment is derived from the licensed source code. Before activating external billing, verify that the component license permits commercial resale of derived metadata. This is a legal question, not a technical one.

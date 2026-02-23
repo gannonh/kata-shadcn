@@ -8,7 +8,7 @@ import {
 
 import { cn } from "@/lib/utils";
 
-import { Logo, LogoImage, LogoText } from "@/components/shadcnblocks/logo";
+import { Logo, LogoImage, LogoText } from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -57,10 +57,10 @@ interface Footer3Props {
 }
 const Footer3 = ({
   logo = {
-    url: "https://www.shadcnblocks.com",
+    url: "#",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
     alt: "logo",
-    title: "Shadcnblocks.com",
+    title: "Kata",
   },
   className,
 }: Footer3Props) => {
@@ -68,7 +68,7 @@ const Footer3 = ({
     <section className={cn("py-32", className)}>
       <div className="container">
         <footer>
-          <Logo url="https://shadcnblocks.com">
+          <Logo url="#">
             <LogoImage
               src={logo.src}
               alt={logo.alt}
@@ -147,7 +147,7 @@ const Footer3 = ({
             </div>
           </div>
           <div className="mt-24 flex flex-col flex-wrap justify-between gap-4 border-t pt-8 text-sm font-medium text-muted-foreground md:flex-row md:items-center">
-            <p>© 2024 Shadcnblocks.com. All rights reserved.</p>
+            <p>© 2024 Kata. All rights reserved.</p>
             <ul className="flex gap-4">
               <li className="whitespace-nowrap underline hover:text-primary">
                 <a href="#">Terms and Conditions</a>

@@ -7,7 +7,7 @@ import "photoswipe/style.css";
 
 import { cn } from "@/lib/utils";
 
-import { Rating } from "@/components/shadcnblocks/rating";
+import { Rating } from "@/components/shared/rating";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { badgeVariants } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";

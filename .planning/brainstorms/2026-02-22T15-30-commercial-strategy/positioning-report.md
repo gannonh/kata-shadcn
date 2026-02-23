@@ -5,7 +5,7 @@ Rounds of debate: 3
 
 ## Executive Summary
 
-Seven positioning proposals were evaluated through adversarial debate. Three survived as actionable. One was dropped entirely. Three were downgraded to internal tools or minimal-effort actions. The central strategic finding: **no individual feature constitutes a durable moat.** Every enrichment the registry builds, shadcnblocks.com can replicate from a stronger position (they own the source designs and design intent). The defensible strategy is to use feature-driven head starts to accumulate switching costs before the upstream vendor closes each gap.
+Seven positioning proposals were evaluated through adversarial debate. Three survived as actionable. One was dropped entirely. Three were downgraded to internal tools or minimal-effort actions. The central strategic finding: **no individual feature constitutes a durable moat.** Every enrichment the registry builds, Kata can replicate from a stronger position (they own the source designs and design intent). The defensible strategy is to use feature-driven head starts to accumulate switching costs before the upstream vendor closes each gap.
 
 ---
 
@@ -13,7 +13,7 @@ Seven positioning proposals were evaluated through adversarial debate. Three sur
 
 **Competitive landscape (validated during debate):**
 
-- **shadcnblocks.com** is closer than initially assumed. They already offer namespaced CLI access (`npx shadcn@beta add @shadcnblocks/hero125`), ship 50+ new blocks per month (1350+ blocks, 1189 components), added Base UI support, and have a Sanity CMS page builder boilerplate with 70+ blocks. Pro costs $149 one-time.
+- **Kata** is closer than initially assumed. They already offer namespaced CLI access (`npx shadcn@beta add @registry/hero125`), ship 50+ new blocks per month (1350+ blocks, 1189 components), added Base UI support, and have a Sanity CMS page builder boilerplate with 70+ blocks. Pro costs $149 one-time.
 - **Official shadcn MCP server** provides cross-registry agent discovery with zero config. Any `@kata-shadcn` component is already discoverable through this channel.
 - **Official shadcn-ui/registry-template** exists on GitHub (288 stars, last updated April 2025) but is minimal: no auth, no agent index, no browser UI, no compatibility proxying.
 - **AI generation tools** (v0, Cursor, Bolt, Lovable) are commoditizing individual component generation. v0 supports design system registries and can compose from custom registries.
@@ -72,7 +72,7 @@ Each proposal below is evaluated on both standalone value and switching cost con
 
 **Positioning:** "We pre-computed the analysis so your agent doesn't have to read 2555 .tsx files." Efficiency claim, not moat claim. The enrichment pipeline is commodity (AST extraction + LLM pass + embeddings). The advantage is having done it first, not that it is hard to replicate.
 
-**Defensibility window:** 6-12 months. shadcnblocks.com can build the same enrichment with superior context (they have design intent documentation). They are currently focused on being a component vendor, not a registry intelligence provider. The window closes when they realize agent-discoverable metadata drives sales.
+**Defensibility window:** 6-12 months. Kata can build the same enrichment with superior context (they have design intent documentation). They are currently focused on being a component vendor, not a registry intelligence provider. The window closes when they realize agent-discoverable metadata drives sales.
 
 **Risk:** LLM reasoning about raw code improves over time, reducing the value of pre-extracted metadata. Mitigated by: the decision point (which component to install) occurs before the agent has the source code. Index-level metadata retains value even as code-level reasoning improves.
 
@@ -106,7 +106,7 @@ Each proposal below is evaluated on both standalone value and switching cost con
 
 **What:** Curate page recipes: groups of 3-8 components forming complete pages with layout scaffolding. Ship as installable bundles (`npx shadcn add @kata-shadcn/recipe-saas-landing`). Position as "starter layouts" rather than "authoritative page compositions."
 
-**Why:** The market gap at the page level is real. shadcn/ui provides primitives. shadcnblocks provides blocks. Neither provides page-level composition guidance with tested, balanced arrangements. The registry has the raw material: 268 feature blocks, 173 hero blocks, 37 pricing, 26 CTA, 26 footer.
+**Why:** The market gap at the page level is real. shadcn/ui provides primitives. the component vendor provides blocks. Neither provides page-level composition guidance with tested, balanced arrangements. The registry has the raw material: 268 feature blocks, 173 hero blocks, 37 pricing, 26 CTA, 26 footer.
 
 **Switching cost contribution:** Recipe patterns embed in team practice. Teams that scaffold pages using recipes build institutional knowledge around those compositions. Switching means relearning which components work well together.
 
@@ -116,7 +116,7 @@ Each proposal below is evaluated on both standalone value and switching cost con
 
 **Key distinction:** v0 composes dynamically (different result each time). Recipes are deterministic (tested, stable, guaranteed to look good). For teams valuing consistency across projects (agencies building similar sites for multiple clients), deterministic recipes have value that probabilistic generation does not.
 
-**Risk:** AI page composition tools improve quarterly. The window where curated recipes outperform generated pages narrows. shadcnblocks.com's Sanity CMS boilerplate (70+ blocks) shows they are already moving toward page-level products, with superior design knowledge.
+**Risk:** AI page composition tools improve quarterly. The window where curated recipes outperform generated pages narrows. Kata's Sanity CMS boilerplate (70+ blocks) shows they are already moving toward page-level products, with superior design knowledge.
 
 **Debate resolution:** Explorer proposed this as an external positioning play. Challenger reframed as "internal tool first." Explorer accepted after acknowledging the v0 litmus test. Both agreed: build internally, validate against AI alternatives, promote externally only if quality gap is demonstrable.
 
@@ -128,7 +128,7 @@ Each proposal below is evaluated on both standalone value and switching cost con
 
 **Scope:** Aligns with milestone 3 (Visual Catalog). Playwright harness, GitHub Actions CI, `/r/{name}/preview.png` serving, browser UI thumbnails.
 
-**Positioning:** QA tool and browser UI enhancement. Not a positioning play. shadcnblocks.com already has live previews on their marketing site and could expose them via API at any time.
+**Positioning:** QA tool and browser UI enhancement. Not a positioning play. Kata already has live previews on their marketing site and could expose them via API at any time.
 
 **Switching cost contribution:** Minimal as a standalone feature. Contributes to overall discovery quality, which contributes to workflow lock-in.
 
@@ -166,9 +166,9 @@ Each proposal below is evaluated on both standalone value and switching cost con
 
 ## Key Insights from Debate
 
-1. **Every feature buys time, not permanence.** shadcnblocks.com can replicate any enrichment layer the registry builds, and they have superior context (design intent, visual mockups, source designs). The strategy is to use feature-driven head starts to accumulate switching costs before each gap closes.
+1. **Every feature buys time, not permanence.** Kata can replicate any enrichment layer the registry builds, and they have superior context (design intent, visual mockups, source designs). The strategy is to use feature-driven head starts to accumulate switching costs before each gap closes.
 
-2. **The enrichment advantage window is 6-12 months.** shadcnblocks.com is currently focused on being a component vendor (selling Pro licenses, shipping new blocks). They are not focused on making their components maximally agent-discoverable. This gap is real but temporary.
+2. **The enrichment advantage window is 6-12 months.** Kata is currently focused on being a component vendor (selling Pro licenses, shipping new blocks). They are not focused on making their components maximally agent-discoverable. This gap is real but temporary.
 
 3. **Position as convenience, not moat.** "We pre-computed the analysis" is defensible. "We understand components better than anyone" is not. The enrichment pipeline is commodity; having done it first is the advantage.
 
@@ -197,4 +197,4 @@ Day 1        Cursor rules file (Proposal 6, trivial)
 
 The registry's defensible asset is the licensed 2555-component library. The strategy is to make those components maximally discoverable and consumable through enriched metadata, curated composition patterns, and compatibility with the existing shadcn toolchain. The infrastructure is commodity; the knowledge layer is the value. Speed-to-market on the knowledge layer buys a 6-12 month window to accumulate switching costs (configuration, import paths, workflows, institutional knowledge) before the upstream vendor closes the enrichment gap.
 
-The honest framing: this is not a product that competes with shadcnblocks.com. It is a value-added distribution layer on top of shadcnblocks.com's components. The competitive positioning is not "better components" but "better discovery, better composition guidance, better agent integration, and accumulated switching costs that make the registry the path of least resistance."
+The honest framing: this is not a product that competes with Kata. It is a value-added distribution layer on top of Kata's components. The competitive positioning is not "better components" but "better discovery, better composition guidance, better agent integration, and accumulated switching costs that make the registry the path of least resistance."

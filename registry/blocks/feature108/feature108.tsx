@@ -31,7 +31,7 @@ interface Feature108Props {
 }
 
 const Feature108 = ({
-  badge = "shadcnblocks.com",
+  badge = "Kata",
   heading = "A Collection of Components Built With Shadcn & Tailwind",
   description = "Join us to build flawless web solutions.",
   tabs = [

@@ -30,7 +30,7 @@ const DATA: DataItem[] = [
     title: "Discover the essential features of our notes app",
     summary:
       "Advanced AI algorithms that understand and process human language, enabling seamless communication between users and machines through text and speech.",
-    href: "https://www.shadcnblocks.com",
+    href: "#",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
     date: "July 10, 2024",
     tag: "AI",
@@ -40,7 +40,7 @@ const DATA: DataItem[] = [
     title: "Computer Vision Technology, a game changer",
     summary:
       "Powerful image recognition and processing capabilities that allow AI systems to analyze, understand, and interpret visual information from the world.",
-    href: "https://www.shadcnblocks.com",
+    href: "#",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg",
     date: "July 11, 2024",
     tag: "Development",
@@ -50,7 +50,7 @@ const DATA: DataItem[] = [
     title: "Machine Learning Automation, the future is now",
     summary:
       "Self-improving algorithms that learn from data patterns to automate complex tasks and make intelligent decisions with minimal human intervention.",
-    href: "https://www.shadcnblocks.com",
+    href: "#",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg",
     date: "July 12, 2024",
     tag: "Open Source",
@@ -60,7 +60,7 @@ const DATA: DataItem[] = [
     title: "Predictive Analytics, the key to success",
     summary:
       "Advanced forecasting capabilities that analyze historical data to predict future trends and outcomes, helping businesses make data-driven decisions.",
-    href: "https://www.shadcnblocks.com",
+    href: "#",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg",
     date: "July 13, 2024",
     tag: "Feature",
@@ -70,7 +70,7 @@ const DATA: DataItem[] = [
     title: "Neural Network Architecture, the future is now",
     summary:
       "Sophisticated AI models inspired by human brain structure, capable of solving complex problems through deep learning and pattern recognition.",
-    href: "https://www.shadcnblocks.com",
+    href: "#",
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-5.svg",
     date: "July 14, 2024",
     tag: "Guide",

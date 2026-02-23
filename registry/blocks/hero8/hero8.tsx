@@ -16,7 +16,7 @@ const Hero8 = ({ className }: Hero8Props) => {
           <div className="mx-auto flex max-w-5xl flex-col items-center">
             <div className="z-10 items-center text-center">
               <h1 className="mb-8 text-4xl font-semibold text-pretty lg:text-7xl">
-                Build faster with Shadcnblocks
+                Build faster with Kata
               </h1>
               <p className="mx-auto max-w-3xl text-muted-foreground lg:text-xl">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig
@@ -36,7 +36,7 @@ const Hero8 = ({ className }: Hero8Props) => {
             </div>
           </div>
           <img
-            src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
+            src="https://deifkwefumgah.cloudfront.net/Kata/block/placeholder-1.svg"
             alt="placeholder"
             className="mx-auto mt-24 max-h-[700px] w-full max-w-7xl rounded-t-lg object-cover shadow-lg"
           />

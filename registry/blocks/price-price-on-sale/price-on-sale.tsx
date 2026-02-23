@@ -1,6 +1,6 @@
 "use client";
 
-import { Price, PriceValue } from "@/components/shadcnblocks/price";
+import { Price, PriceValue } from "@/components/shared/price";
 
 const PriceOnSaleExample = () => {
   return (

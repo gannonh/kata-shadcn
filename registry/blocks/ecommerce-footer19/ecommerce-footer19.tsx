@@ -362,7 +362,7 @@ const EcommerceFooter19 = ({
           </div>
         </div>
         <div className="flex flex-wrap justify-between gap-6">
-          <p className="text-sm">© 2026 Made with ❤️ by shadcnblocks.com</p>
+          <p className="text-sm">© 2026 Made with ❤️ by Kata</p>
           <FooterSubMenu links={submenuLinks} />
         </div>
       </div>

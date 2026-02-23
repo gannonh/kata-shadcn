@@ -22,7 +22,7 @@ const Stats8 = ({
   description = "Ensuring stability and scalability for all users",
   link = {
     text: "Read the full impact report",
-    url: "https://www.shadcnblocks.com",
+    url: "#",
   },
   stats = [
     {
