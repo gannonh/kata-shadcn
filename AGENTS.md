@@ -16,12 +16,13 @@ pnpm start                # production server
 pnpm lint                 # ESLint (next/core-web-vitals + TypeScript)
 pnpm registry:build       # Regenerate public/r/ and lib/component-index.json from registry/ sources
 pnpm test                 # Unit tests (Node test runner): build-registry output / install commands
+pnpm test:coverage        # Same plus c8 coverage report; enforces lines ≥80%, functions ≥80%, branches ≥70%
 pnpm test:e2e             # E2E tests (Playwright): browser UI component cards
 ```
 
-**Tests:** Unit test in `scripts/build-registry.test.mjs` (Node `--test`) asserts `lib/component-index.json` is non-empty, every `installCommand` uses `@kata-shadcn` scope, and no entry contains the legacy `@ourorg` scope. E2E in `tests/e2e/` (Playwright) assert the browser UI shows correct install commands.
+**Tests:** Unit test in `scripts/build-registry.test.mjs` (Node `--test`) asserts `lib/component-index.json` is non-empty, every `installCommand` uses `@kata-shadcn` scope, and no entry contains the legacy `@ourorg` scope. E2E in `tests/e2e/` (Playwright) assert the browser UI shows correct install commands. **Coverage:** `pnpm test:coverage` runs unit tests with c8; coverage targets (package.json `c8`) are lines ≥80%, functions ≥80%, branches ≥70% for `scripts/build-registry.ts`.
 
-**CI:** Two jobs: `lint-build-test` (lint, unit tests, Next build) and `e2e` (depends on `lint-build-test`; runs `pnpm build` then Playwright Chromium E2E tests against the production server). Dependabot (`.github/dependabot.yml`) opens weekly PRs for npm and GitHub Actions updates.
+**CI:** Two jobs: `lint-build-test` (lint, unit tests, coverage, Next build) and `e2e` (depends on `lint-build-test`; runs `pnpm build` then Playwright Chromium E2E tests against the production server). Dependabot (`.github/dependabot.yml`) opens weekly PRs for npm and GitHub Actions updates.
 
 ## Architecture
 

@@ -13,6 +13,10 @@ const MAX_COMPACT_INDEX_BYTES = 300 * 1024 // 300KB; at ~2555 entries with full 
 
 describe("build-registry", () => {
   before(() => {
+    if (process.env.COVERAGE_RUN) {
+      // Build already ran under c8; skip duplicate exec to keep coverage for build-registry.ts only
+      return
+    }
     try {
       execSync("pnpm registry:build", { encoding: "utf-8", cwd: root, stdio: "pipe" })
     } catch (err) {
