@@ -22,14 +22,30 @@ const templateItems = existing.items.filter((item: { name: string }) => template
 
 const newItems: Array<Record<string, unknown>> = []
 
+if (!fs.existsSync(PUBLIC_R)) {
+  console.error(`Error: ${PUBLIC_R} does not exist. Run 'pnpm registry:build' first.`)
+  process.exit(1)
+}
+
 const files = fs.readdirSync(PUBLIC_R).filter(
   (f) => f.endsWith(".json") && !SKIP.has(f)
 )
 
 for (const file of files) {
-  const raw = fs.readFileSync(path.join(PUBLIC_R, file), "utf8")
-  const item = JSON.parse(raw)
-  const name = item.name as string
+  let item: Record<string, unknown>
+  try {
+    const raw = fs.readFileSync(path.join(PUBLIC_R, file), "utf8")
+    item = JSON.parse(raw)
+  } catch (err) {
+    console.warn(`  Skipping ${file}: failed to read or parse (${(err as Error).message})`)
+    continue
+  }
+
+  if (!item.name || typeof item.name !== "string") {
+    console.warn(`  Skipping ${file}: missing or invalid name field`)
+    continue
+  }
+  const name = item.name
 
   const registryFiles = (item.files ?? []).map((entry: { path: string; type: string }) => {
     const type: string = entry.type
