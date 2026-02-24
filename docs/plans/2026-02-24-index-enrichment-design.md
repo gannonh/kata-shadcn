@@ -98,4 +98,4 @@
 
 ## Implementation plan
 
-See implementation plan (to be created via writing-plans skill).
+See `docs/plans/2026-02-24-index-enrichment.md` for the step-by-step implementation plan.
