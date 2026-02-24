@@ -43,7 +43,8 @@ pnpm test:e2e             # E2E tests (Playwright): browser UI component cards
 - `app/`: Next.js App Router UI and compatibility routes under `app/r/*` and `app/styles/*`.
 - `components/`: shared UI components used by the browser interface.
 - `registry/blocks/` and `registry/components/`: source-of-truth component files for registry items.
-- `scripts/build-registry.ts`: generates registry payloads in `public/r/` and search data in `lib/component-index.json`.
+- `scripts/build-registry.ts`: generates registry payloads in `public/r/` (per-component JSON, `index.json`, `index-compact.json`) and browser UI search data in `lib/component-index.json`.
+- `scripts/generate-manifest.ts`: regenerates `registry.json` from built `public/r/` output; run after `registry:build` to sync the manifest.
 - `docs/`: plans and references. `public/`: static assets and generated registry JSON output.
 
 ## Tech stack
@@ -79,7 +80,7 @@ Consumers install with: `npx shadcn add @kata-shadcn/{name}` (requires `componen
 - Unit: `scripts/build-registry.test.mjs` (Node `--test`) checks registry build output uses `@kata-shadcn` scope.
 - E2E: `tests/e2e/` (Playwright) checks the browser UI shows correct install commands on component cards.
 - Before opening a PR, run `pnpm lint`, `pnpm test`, `pnpm build`, and optionally `pnpm test:e2e`.
-- For registry or auth changes, manually verify endpoints, e.g. `curl -H "x-registry-token: $REGISTRY_TOKEN" http://localhost:3000/r/index.json`.
+- For registry or auth changes, manually verify endpoints, e.g. `curl -H "x-registry-token: $REGISTRY_TOKEN" http://localhost:3000/r/index.json`. Also verify `curl http://localhost:3000/r/index-compact.json` returns a minified JSON object with `total` and `items` keys.
 - Include clear reproduction and verification steps in PR descriptions.
 
 ## Commit & pull request guidelines
