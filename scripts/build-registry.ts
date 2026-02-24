@@ -72,11 +72,12 @@ function deriveTags(
     .filter((w) => w.length >= 2 && !STOPWORDS.has(w))
   const seen = new Set<string>(fromName)
   const fromDesc: string[] = []
+  const descCap = 8 - fromName.length
   for (const w of words) {
     if (seen.has(w)) continue
     seen.add(w)
     fromDesc.push(w)
-    if (fromDesc.length >= 8) break
+    if (fromDesc.length >= descCap) break
   }
   return [...fromName, ...fromDesc]
 }
@@ -273,7 +274,7 @@ function main(options: BuildRegistryOptions = {}): void {
     let maxDate: string | undefined
     for (const p of sourcePaths) {
       const d = lastModifiedMap.get(p)
-      if (d && (!maxDate || d > maxDate)) maxDate = d
+      if (d && (!maxDate || new Date(d).getTime() > new Date(maxDate).getTime())) maxDate = d
     }
     index.push({
       name: item.name,
@@ -328,10 +329,11 @@ function main(options: BuildRegistryOptions = {}): void {
     const selfIndex = list.findIndex((e) => e.name === entry.name)
     const peers: string[] = []
     const n = list.length
-    for (let k = 1; k <= 5; k++) {
+    const peerLimit = Math.min(5, n - 1)
+    for (let k = 1; peers.length < peerLimit; k++) {
       const idx = (selfIndex + k) % n
-      if (list[idx].name !== entry.name) peers.push(list[idx].name)
-      if (peers.length >= 5) break
+      const name = list[idx].name
+      if (name !== entry.name && !peers.includes(name)) peers.push(name)
     }
     entry.peerComponents = peers
   }

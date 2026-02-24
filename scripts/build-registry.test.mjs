@@ -215,6 +215,11 @@ describe("build-registry", () => {
     }
     assert.ok(Array.isArray(entry.peerComponents), "entry must have peerComponents array")
     assert.ok(entry.peerComponents.length <= 5, "peerComponents at most 5")
+    assert.strictEqual(
+      new Set(entry.peerComponents).size,
+      entry.peerComponents.length,
+      "peerComponents must not contain duplicates"
+    )
     // Same for public/r/index.json items
     const agentIndexPath = path.join(root, "public", "r", "index.json")
     const agent = JSON.parse(fs.readFileSync(agentIndexPath, "utf-8"))
