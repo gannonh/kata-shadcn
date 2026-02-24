@@ -44,6 +44,29 @@ describe("build-registry", () => {
     }
   })
 
+  it("produces 20–35 categories with no category over 15%", () => {
+    assert.ok(fs.existsSync(componentIndexPath))
+    const index = JSON.parse(fs.readFileSync(componentIndexPath, "utf-8"))
+    const total = index.length
+    assert.ok(total > 0, "component-index must be non-empty")
+    const byCategory = {}
+    for (const entry of index) {
+      byCategory[entry.category] = (byCategory[entry.category] || 0) + 1
+    }
+    const distinctCount = Object.keys(byCategory).length
+    assert.ok(
+      distinctCount >= 20 && distinctCount <= 35,
+      `distinct categories must be 20–35; got ${distinctCount}`
+    )
+    const cap = Math.ceil(total * 0.15)
+    for (const [cat, count] of Object.entries(byCategory)) {
+      assert.ok(
+        count <= cap,
+        `category "${cat}" has ${count} components (max ${cap} = 15% of ${total})`
+      )
+    }
+  })
+
   it("writes index-compact.json with name, category, url only and size under limit", () => {
     assert.ok(fs.existsSync(compactIndexPath), "index-compact.json missing after registry:build")
     const raw = fs.readFileSync(compactIndexPath, "utf-8")
@@ -81,12 +104,6 @@ describe("build-registry", () => {
         item.url,
         `/r/${item.name}.json`,
         `compact item url must be /r/<name>.json; got ${item.url}`
-      )
-      const expectedCategory = item.name.replace(/\d.*$/, "").replace(/-+$/, "")
-      assert.strictEqual(
-        item.category,
-        expectedCategory,
-        `item ${item.name}: category "${item.category}" must match derived value "${expectedCategory}"`
       )
     }
 
