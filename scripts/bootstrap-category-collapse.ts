@@ -21,8 +21,16 @@ if (!fs.existsSync(REGISTRY_JSON)) {
   process.exit(1)
 }
 
-const manifest = JSON.parse(fs.readFileSync(REGISTRY_JSON, "utf8")) as {
-  items: Array<{ name: string }>
+let manifest: { items: Array<{ name: string }> }
+try {
+  manifest = JSON.parse(fs.readFileSync(REGISTRY_JSON, "utf8")) as {
+    items: Array<{ name: string }>
+  }
+} catch (err) {
+  console.error(
+    `Error: ${REGISTRY_JSON} is invalid JSON: ${(err as Error).message}`
+  )
+  process.exit(1)
 }
 const bySegment: Record<string, number> = {}
 for (const item of manifest.items) {

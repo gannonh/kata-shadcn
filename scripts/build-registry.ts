@@ -13,7 +13,10 @@ fs.mkdirSync(LIB, { recursive: true })
 
 import { createRequire } from "module"
 const require = createRequire(import.meta.url)
-const { deriveSegment, loadCollapseMap } = require("./category-collapse-loader.cjs")
+const { deriveSegment, loadCollapseMap } = require("./category-collapse-loader.cjs") as {
+  deriveSegment: (name: string) => string
+  loadCollapseMap: (filePath: string) => Record<string, string>
+}
 let collapseMap: Record<string, string>
 try {
   collapseMap = loadCollapseMap(CATEGORY_COLLAPSE_PATH)
