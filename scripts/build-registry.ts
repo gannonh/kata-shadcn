@@ -53,6 +53,33 @@ const LIB = path.join(process.cwd(), "lib")
 const CATEGORY_COLLAPSE_PATH = path.join(process.cwd(), "lib", "category-collapse.json")
 const REGISTRY_SCOPE = "@kata-shadcn"
 
+const STOPWORDS = new Set([
+  "a", "an", "the", "and", "or", "with", "for", "to", "in", "on", "of",
+  "section", "component", "block",
+])
+
+function deriveTags(
+  name: string,
+  description: string,
+  deriveSegment: (n: string) => string
+): string[] {
+  const seg = deriveSegment(name)
+  const fromName = seg ? [seg] : []
+  const words = (description ?? "")
+    .toLowerCase()
+    .split(/\W+/)
+    .filter((w) => w.length >= 2 && !STOPWORDS.has(w))
+  const seen = new Set<string>(fromName)
+  const fromDesc: string[] = []
+  for (const w of words) {
+    if (seen.has(w)) continue
+    seen.add(w)
+    fromDesc.push(w)
+    if (fromDesc.length >= 8) break
+  }
+  return [...fromName, ...fromDesc]
+}
+
 function exit(code: number): never {
   if (process.env.THROW_ON_EXIT) {
     throw new Error(`Exit ${code}`)
@@ -217,7 +244,7 @@ function main(options: BuildRegistryOptions = {}): void {
       description: item.description ?? "",
       category,
       installCommand: `npx shadcn add ${REGISTRY_SCOPE}/${item.name}`,
-      tags: [],
+      tags: deriveTags(item.name, item.description ?? "", deriveSegment),
       complexity: {
         files: builtFiles.length,
         lines: lineCount,

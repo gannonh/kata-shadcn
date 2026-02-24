@@ -185,6 +185,10 @@ describe("build-registry", () => {
     const entry = index[0]
     assert.ok(Array.isArray(entry.tags), "entry must have tags array")
     assert.ok(
+      index.some((e) => e.tags.length >= 1),
+      "at least one entry should have derived tags"
+    )
+    assert.ok(
       entry.complexity && typeof entry.complexity.files === "number" && typeof entry.complexity.lines === "number" && typeof entry.complexity.dependencies === "number",
       "entry must have complexity.files, .lines, .dependencies"
     )
