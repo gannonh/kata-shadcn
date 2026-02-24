@@ -5,10 +5,39 @@ import * as path from "path"
 const REGISTRY_JSON = path.join(process.cwd(), "registry.json")
 const PUBLIC_R = path.join(process.cwd(), "public/r")
 const LIB = path.join(process.cwd(), "lib")
+const CATEGORY_COLLAPSE_PATH = path.join(process.cwd(), "lib", "category-collapse.json")
 const REGISTRY_SCOPE = "@kata-shadcn"
 
 fs.mkdirSync(PUBLIC_R, { recursive: true })
 fs.mkdirSync(LIB, { recursive: true })
+
+function deriveSegment(name: string): string {
+  const beforeHyphen = name.split("-")[0] ?? name
+  return beforeHyphen.replace(/\d+$/, "").replace(/-+$/, "") || beforeHyphen
+}
+
+if (!fs.existsSync(CATEGORY_COLLAPSE_PATH)) {
+  console.error(`Error: ${CATEGORY_COLLAPSE_PATH} not found. Run scripts/bootstrap-category-collapse.ts or add the file.`)
+  process.exit(1)
+}
+let collapseMap: Record<string, string>
+try {
+  const raw = JSON.parse(fs.readFileSync(CATEGORY_COLLAPSE_PATH, "utf8"))
+  if (typeof raw !== "object" || raw === null || Array.isArray(raw)) {
+    console.error(`Error: ${CATEGORY_COLLAPSE_PATH} must be a JSON object.`)
+    process.exit(1)
+  }
+  for (const [k, v] of Object.entries(raw)) {
+    if (typeof v !== "string") {
+      console.error(`Error: ${CATEGORY_COLLAPSE_PATH} values must be strings; key "${k}" has ${typeof v}.`)
+      process.exit(1)
+    }
+  }
+  collapseMap = raw as Record<string, string>
+} catch (err) {
+  console.error(`Error: ${CATEGORY_COLLAPSE_PATH} invalid: ${(err as NodeJS.ErrnoException).message}`)
+  process.exit(1)
+}
 
 const manifest = JSON.parse(fs.readFileSync(REGISTRY_JSON, "utf8"))
 const templateNames = new Set(["hello-world", "example-form", "complex-component", "example-with-css"])
@@ -81,7 +110,11 @@ for (const item of manifest.items) {
     "utf8"
   )
 
-  const category = item.name.replace(/\d.*$/, "").replace(/-+$/, "")
+  const rawCategory =
+    typeof item.category === "string" && item.category
+      ? item.category
+      : (collapseMap[deriveSegment(item.name)] ?? deriveSegment(item.name))
+  const category = rawCategory
 
   index.push({
     name: item.name,
