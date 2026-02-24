@@ -114,13 +114,12 @@ for (const item of manifest.items) {
 }
 
 const totalForCap = index.length
-const capCount = Math.ceil(totalForCap * 0.15)
 const byCategory: Record<string, number> = {}
 for (const entry of index) {
   byCategory[entry.category] = (byCategory[entry.category] ?? 0) + 1
 }
 for (const [cat, count] of Object.entries(byCategory)) {
-  if (count > capCount) {
+  if (totalForCap > 0 && count / totalForCap > 0.15) {
     const pct = ((100 * count) / totalForCap).toFixed(1)
     console.warn(
       `Category "${cat}" has ${count} components (${pct}%); max 15% allowed.`
