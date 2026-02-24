@@ -10,7 +10,7 @@
 
 ---
 
-### Task 1: Failing tests for category count and 15% cap
+## Task 1: Failing tests for category count and 15% cap
 
 **Files:**
 - Modify: `scripts/build-registry.test.mjs` (build-registry describe block)
@@ -67,7 +67,7 @@ git commit -m "test: assert category count 20–35 and 15% cap (KAT-75)"
 
 ---
 
-### Task 2: Add derivation and collapse map load in build script
+## Task 2: Add derivation and collapse map load in build script
 
 **Files:**
 - Modify: `scripts/build-registry.ts` (top: add path, load collapse map; loop: resolve category)
@@ -132,7 +132,7 @@ git commit -m "feat: derive category from segment + collapse map; stub collapse 
 
 ---
 
-### Task 3: Add 15% build-time warning
+## Task 3: Add 15% build-time warning
 
 **Files:**
 - Modify: `scripts/build-registry.ts` (after building index array, before writing files)
@@ -154,7 +154,7 @@ git commit -m "feat: warn when any category exceeds 15% (KAT-75)"
 
 ---
 
-### Task 4: Bootstrap script to generate suggested collapse map
+## Task 4: Bootstrap script to generate suggested collapse map
 
 **Files:**
 - Create: `scripts/bootstrap-category-collapse.ts` (or `.mjs` if preferred)
@@ -181,7 +181,7 @@ git commit -m "chore: add bootstrap script for category collapse map (KAT-75)"
 
 ---
 
-### Task 5: Produce final collapse file (20–35 categories, no >15%)
+## Task 5: Produce final collapse file (20–35 categories, no >15%)
 
 **Files:**
 - Modify: `lib/category-collapse.json` (hand-edit after bootstrap)
@@ -205,7 +205,7 @@ git commit -m "feat: add category collapse map (20–35 groups, under 15% cap) (
 
 ---
 
-### Task 6: Update compact-index test and remove legacy category assertion
+## Task 6: Update compact-index test and remove legacy category assertion
 
 **Files:**
 - Modify: `scripts/build-registry.test.mjs`
@@ -229,7 +229,7 @@ git commit -m "test: drop legacy per-item category derivation assertion (KAT-75)
 
 ---
 
-### Task 7: Link design doc to plan
+## Task 7: Link design doc to plan
 
 **Files:**
 - Modify: `docs/plans/2026-02-23-category-collapse-design.md` (bottom line)
