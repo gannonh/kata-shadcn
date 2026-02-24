@@ -1,4 +1,5 @@
 // scripts/build-registry.ts
+import crypto from "crypto"
 import * as fs from "fs"
 import * as path from "path"
 import { pathToFileURL } from "url"
@@ -123,6 +124,18 @@ function main(options: BuildRegistryOptions = {}): void {
     return registryPath
   }
 
+  function canonicalString(val: unknown): string {
+    if (val === null || typeof val !== "object") return JSON.stringify(val)
+    if (Array.isArray(val)) return "[" + val.map(canonicalString).join(",") + "]"
+    const obj = val as Record<string, unknown>
+    const keys = Object.keys(obj).sort()
+    const parts = keys.map((k) => JSON.stringify(k) + ":" + canonicalString(obj[k]))
+    return "{" + parts.join(",") + "}"
+  }
+  function contentHash(registryItem: Record<string, unknown>): string {
+    return crypto.createHash("sha256").update(canonicalString(registryItem), "utf8").digest("hex")
+  }
+
   const index: ComponentIndexEntry[] = []
   let built = 0
   let skipped = 0
@@ -179,6 +192,8 @@ function main(options: BuildRegistryOptions = {}): void {
     if (item.dependencies?.length) registryItem.dependencies = item.dependencies
     if (item.registryDependencies?.length) registryItem.registryDependencies = item.registryDependencies
 
+    const hash = contentHash(registryItem)
+
     const componentJsonPath = path.join(PUBLIC_R, `${item.name}.json`)
     try {
       fs.writeFileSync(
@@ -208,7 +223,7 @@ function main(options: BuildRegistryOptions = {}): void {
         lines: lineCount,
         dependencies: (item.dependencies?.length ?? 0) + (item.registryDependencies?.length ?? 0),
       },
-      contentHash: "0".repeat(64),
+      contentHash: hash,
       peerComponents: [],
     })
 

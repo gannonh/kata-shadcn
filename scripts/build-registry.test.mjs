@@ -167,6 +167,17 @@ describe("build-registry", () => {
     }
   })
 
+  it("produces deterministic contentHash across two builds", () => {
+    execSync("pnpm registry:build", { cwd: root, stdio: "pipe" })
+    const index1 = JSON.parse(fs.readFileSync(componentIndexPath, "utf-8"))
+    execSync("pnpm registry:build", { cwd: root, stdio: "pipe" })
+    const index2 = JSON.parse(fs.readFileSync(componentIndexPath, "utf-8"))
+    assert.strictEqual(index1.length, index2.length)
+    for (let i = 0; i < index1.length; i++) {
+      assert.strictEqual(index1[i].contentHash, index2[i].contentHash, `entry ${index1[i].name} hash must match`)
+    }
+  })
+
   it("enriches component-index and index.json with tags, complexity, contentHash, lastModified, peerComponents", () => {
     assert.ok(fs.existsSync(componentIndexPath))
     const index = JSON.parse(fs.readFileSync(componentIndexPath, "utf-8"))
