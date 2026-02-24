@@ -1,6 +1,7 @@
 /**
  * Category collapse map loader and segment derivation.
- * Used by build-registry.ts; tested in build-registry.test.mjs for coverage.
+ * ESM entrypoint used by build-registry.test.mjs for tests and coverage.
+ * build-registry.ts uses the CJS entrypoint (category-collapse-loader.cjs).
  */
 import fs from "node:fs"
 
@@ -24,7 +25,7 @@ export function loadCollapseMap(filePath) {
   try {
     raw = JSON.parse(fs.readFileSync(filePath, "utf8"))
   } catch (err) {
-    throw new Error(`${filePath} invalid: ${err.message}`)
+    throw new Error(`${filePath} invalid: ${err instanceof Error ? err.message : String(err)}`)
   }
   if (typeof raw !== "object" || raw === null || Array.isArray(raw)) {
     throw new Error(`${filePath} must be a JSON object.`)

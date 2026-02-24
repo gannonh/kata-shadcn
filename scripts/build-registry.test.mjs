@@ -14,7 +14,30 @@ const categoryCollapsePath = path.join(root, "lib", "category-collapse.json")
 // 300KB cap; design target is ~80–100KB — test allows headroom for growth
 const MAX_COMPACT_INDEX_BYTES = 300 * 1024
 
-import { loadCollapseMap } from "./category-collapse-loader.mjs"
+import { deriveSegment, loadCollapseMap } from "./category-collapse-loader.mjs"
+
+describe("deriveSegment", () => {
+  it("takes first segment before hyphen", () => {
+    assert.strictEqual(deriveSegment("foo-bar-baz"), "foo")
+    assert.strictEqual(deriveSegment("hero1"), "hero")
+  })
+  it("strips trailing digits from segment", () => {
+    assert.strictEqual(deriveSegment("hero1"), "hero")
+    assert.strictEqual(deriveSegment("card42"), "card")
+    assert.strictEqual(deriveSegment("feature-1"), "feature")
+  })
+  it("strips trailing hyphens from segment", () => {
+    assert.strictEqual(deriveSegment("foo---"), "foo")
+  })
+  it("returns name when no hyphen", () => {
+    assert.strictEqual(deriveSegment("about"), "about")
+    assert.strictEqual(deriveSegment("single"), "single")
+  })
+  it("handles empty string and single segment", () => {
+    assert.strictEqual(deriveSegment(""), "")
+    assert.strictEqual(deriveSegment("only"), "only")
+  })
+})
 
 describe("category-collapse-loader (in-process coverage)", () => {
   it("loadCollapseMap throws when file is missing", () => {
@@ -29,6 +52,26 @@ describe("category-collapse-loader (in-process coverage)", () => {
     try {
       fs.writeFileSync(badPath, "[]", "utf-8")
       assert.throws(() => loadCollapseMap(badPath), /must be a JSON object/)
+    } finally {
+      if (fs.existsSync(badPath)) fs.unlinkSync(badPath)
+    }
+  })
+
+  it("loadCollapseMap throws when file is invalid JSON", () => {
+    const badPath = path.join(root, "lib", "category-collapse-bad.json")
+    try {
+      fs.writeFileSync(badPath, "{", "utf-8")
+      assert.throws(() => loadCollapseMap(badPath), /invalid/)
+    } finally {
+      if (fs.existsSync(badPath)) fs.unlinkSync(badPath)
+    }
+  })
+
+  it("loadCollapseMap throws when object value is not a string", () => {
+    const badPath = path.join(root, "lib", "category-collapse-bad.json")
+    try {
+      fs.writeFileSync(badPath, '{"hero": 123}', "utf-8")
+      assert.throws(() => loadCollapseMap(badPath), /values must be strings/)
     } finally {
       if (fs.existsSync(badPath)) fs.unlinkSync(badPath)
     }
@@ -70,9 +113,10 @@ describe("build-registry category collapse file", () => {
 })
 
 describe("build-registry", () => {
-  before(() => {
+  before(async () => {
     if (process.env.COVERAGE_RUN) {
-      // Build already ran under c8; skip duplicate exec to keep coverage for build-registry.ts only
+      const { main } = await import("./build-registry.ts")
+      main()
       return
     }
     try {
@@ -120,6 +164,88 @@ describe("build-registry", () => {
         count <= cap,
         `category "${cat}" has ${count} components (max ${cap} = 15% of ${total})`
       )
+    }
+  })
+
+  it("fails with clear message when registry.json is missing (coverage)", async () => {
+    if (!process.env.COVERAGE_RUN) return
+    const { main } = await import("./build-registry.ts")
+    const missingPath = path.join(root, "nonexistent-registry.json")
+    const orig = process.env.THROW_ON_EXIT
+    process.env.THROW_ON_EXIT = "1"
+    try {
+      main({ registryJsonPath: missingPath })
+      assert.fail("main should throw when registry is missing")
+    } catch (err) {
+      assert.ok(err.message.includes("Exit 1"), `expected Exit 1, got: ${err.message}`)
+    } finally {
+      if (orig !== undefined) process.env.THROW_ON_EXIT = orig
+      else delete process.env.THROW_ON_EXIT
+    }
+  })
+
+  it("fails with clear message when registry.json is invalid JSON (coverage)", async () => {
+    if (!process.env.COVERAGE_RUN) return
+    const badPath = path.join(root, "lib", "registry-invalid-test.json")
+    try {
+      fs.writeFileSync(badPath, "{", "utf-8")
+      const { main } = await import("./build-registry.ts")
+      const orig = process.env.THROW_ON_EXIT
+      process.env.THROW_ON_EXIT = "1"
+      try {
+        main({ registryJsonPath: badPath })
+        assert.fail("main should throw when registry is invalid JSON")
+      } catch (err) {
+        assert.ok(err.message.includes("Exit 1"), `expected Exit 1, got: ${err.message}`)
+      } finally {
+        if (orig !== undefined) process.env.THROW_ON_EXIT = orig
+        else delete process.env.THROW_ON_EXIT
+      }
+    } finally {
+      if (fs.existsSync(badPath)) fs.unlinkSync(badPath)
+    }
+  })
+
+  it("fails when registry.json has no items array (coverage)", async () => {
+    if (!process.env.COVERAGE_RUN) return
+    const badPath = path.join(root, "lib", "registry-no-items-test.json")
+    try {
+      fs.writeFileSync(badPath, '{"items": null}', "utf-8")
+      const { main } = await import("./build-registry.ts")
+      const orig = process.env.THROW_ON_EXIT
+      process.env.THROW_ON_EXIT = "1"
+      try {
+        main({ registryJsonPath: badPath })
+        assert.fail("main should throw when items is not an array")
+      } catch (err) {
+        assert.ok(err.message.includes("Exit 1"), `expected Exit 1, got: ${err.message}`)
+      } finally {
+        if (orig !== undefined) process.env.THROW_ON_EXIT = orig
+        else delete process.env.THROW_ON_EXIT
+      }
+    } finally {
+      if (fs.existsSync(badPath)) fs.unlinkSync(badPath)
+    }
+  })
+
+  it("uses explicit item.category from registry when present", () => {
+    if (process.env.COVERAGE_RUN) return
+    const regPath = path.join(root, "registry.json")
+    const backup = fs.readFileSync(regPath, "utf-8")
+    const templateNames = new Set(["hello-world", "example-form", "complex-component", "example-with-css"])
+    try {
+      const manifest = JSON.parse(backup)
+      const item = manifest.items.find((i) => !templateNames.has(i.name))
+      assert.ok(item, "registry must have at least one non-template item")
+      item.category = "ExplicitTestCategory"
+      fs.writeFileSync(regPath, JSON.stringify(manifest, null, 2) + "\n", "utf-8")
+      execSync("pnpm registry:build", { encoding: "utf-8", cwd: root, stdio: "pipe" })
+      const index = JSON.parse(fs.readFileSync(componentIndexPath, "utf-8"))
+      const entry = index.find((e) => e.name === item.name)
+      assert.ok(entry, `index should have entry for ${item.name}`)
+      assert.strictEqual(entry.category, "ExplicitTestCategory", "explicit item.category must appear in index")
+    } finally {
+      fs.writeFileSync(regPath, backup)
     }
   })
 

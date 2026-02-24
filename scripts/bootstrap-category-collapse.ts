@@ -2,15 +2,16 @@
 // Run: npx tsx scripts/bootstrap-category-collapse.ts
 import * as fs from "fs"
 import * as path from "path"
+import { createRequire } from "module"
+
+const require = createRequire(import.meta.url)
+const { deriveSegment } = require("./category-collapse-loader.cjs") as {
+  deriveSegment: (name: string) => string
+}
 
 const REGISTRY_JSON = path.join(process.cwd(), "registry.json")
 const CATEGORY_COLLAPSE_PATH = path.join(process.cwd(), "lib", "category-collapse.json")
 const templateNames = new Set(["hello-world", "example-form", "complex-component", "example-with-css"])
-
-function deriveSegment(name: string): string {
-  const beforeHyphen = name.split("-")[0] ?? name
-  return beforeHyphen.replace(/\d+$/, "").replace(/-+$/, "") || beforeHyphen
-}
 
 function titleCase(s: string): string {
   return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase()
@@ -28,8 +29,12 @@ try {
   }
 } catch (err) {
   console.error(
-    `Error: ${REGISTRY_JSON} is invalid JSON: ${(err as Error).message}`
+    `Error: ${REGISTRY_JSON} is invalid JSON: ${err instanceof Error ? err.message : String(err)}`
   )
+  process.exit(1)
+}
+if (!Array.isArray(manifest?.items)) {
+  console.error(`Error: ${REGISTRY_JSON} must have an "items" array.`)
   process.exit(1)
 }
 const bySegment: Record<string, number> = {}
@@ -63,7 +68,7 @@ try {
     "utf8"
   )
 } catch (err) {
-  console.error(`Error writing ${CATEGORY_COLLAPSE_PATH}: ${(err as NodeJS.ErrnoException).message}`)
+  console.error(`Error writing ${CATEGORY_COLLAPSE_PATH}: ${err instanceof Error ? err.message : String(err)}`)
   process.exit(1)
 }
 

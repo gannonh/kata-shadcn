@@ -1,5 +1,6 @@
 /**
- * Category collapse map loader and segment derivation (CJS for sync require from build-registry).
+ * Category collapse map loader and segment derivation.
+ * CJS so build-registry.ts (run under tsx) can synchronously require this module without ESM interop.
  * ESM version .mjs is used by tests for coverage.
  */
 /* eslint-disable @typescript-eslint/no-require-imports */
@@ -20,7 +21,7 @@ function loadCollapseMap(filePath) {
   try {
     raw = JSON.parse(fs.readFileSync(filePath, "utf8"))
   } catch (err) {
-    throw new Error(`${filePath} invalid: ${err.message}`)
+    throw new Error(`${filePath} invalid: ${err instanceof Error ? err.message : String(err)}`)
   }
   if (typeof raw !== "object" || raw === null || Array.isArray(raw)) {
     throw new Error(`${filePath} must be a JSON object.`)
