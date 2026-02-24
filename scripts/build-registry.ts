@@ -1,5 +1,6 @@
 // scripts/build-registry.ts
 import crypto from "crypto"
+import { execSync } from "child_process"
 import * as fs from "fs"
 import * as path from "path"
 import { pathToFileURL } from "url"
@@ -163,6 +164,36 @@ function main(options: BuildRegistryOptions = {}): void {
     return crypto.createHash("sha256").update(canonicalString(registryItem), "utf8").digest("hex")
   }
 
+  // Step 1: Collect paths and build lastModified map from batched git log
+  const allPaths = [...new Set(manifest.items.flatMap((item) => (item.files ?? []).map((f) => f.path)))]
+  let lastModifiedMap: Map<string, string> = new Map()
+  if (allPaths.length > 0) {
+    try {
+      const isRepo = execSync("git rev-parse --is-inside-work-tree", { encoding: "utf8" }).trim() === "true"
+      if (isRepo) {
+        const out = execSync("git log -5000 -z --format=%cI%x00 --name-only -z -- registry/", {
+          encoding: "utf8",
+          maxBuffer: 10 * 1024 * 1024,
+        })
+        const tokens = out.split("\0").filter((s) => s.length > 0)
+        let i = 0
+        const isoDate = /^\d{4}-\d{2}-\d{2}T/
+        while (i < tokens.length) {
+          const date = tokens[i]
+          if (!isoDate.test(date)) break
+          i++
+          while (i < tokens.length && !isoDate.test(tokens[i])) {
+            const p = tokens[i].replace(/^\.\//, "")
+            if (!lastModifiedMap.has(p)) lastModifiedMap.set(p, date)
+            i++
+          }
+        }
+      }
+    } catch {
+      console.warn("lastModified skipped: not a git repo or git failed")
+    }
+  }
+
   const index: ComponentIndexEntry[] = []
   let built = 0
   let skipped = 0
@@ -238,6 +269,12 @@ function main(options: BuildRegistryOptions = {}): void {
     const category = resolveCategory(item.category, collapseMap[seg] ?? seg)
 
     const lineCount = builtFiles.reduce((sum, f) => sum + f.content.split(/\n/).length, 0)
+    const sourcePaths = (item.files ?? []).map((f) => f.path)
+    let maxDate: string | undefined
+    for (const p of sourcePaths) {
+      const d = lastModifiedMap.get(p)
+      if (d && (!maxDate || d > maxDate)) maxDate = d
+    }
     index.push({
       name: item.name,
       title: item.title ?? "",
@@ -251,6 +288,7 @@ function main(options: BuildRegistryOptions = {}): void {
         dependencies: (item.dependencies?.length ?? 0) + (item.registryDependencies?.length ?? 0),
       },
       contentHash: hash,
+      ...(maxDate != null && { lastModified: maxDate }),
       peerComponents: [],
     })
 
