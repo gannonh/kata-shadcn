@@ -9,6 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const root = path.join(__dirname, "..")
 const componentIndexPath = path.join(root, "lib", "component-index.json")
 const compactIndexPath = path.join(root, "public", "r", "index-compact.json")
+const registryJsonPath = path.join(root, "registry.json")
 // 300KB cap; design target is ~80–100KB — test allows headroom for growth
 const MAX_COMPACT_INDEX_BYTES = 300 * 1024
 
@@ -60,6 +61,15 @@ describe("build-registry", () => {
       "compact index total must match component-index.json length"
     )
 
+    const manifest = JSON.parse(fs.readFileSync(registryJsonPath, "utf-8"))
+    const templateNames = new Set(["hello-world", "example-form", "complex-component", "example-with-css"])
+    const expectedCount = manifest.items.filter((i) => !templateNames.has(i.name)).length
+    assert.strictEqual(
+      compact.total,
+      expectedCount,
+      `compact total (${compact.total}) must equal non-template registry.json item count (${expectedCount})`
+    )
+
     for (const item of compact.items) {
       const keys = Object.keys(item).sort()
       assert.deepStrictEqual(
@@ -72,12 +82,22 @@ describe("build-registry", () => {
         `/r/${item.name}.json`,
         `compact item url must be /r/<name>.json; got ${item.url}`
       )
+      const expectedCategory = item.name.replace(/\d.*$/, "").replace(/-+$/, "")
+      assert.strictEqual(
+        item.category,
+        expectedCategory,
+        `item ${item.name}: category "${item.category}" must match derived value "${expectedCategory}"`
+      )
     }
 
     const sizeBytes = fs.statSync(compactIndexPath).size
     assert.ok(
       sizeBytes < MAX_COMPACT_INDEX_BYTES,
       `index-compact.json size ${(sizeBytes / 1024).toFixed(1)}KB must be under ${MAX_COMPACT_INDEX_BYTES / 1024}KB`
+    )
+    assert.ok(
+      !raw.startsWith("{\n"),
+      "index-compact.json must be minified (no leading whitespace after opening brace)"
     )
   })
 })
