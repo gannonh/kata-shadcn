@@ -16,16 +16,17 @@ pnpm start                # production server
 pnpm lint                 # ESLint (next/core-web-vitals + TypeScript)
 pnpm registry:build       # Regenerate public/r/ and lib/component-index.json from registry/ sources
 pnpm test                 # Unit tests (Node test runner): build-registry output / install commands
+pnpm test:coverage        # Same plus c8 coverage report; enforces lines ≥80%, functions ≥80%, branches ≥70%
 pnpm test:e2e             # E2E tests (Playwright): browser UI component cards
 ```
 
-**Tests:** Unit test in `scripts/build-registry.test.mjs` (Node `--test`) asserts `lib/component-index.json` is non-empty, every `installCommand` uses `@kata-shadcn` scope, and no entry contains the legacy `@ourorg` scope. E2E in `tests/e2e/` (Playwright) assert the browser UI shows correct install commands.
+**Tests:** Unit test in `scripts/build-registry.test.mjs` (Node `--test`) asserts `lib/component-index.json` is non-empty, every `installCommand` uses `@kata-shadcn` scope, and no entry contains the legacy `@ourorg` scope. E2E in `tests/e2e/` (Playwright) assert the browser UI shows correct install commands. **Coverage:** `pnpm test:coverage` runs unit tests with c8; coverage targets (package.json `c8`) are lines ≥80%, functions ≥80%, branches ≥70% for `scripts/build-registry.ts`.
 
-**CI:** Two jobs: `lint-build-test` (lint, unit tests, Next build) and `e2e` (depends on `lint-build-test`; runs `pnpm build` then Playwright Chromium E2E tests against the production server). Dependabot (`.github/dependabot.yml`) opens weekly PRs for npm and GitHub Actions updates.
+**CI:** Two jobs: `lint-build-test` (lint, unit tests, coverage, Next build) and `e2e` (depends on `lint-build-test`; runs `pnpm build` then Playwright Chromium E2E tests against the production server). Dependabot (`.github/dependabot.yml`) opens weekly PRs for npm and GitHub Actions updates.
 
 ## Architecture
 
-**Build pipeline:** `registry.json` → `scripts/build-registry.ts` → `public/r/{name}.json` (shadcn CLI-ready format) + `lib/component-index.json` (browser UI index) + `public/r/index.json` (agent discovery).
+**Build pipeline:** `registry.json` → `scripts/build-registry.ts` → `public/r/{name}.json` (shadcn CLI-ready format) + `lib/component-index.json` (browser UI index) + `public/r/index.json` (full agent discovery) + `public/r/index-compact.json` (compact agent index: name, category, url only).
 
 **Source of truth:** `registry/` directory. `registry.json` is the manifest. Each component lives in `registry/blocks/{name}/{name}.tsx`. Shared helpers in `registry/components/`. Generated output in `public/r/` is gitignored.
 
@@ -42,7 +43,8 @@ pnpm test:e2e             # E2E tests (Playwright): browser UI component cards
 - `app/`: Next.js App Router UI and compatibility routes under `app/r/*` and `app/styles/*`.
 - `components/`: shared UI components used by the browser interface.
 - `registry/blocks/` and `registry/components/`: source-of-truth component files for registry items.
-- `scripts/build-registry.ts`: generates registry payloads in `public/r/` and search data in `lib/component-index.json`.
+- `scripts/build-registry.ts`: generates registry payloads in `public/r/` (per-component JSON, `index.json`, `index-compact.json`) and browser UI search data in `lib/component-index.json`.
+- `scripts/generate-manifest.ts`: regenerates `registry.json` from built `public/r/` output; run after `registry:build` to sync the manifest.
 - `docs/`: plans and references. `public/`: static assets and generated registry JSON output.
 
 ## Tech stack
@@ -78,7 +80,7 @@ Consumers install with: `npx shadcn add @kata-shadcn/{name}` (requires `componen
 - Unit: `scripts/build-registry.test.mjs` (Node `--test`) checks registry build output uses `@kata-shadcn` scope.
 - E2E: `tests/e2e/` (Playwright) checks the browser UI shows correct install commands on component cards.
 - Before opening a PR, run `pnpm lint`, `pnpm test`, `pnpm build`, and optionally `pnpm test:e2e`.
-- For registry or auth changes, manually verify endpoints, e.g. `curl -H "x-registry-token: $REGISTRY_TOKEN" http://localhost:3000/r/index.json`.
+- For registry or auth changes, manually verify endpoints, e.g. `curl -H "x-registry-token: $REGISTRY_TOKEN" http://localhost:3000/r/index.json`. Also verify `curl http://localhost:3000/r/index-compact.json` returns a minified JSON object with `total` and `items` keys.
 - Include clear reproduction and verification steps in PR descriptions.
 
 ## Commit & pull request guidelines

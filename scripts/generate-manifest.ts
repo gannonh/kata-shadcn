@@ -6,6 +6,7 @@ const PUBLIC_R = path.join(process.cwd(), "public/r")
 const SKIP = new Set([
   "registry.json",
   "index.json",
+  "index-compact.json",
   "complex-component.json",
   "example-form.json",
   "example-with-css.json",
@@ -17,20 +18,37 @@ const existing = JSON.parse(
 )
 
 const templateNames = new Set(["hello-world", "example-form", "complex-component", "example-with-css"])
-const templateItems = existing.items.filter((item: any) => templateNames.has(item.name))
+const templateItems = existing.items.filter((item: { name: string }) => templateNames.has(item.name))
 
-const newItems: any[] = []
+const newItems: Array<Record<string, unknown>> = []
+
+if (!fs.existsSync(PUBLIC_R)) {
+  console.error(`Error: ${PUBLIC_R} does not exist. Run 'pnpm registry:build' first.`)
+  process.exit(1)
+}
 
 const files = fs.readdirSync(PUBLIC_R).filter(
   (f) => f.endsWith(".json") && !SKIP.has(f)
 )
 
 for (const file of files) {
-  const raw = fs.readFileSync(path.join(PUBLIC_R, file), "utf8")
-  const item = JSON.parse(raw)
-  const name = item.name as string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let item: Record<string, any>
+  try {
+    const raw = fs.readFileSync(path.join(PUBLIC_R, file), "utf8")
+    item = JSON.parse(raw)
+  } catch (err) {
+    console.warn(`  Skipping ${file}: failed to read or parse (${(err as Error).message})`)
+    continue
+  }
 
-  const registryFiles = (item.files ?? []).map((entry: any) => {
+  if (!item.name || typeof item.name !== "string") {
+    console.warn(`  Skipping ${file}: missing or invalid name field`)
+    continue
+  }
+  const name = item.name
+
+  const registryFiles = (item.files ?? []).map((entry: { path: string; type: string }) => {
     const type: string = entry.type
     let registryPath: string
 
@@ -65,10 +83,17 @@ const manifest = {
   items: [...templateItems, ...newItems],
 }
 
-fs.writeFileSync(
-  path.join(process.cwd(), "registry.json"),
-  JSON.stringify(manifest, null, 2) + "\n",
-  "utf8"
-)
+const registryJsonPath = path.join(process.cwd(), "registry.json")
+const tmpPath = registryJsonPath + ".tmp"
+try {
+  fs.writeFileSync(tmpPath, JSON.stringify(manifest, null, 2) + "\n", "utf8")
+  fs.renameSync(tmpPath, registryJsonPath)
+} catch (err) {
+  try { fs.unlinkSync(tmpPath) } catch (e) {
+    if ((e as NodeJS.ErrnoException).code !== "ENOENT") throw e
+  }
+  console.error(`Error writing registry.json: ${(err as NodeJS.ErrnoException).message}`)
+  process.exit(1)
+}
 
 console.log(`Generated registry.json with ${newItems.length} registry + ${templateItems.length} template items`)

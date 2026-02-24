@@ -26,7 +26,7 @@ function toConsumerPath(registryPath: string): string {
   return registryPath
 }
 
-const index: any[] = []
+const index: Array<{ name: string; title: string; description: string; category: string; installCommand: string }> = []
 let built = 0
 let skipped = 0
 let missing = 0
@@ -37,7 +37,7 @@ for (const item of manifest.items) {
     continue
   }
 
-  const builtFiles: any[] = []
+  const builtFiles: Array<{ path: string; content: string; type: string }> = []
 
   for (const fileEntry of item.files ?? []) {
     const sourcePath = path.join(process.cwd(), fileEntry.path)
@@ -63,7 +63,7 @@ for (const item of manifest.items) {
     continue
   }
 
-  const registryItem: any = {
+  const registryItem: Record<string, unknown> = {
     $schema: "https://ui.shadcn.com/schema/registry-item.json",
     name: item.name,
     type: item.type,
@@ -118,6 +118,26 @@ fs.writeFileSync(
   JSON.stringify(agentIndex, null, 2) + "\n",
   "utf8"
 )
+
+// Compact agent index (name, category, url only; minified)
+const compactIndex = {
+  total: index.length,
+  items: index.map((c) => ({
+    name: c.name,
+    category: c.category,
+    url: `/r/${c.name}.json`,
+  })),
+}
+try {
+  fs.writeFileSync(
+    path.join(PUBLIC_R, "index-compact.json"),
+    JSON.stringify(compactIndex) + "\n",
+    "utf8"
+  )
+} catch (err) {
+  console.error(`Error writing index-compact.json: ${(err as NodeJS.ErrnoException).message}`)
+  process.exit(1)
+}
 
 console.log(`Built ${built} components. Skipped ${skipped} templates. Missing sources: ${missing}. Index: ${index.length} entries.`)
 if (missing > 0) {
