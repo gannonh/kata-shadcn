@@ -309,6 +309,33 @@ function main(options: BuildRegistryOptions = {}): void {
     }
   }
 
+  // Post-pass: peerComponents (same category, sorted by name, next 5 wrapping, exclude self)
+  const categoryEntriesMap = new Map<string, ComponentIndexEntry[]>()
+  for (const entry of index) {
+    const list = categoryEntriesMap.get(entry.category) ?? []
+    if (list.length === 0) categoryEntriesMap.set(entry.category, list)
+    list.push(entry)
+  }
+  for (const list of categoryEntriesMap.values()) {
+    list.sort((a, b) => a.name.localeCompare(b.name))
+  }
+  for (const entry of index) {
+    const list = categoryEntriesMap.get(entry.category) ?? []
+    if (list.length <= 1) {
+      entry.peerComponents = []
+      continue
+    }
+    const selfIndex = list.findIndex((e) => e.name === entry.name)
+    const peers: string[] = []
+    const n = list.length
+    for (let k = 1; k <= 5; k++) {
+      const idx = (selfIndex + k) % n
+      if (list[idx].name !== entry.name) peers.push(list[idx].name)
+      if (peers.length >= 5) break
+    }
+    entry.peerComponents = peers
+  }
+
   function writeJsonFile(filePath: string, data: unknown, minified = false): void {
     try {
       const content = minified ? JSON.stringify(data) + "\n" : JSON.stringify(data, null, 2) + "\n"
