@@ -166,7 +166,7 @@ function main(options: BuildRegistryOptions = {}): void {
 
   // Step 1: Collect paths and build lastModified map from batched git log
   const allPaths = [...new Set(manifest.items.flatMap((item) => (item.files ?? []).map((f) => f.path)))]
-  let lastModifiedMap: Map<string, string> = new Map()
+  const lastModifiedMap: Map<string, string> = new Map()
   if (allPaths.length > 0) {
     try {
       const isRepo = execSync("git rev-parse --is-inside-work-tree", { encoding: "utf8" }).trim() === "true"
