@@ -38,6 +38,37 @@ pnpm test:e2e             # E2E tests (Playwright): browser UI component cards
 
 **Compatibility routes:** `app/styles/*`, `app/r/styles/*`, `app/r/colors/*`, and `app/r/icons/*` all proxy to the upstream shadcn registry. The middleware also skips token validation for `/r/styles/*`, `/r/colors/*`, and `/r/icons/*`.
 
+## Registry API for agents
+
+Agents can discover and install components via HTTP. All registry endpoints live under `/r/`. Use the compact index for discovery to keep payloads small (~80–100KB); fetch full component JSON only when needed.
+
+### Base URL and authentication
+
+- **Base URL:** Deployed registry root (e.g. `https://shadcn-registry-eight.vercel.app`) or `http://localhost:3000` for local dev.
+- **Header:** `x-registry-token: <token>` — must match the server’s `REGISTRY_TOKEN` environment variable.
+- **When token is required:** In production, `REGISTRY_TOKEN` is set; every request to `/r/*` (except `/r/styles/*`, `/r/colors/*`, `/r/icons/*`) must include a valid `x-registry-token` or the server returns `401 Unauthorized`.
+- **Local dev mode:** If `REGISTRY_TOKEN` is not set, the server allows all requests without a token (for local development only).
+
+### Endpoints and response shapes
+
+| Endpoint | Description | Response shape |
+|----------|-------------|----------------|
+| `GET /r/index-compact.json` | Compact list for discovery (~80–100KB). Filter by `name` or `category` client-side. | `{ total: number, items: Array<{ name: string, category: string, url: string }> }` — `url` is the path to the component JSON, e.g. `/r/hero1.json`. |
+| `GET /r/index.json` | Full agent index with titles and descriptions. Heavier than compact. | `{ total: number, items: Array<{ name: string, title: string, description: string, category: string, url: string }> }`. |
+| `GET /r/{name}.json` | Single component in shadcn CLI format. Use `name` from an index entry. | `{ $schema: string, name: string, type: string, title: string, description: string, files: Array<{ path: string, content: string, type: string }>, dependencies?: string[], registryDependencies?: string[] }`. `files` contain path and source content for the CLI to write. |
+
+### Example workflow: find a component and install it
+
+1. **Discover:** `GET /r/index-compact.json` with header `x-registry-token: <token>`. Parse `items` and filter by `name` or `category` (e.g. `category === "hero"`).
+2. **Choose:** Pick an entry and note `name` and `url` (e.g. `name: "hero1"`, `url: "/r/hero1.json"`).
+3. **Fetch details (optional):** `GET /r/hero1.json` with the same header to get full metadata and file list. The CLI can also resolve the component by name.
+4. **Install in consumer app:** In the consumer project (with `components.json` configured for this registry and `REGISTRY_TOKEN` in env), run: `npx shadcn add @kata-shadcn/hero1`.
+
+### Consumer setup
+
+- **Registry config:** In the consuming app’s `components.json`, add this registry (or merge with existing `registries`): `{ "name": "Kata Shadcn", "url": "<REGISTRY_BASE_URL>", "scope": "kata-shadcn" }`. Use the same base URL as above (e.g. `https://shadcn-registry-eight.vercel.app`).
+- **Token:** Set `REGISTRY_TOKEN` in the environment (e.g. in `.env.local`) to the same secret the registry server expects. The shadcn CLI uses it when fetching from the registry.
+
 ## Project structure
 
 - `app/`: Next.js App Router UI and compatibility routes under `app/r/*` and `app/styles/*`.
@@ -79,7 +110,7 @@ Consumers install with: `npx shadcn add @kata-shadcn/{name}` (requires `componen
 
 - Unit: `scripts/build-registry.test.mjs` (Node `--test`) checks registry build output uses `@kata-shadcn` scope.
 - E2E: `tests/e2e/` (Playwright) checks the browser UI shows correct install commands on component cards.
-- Before opening a PR, run `pnpm lint`, `pnpm test`, `pnpm build`, and optionally `pnpm test:e2e`.
+- Before opening a PR, run `pnpm run check` (runs lint, unit tests, coverage, and build — same as CI) and optionally `pnpm test:e2e`.
 - For registry or auth changes, manually verify endpoints, e.g. `curl -H "x-registry-token: $REGISTRY_TOKEN" http://localhost:3000/r/index.json`. Also verify `curl http://localhost:3000/r/index-compact.json` returns a minified JSON object with `total` and `items` keys.
 - Include clear reproduction and verification steps in PR descriptions.
 
