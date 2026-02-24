@@ -37,4 +37,4 @@ Reduce the browser UI category filter from 451 derived categories to 20–35 usa
 
 ## Implementation plan
 
-See implementation plan (to be created via writing-plans skill).
+See `docs/plans/2026-02-23-category-collapse.md` for the implementation plan.
