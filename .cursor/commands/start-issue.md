@@ -1,0 +1,1 @@
+Use the kata-linear skill to start work on the issue number provided by the user. E,g,. KAT-25
