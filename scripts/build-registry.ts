@@ -127,6 +127,21 @@ for (const item of manifest.items) {
   built++
 }
 
+const totalForCap = index.length
+const capCount = Math.ceil(totalForCap * 0.15)
+const byCategory: Record<string, number> = {}
+for (const entry of index) {
+  byCategory[entry.category] = (byCategory[entry.category] ?? 0) + 1
+}
+for (const [cat, count] of Object.entries(byCategory)) {
+  if (count > capCount) {
+    const pct = ((100 * count) / totalForCap).toFixed(1)
+    console.warn(
+      `Category "${cat}" has ${count} components (${pct}%); max 15% allowed.`
+    )
+  }
+}
+
 // Browser UI index
 fs.writeFileSync(
   path.join(LIB, "component-index.json"),
