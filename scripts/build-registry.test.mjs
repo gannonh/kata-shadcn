@@ -89,6 +89,12 @@ describe("build-registry category collapse file", () => {
         assert.fail("registry:build should fail when category-collapse.json is missing")
       } catch (err) {
         assert.ok(err.status !== 0, "expected non-zero exit")
+        const stderr = (err.stderr ?? err.stdout ?? "").toString()
+        assert.ok(
+          stderr.includes("Error") &&
+            (stderr.toLowerCase().includes("not found") || stderr.includes("category-collapse")),
+          `stderr should mention missing file or path; got: ${stderr.slice(0, 200)}`
+        )
       }
     } finally {
       fs.writeFileSync(categoryCollapsePath, backup, "utf-8")
@@ -105,6 +111,12 @@ describe("build-registry category collapse file", () => {
         assert.fail("registry:build should fail when category-collapse.json is not an object")
       } catch (err) {
         assert.ok(err.status !== 0, "expected non-zero exit")
+        const stderr = (err.stderr ?? err.stdout ?? "").toString()
+        assert.ok(
+          stderr.includes("Error") &&
+            (stderr.toLowerCase().includes("object") || stderr.toLowerCase().includes("json")),
+          `stderr should mention JSON or object; got: ${stderr.slice(0, 200)}`
+        )
       }
     } finally {
       fs.writeFileSync(categoryCollapsePath, backup, "utf-8")
@@ -196,7 +208,7 @@ describe("build-registry", () => {
       index.some((e) => e.tags.length >= 1),
       "at least one entry should have derived tags"
     )
-    // Optional tag coverage: design accepts best-effort ~90%; assert >= 50% so we don't ship empty tags everywhere
+    // Optional tag coverage: design accepts best-effort ~90% (see docs/plans/2026-02-24-index-enrichment-design.md); assert >= 50% so we don't ship empty tags everywhere
     const withTags = index.filter((e) => e.tags && e.tags.length > 0).length
     const total = index.length
     assert.ok(
@@ -236,12 +248,24 @@ describe("build-registry", () => {
     const missingPath = path.join(root, "nonexistent-registry.json")
     const orig = process.env.THROW_ON_EXIT
     process.env.THROW_ON_EXIT = "1"
+    const logs = []
+    const origError = console.error
+    console.error = (...args) => {
+      logs.push(args.map(String).join(" "))
+      origError.apply(console, args)
+    }
     try {
       main({ registryJsonPath: missingPath })
       assert.fail("main should throw when registry is missing")
     } catch (err) {
       assert.ok(err.message.includes("Exit 1"), `expected Exit 1, got: ${err.message}`)
+      const logged = logs.join(" ")
+      assert.ok(
+        logged.toLowerCase().includes("not found") || logged.includes("nonexistent-registry"),
+        `console.error should log not found or path; got: ${logged.slice(0, 150)}`
+      )
     } finally {
+      console.error = origError
       if (orig !== undefined) process.env.THROW_ON_EXIT = orig
       else delete process.env.THROW_ON_EXIT
     }
@@ -255,12 +279,24 @@ describe("build-registry", () => {
       const { main } = await import("./build-registry.ts")
       const orig = process.env.THROW_ON_EXIT
       process.env.THROW_ON_EXIT = "1"
+      const logs = []
+      const origError = console.error
+      console.error = (...args) => {
+        logs.push(args.map(String).join(" "))
+        origError.apply(console, args)
+      }
       try {
         main({ registryJsonPath: badPath })
         assert.fail("main should throw when registry is invalid JSON")
       } catch (err) {
         assert.ok(err.message.includes("Exit 1"), `expected Exit 1, got: ${err.message}`)
+        const logged = logs.join(" ")
+        assert.ok(
+          logged.toLowerCase().includes("invalid") || logged.toLowerCase().includes("json"),
+          `console.error should log invalid or json; got: ${logged.slice(0, 150)}`
+        )
       } finally {
+        console.error = origError
         if (orig !== undefined) process.env.THROW_ON_EXIT = orig
         else delete process.env.THROW_ON_EXIT
       }
@@ -277,12 +313,24 @@ describe("build-registry", () => {
       const { main } = await import("./build-registry.ts")
       const orig = process.env.THROW_ON_EXIT
       process.env.THROW_ON_EXIT = "1"
+      const logs = []
+      const origError = console.error
+      console.error = (...args) => {
+        logs.push(args.map(String).join(" "))
+        origError.apply(console, args)
+      }
       try {
         main({ registryJsonPath: badPath })
         assert.fail("main should throw when items is not an array")
       } catch (err) {
         assert.ok(err.message.includes("Exit 1"), `expected Exit 1, got: ${err.message}`)
+        const logged = logs.join(" ")
+        assert.ok(
+          logged.toLowerCase().includes("items") || logged.toLowerCase().includes("array"),
+          `console.error should log items or array; got: ${logged.slice(0, 150)}`
+        )
       } finally {
+        console.error = origError
         if (orig !== undefined) process.env.THROW_ON_EXIT = orig
         else delete process.env.THROW_ON_EXIT
       }

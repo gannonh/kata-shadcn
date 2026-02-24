@@ -1,15 +1,13 @@
 import { test, expect } from "@playwright/test"
 
 const registryToken = process.env.REGISTRY_TOKEN
+const authHeaders = registryToken ? { "x-registry-token": registryToken } : {}
 
 test.describe("Registry API /r/*", () => {
   test("GET /r/index returns 200 and full index has enriched item shape", async ({
     request,
   }) => {
-    const headers = registryToken
-      ? { "x-registry-token": registryToken }
-      : {}
-    const res = await request.get("/r/index", { headers })
+    const res = await request.get("/r/index", { headers: authHeaders })
 
     expect(res.status()).toBe(200)
     expect(res.headers()["content-type"]).toContain("application/json")
@@ -45,10 +43,7 @@ test.describe("Registry API /r/*", () => {
   test("GET /r/index-compact returns 200 and compact index shape", async ({
     request,
   }) => {
-    const headers = registryToken
-      ? { "x-registry-token": registryToken }
-      : {}
-    const res = await request.get("/r/index-compact", { headers })
+    const res = await request.get("/r/index-compact", { headers: authHeaders })
 
     expect(res.status()).toBe(200)
     expect(res.headers()["content-type"]).toContain("application/json")
@@ -77,10 +72,7 @@ test.describe("Registry API /r/*", () => {
   test("GET /r/hero1 returns 200 and single component payload", async ({
     request,
   }) => {
-    const headers = registryToken
-      ? { "x-registry-token": registryToken }
-      : {}
-    const res = await request.get("/r/hero1", { headers })
+    const res = await request.get("/r/hero1", { headers: authHeaders })
 
     expect(res.status()).toBe(200)
     expect(res.headers()["content-type"]).toContain("application/json")
@@ -93,10 +85,7 @@ test.describe("Registry API /r/*", () => {
   })
 
   test("GET /r/nonexistent returns 404", async ({ request }) => {
-    const headers = registryToken
-      ? { "x-registry-token": registryToken }
-      : {}
-    const res = await request.get("/r/nonexistent-component-xyz", { headers })
+    const res = await request.get("/r/nonexistent-component-xyz", { headers: authHeaders })
 
     expect(res.status()).toBe(404)
     const body = await res.json()

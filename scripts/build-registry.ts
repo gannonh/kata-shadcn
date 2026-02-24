@@ -5,28 +5,9 @@ import * as fs from "fs"
 import * as path from "path"
 import { pathToFileURL } from "url"
 import { createRequire } from "module"
+import type { ComponentIndexEntry } from "../lib/registry-types"
 
 type CategoryCollapseMap = Record<string, string>
-
-interface Complexity {
-  files: number
-  lines: number
-  dependencies: number
-}
-
-// Extend ComponentIndexEntry with optional lastModified (omit when not in git)
-interface ComponentIndexEntry {
-  name: string
-  title: string
-  description: string
-  category: string
-  installCommand: string
-  tags: string[]
-  complexity: Complexity
-  contentHash: string
-  lastModified?: string
-  peerComponents: string[]
-}
 
 interface RegistryItem {
   name: string
@@ -82,6 +63,10 @@ function deriveTags(
   return [...fromName, ...fromDesc]
 }
 
+function errorMessage(err: unknown): string {
+  return err instanceof Error ? err.message : String(err)
+}
+
 function exit(code: number): never {
   if (process.env.THROW_ON_EXIT) {
     throw new Error(`Exit ${code}`)
@@ -96,8 +81,7 @@ function main(options: BuildRegistryOptions = {}): void {
     fs.mkdirSync(PUBLIC_R, { recursive: true })
     fs.mkdirSync(LIB, { recursive: true })
   } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err)
-    console.error(`Error creating output directories: ${msg}. Paths: ${PUBLIC_R}, ${LIB}`)
+    console.error(`Error creating output directories: ${errorMessage(err)}. Paths: ${PUBLIC_R}, ${LIB}`)
     exit(1)
   }
 
@@ -110,7 +94,9 @@ function main(options: BuildRegistryOptions = {}): void {
   try {
     collapseMap = loadCollapseMap(CATEGORY_COLLAPSE_PATH)
   } catch (err) {
-    console.error(`Error: ${err instanceof Error ? err.message : String(err)}`)
+    console.error(
+      `Error loading category collapse map from ${CATEGORY_COLLAPSE_PATH}: ${errorMessage(err)}`
+    )
     exit(1)
   }
 
@@ -118,12 +104,11 @@ function main(options: BuildRegistryOptions = {}): void {
   try {
     manifest = JSON.parse(fs.readFileSync(REGISTRY_JSON, "utf8")) as RegistryManifest
   } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err)
     const code = err instanceof Error && "code" in err ? (err as NodeJS.ErrnoException).code : undefined
     if (code === "ENOENT") {
       console.error(`Error: ${REGISTRY_JSON} not found.`)
     } else {
-      console.error(`Error: ${REGISTRY_JSON} is invalid JSON: ${msg}`)
+      console.error(`Error: ${REGISTRY_JSON} is invalid JSON: ${errorMessage(err)}`)
     }
     exit(1)
   }
@@ -165,7 +150,7 @@ function main(options: BuildRegistryOptions = {}): void {
     return crypto.createHash("sha256").update(canonicalString(registryItem), "utf8").digest("hex")
   }
 
-  // Step 1: Collect paths and build lastModified map from batched git log
+  // Collect paths and build lastModified map from batched git log
   const allPaths = [...new Set(manifest.items.flatMap((item) => (item.files ?? []).map((f) => f.path)))]
   const lastModifiedMap: Map<string, string> = new Map()
   if (allPaths.length > 0) {
@@ -190,8 +175,8 @@ function main(options: BuildRegistryOptions = {}): void {
           }
         }
       }
-    } catch {
-      console.warn("lastModified skipped: not a git repo or git failed")
+    } catch (err) {
+      console.warn(`lastModified skipped: not a git repo or git failed — ${errorMessage(err)}`)
     }
   }
 
@@ -221,8 +206,7 @@ function main(options: BuildRegistryOptions = {}): void {
       try {
         content = fs.readFileSync(sourcePath, "utf8")
       } catch (err) {
-        const msg = err instanceof Error ? err.message : String(err)
-        console.error(`Error reading ${fileEntry.path}: ${msg}`)
+        console.error(`Error reading ${fileEntry.path}: ${errorMessage(err)}`)
         exit(1)
       }
       const consumerPath = toConsumerPath(fileEntry.path)
@@ -343,8 +327,7 @@ function main(options: BuildRegistryOptions = {}): void {
       const content = minified ? JSON.stringify(data) + "\n" : JSON.stringify(data, null, 2) + "\n"
       fs.writeFileSync(filePath, content, "utf8")
     } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err)
-      console.error(`Error writing ${filePath}: ${msg}`)
+      console.error(`Error writing ${filePath}: ${errorMessage(err)}`)
       exit(1)
     }
   }
@@ -354,7 +337,8 @@ function main(options: BuildRegistryOptions = {}): void {
 
   // Agent discovery index (same index, map to include enriched fields)
   const agentIndex = {
-    _description: "Machine-readable index of all available registry components. Fetch /r/{name}.json to get full source. Requires x-registry-token header.",
+    _description:
+      "Machine-readable index of all available registry components. Fetch /r/{name}.json or /r/{name} to get full source. Requires x-registry-token header.",
     total: index.length,
     items: index.map((c) => ({
       name: c.name,
