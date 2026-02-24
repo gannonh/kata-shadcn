@@ -167,6 +167,14 @@ describe("build-registry", () => {
     }
   })
 
+  it("completes registry:build in under 60s (manual/CI check)", () => {
+    if (process.env.COVERAGE_RUN) return
+    const start = Date.now()
+    execSync("pnpm registry:build", { encoding: "utf-8", cwd: root, stdio: "pipe" })
+    const duration = Date.now() - start
+    assert.ok(duration < 60000, `registry:build took ${duration}ms (must be < 60s)`)
+  })
+
   it("produces deterministic contentHash across two builds", () => {
     execSync("pnpm registry:build", { cwd: root, stdio: "pipe" })
     const index1 = JSON.parse(fs.readFileSync(componentIndexPath, "utf-8"))
@@ -187,6 +195,13 @@ describe("build-registry", () => {
     assert.ok(
       index.some((e) => e.tags.length >= 1),
       "at least one entry should have derived tags"
+    )
+    // Optional tag coverage: design accepts best-effort ~90%; assert >= 50% so we don't ship empty tags everywhere
+    const withTags = index.filter((e) => e.tags && e.tags.length > 0).length
+    const total = index.length
+    assert.ok(
+      withTags >= Math.ceil(total * 0.5),
+      `at least 50% of entries should have non-empty tags (got ${withTags}/${total})`
     )
     assert.ok(
       entry.complexity && typeof entry.complexity.files === "number" && typeof entry.complexity.lines === "number" && typeof entry.complexity.dependencies === "number",
