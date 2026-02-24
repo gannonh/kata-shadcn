@@ -11,6 +11,7 @@
     "test": "node --test scripts/build-registry.test.mjs",
     "test:coverage": "COVERAGE_RUN=1 c8 npx tsx scripts/build-registry.ts && COVERAGE_RUN=1 node --test scripts/build-registry.test.mjs",
     "test:e2e": "playwright test",
+    "check": "pnpm lint && pnpm test && pnpm test:coverage && pnpm build",
     "generate-manifest": "npx tsx scripts/generate-manifest.ts"
   },
   "dependencies": {
