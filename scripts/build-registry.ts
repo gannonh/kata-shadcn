@@ -1,6 +1,7 @@
 // scripts/build-registry.ts
 import * as fs from "fs"
 import * as path from "path"
+import { createRequire } from "module"
 
 const REGISTRY_JSON = path.join(process.cwd(), "registry.json")
 const PUBLIC_R = path.join(process.cwd(), "public/r")
@@ -11,7 +12,6 @@ const REGISTRY_SCOPE = "@kata-shadcn"
 fs.mkdirSync(PUBLIC_R, { recursive: true })
 fs.mkdirSync(LIB, { recursive: true })
 
-import { createRequire } from "module"
 const require = createRequire(import.meta.url)
 const { deriveSegment, loadCollapseMap } = require("./category-collapse-loader.cjs") as {
   deriveSegment: (name: string) => string
@@ -96,11 +96,11 @@ for (const item of manifest.items) {
     "utf8"
   )
 
-  const rawCategory =
+  const seg = deriveSegment(item.name)
+  const category =
     typeof item.category === "string" && item.category
       ? item.category
-      : (collapseMap[deriveSegment(item.name)] ?? deriveSegment(item.name))
-  const category = rawCategory
+      : (collapseMap[seg] ?? seg)
 
   index.push({
     name: item.name,
