@@ -17,6 +17,7 @@ const eslintConfig = [
       "registry/**",
       "public/r/**",
       "coverage/**",
+      "playwright-report/**",
       "next-env.d.ts",
     ],
   },
