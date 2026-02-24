@@ -10,8 +10,64 @@ const root = path.join(__dirname, "..")
 const componentIndexPath = path.join(root, "lib", "component-index.json")
 const compactIndexPath = path.join(root, "public", "r", "index-compact.json")
 const registryJsonPath = path.join(root, "registry.json")
+const categoryCollapsePath = path.join(root, "lib", "category-collapse.json")
 // 300KB cap; design target is ~80–100KB — test allows headroom for growth
 const MAX_COMPACT_INDEX_BYTES = 300 * 1024
+
+import { loadCollapseMap } from "./category-collapse-loader.mjs"
+
+describe("category-collapse-loader (in-process coverage)", () => {
+  it("loadCollapseMap throws when file is missing", () => {
+    assert.throws(
+      () => loadCollapseMap(path.join(root, "lib", "nonexistent-collapse.json")),
+      /not found/
+    )
+  })
+
+  it("loadCollapseMap throws when file is not a JSON object", () => {
+    const badPath = path.join(root, "lib", "category-collapse-bad.json")
+    try {
+      fs.writeFileSync(badPath, "[]", "utf-8")
+      assert.throws(() => loadCollapseMap(badPath), /must be a JSON object/)
+    } finally {
+      if (fs.existsSync(badPath)) fs.unlinkSync(badPath)
+    }
+  })
+})
+
+describe("build-registry category collapse file", () => {
+  it("fails when lib/category-collapse.json is missing", () => {
+    if (process.env.COVERAGE_RUN) return
+    const backup = fs.readFileSync(categoryCollapsePath, "utf-8")
+    try {
+      fs.unlinkSync(categoryCollapsePath)
+      try {
+        execSync("pnpm registry:build", { encoding: "utf-8", cwd: root, stdio: "pipe" })
+        assert.fail("registry:build should fail when category-collapse.json is missing")
+      } catch (err) {
+        assert.ok(err.status !== 0, "expected non-zero exit")
+      }
+    } finally {
+      fs.writeFileSync(categoryCollapsePath, backup, "utf-8")
+    }
+  })
+
+  it("fails when lib/category-collapse.json is not a JSON object", () => {
+    if (process.env.COVERAGE_RUN) return
+    const backup = fs.readFileSync(categoryCollapsePath, "utf-8")
+    try {
+      fs.writeFileSync(categoryCollapsePath, "[]", "utf-8")
+      try {
+        execSync("pnpm registry:build", { encoding: "utf-8", cwd: root, stdio: "pipe" })
+        assert.fail("registry:build should fail when category-collapse.json is not an object")
+      } catch (err) {
+        assert.ok(err.status !== 0, "expected non-zero exit")
+      }
+    } finally {
+      fs.writeFileSync(categoryCollapsePath, backup, "utf-8")
+    }
+  })
+})
 
 describe("build-registry", () => {
   before(() => {

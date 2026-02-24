@@ -11,31 +11,14 @@ const REGISTRY_SCOPE = "@kata-shadcn"
 fs.mkdirSync(PUBLIC_R, { recursive: true })
 fs.mkdirSync(LIB, { recursive: true })
 
-function deriveSegment(name: string): string {
-  const beforeHyphen = name.split("-")[0] ?? name
-  return beforeHyphen.replace(/\d+$/, "").replace(/-+$/, "") || beforeHyphen
-}
-
-if (!fs.existsSync(CATEGORY_COLLAPSE_PATH)) {
-  console.error(`Error: ${CATEGORY_COLLAPSE_PATH} not found. Run scripts/bootstrap-category-collapse.ts or add the file.`)
-  process.exit(1)
-}
+import { createRequire } from "module"
+const require = createRequire(import.meta.url)
+const { deriveSegment, loadCollapseMap } = require("./category-collapse-loader.cjs")
 let collapseMap: Record<string, string>
 try {
-  const raw = JSON.parse(fs.readFileSync(CATEGORY_COLLAPSE_PATH, "utf8"))
-  if (typeof raw !== "object" || raw === null || Array.isArray(raw)) {
-    console.error(`Error: ${CATEGORY_COLLAPSE_PATH} must be a JSON object.`)
-    process.exit(1)
-  }
-  for (const [k, v] of Object.entries(raw)) {
-    if (typeof v !== "string") {
-      console.error(`Error: ${CATEGORY_COLLAPSE_PATH} values must be strings; key "${k}" has ${typeof v}.`)
-      process.exit(1)
-    }
-  }
-  collapseMap = raw as Record<string, string>
+  collapseMap = loadCollapseMap(CATEGORY_COLLAPSE_PATH)
 } catch (err) {
-  console.error(`Error: ${CATEGORY_COLLAPSE_PATH} invalid: ${(err as NodeJS.ErrnoException).message}`)
+  console.error(`Error: ${(err as Error).message}`)
   process.exit(1)
 }
 

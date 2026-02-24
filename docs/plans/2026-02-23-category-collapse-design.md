@@ -33,7 +33,7 @@ Reduce the browser UI category filter from 451 derived categories to 20–35 usa
 
 - **Unit tests:** Extend build-registry tests to assert: distinct category count between 20 and 35; no category > 15% of total. Optionally fixture test for explicit `category` and lookup. Keep existing assertions (scope, non-empty index).
 - **Bootstrap:** No automated tests; manual run and edit is sufficient.
-- **Coverage:** New branches in build script covered by above tests; maintain existing coverage targets.
+- **Coverage:** New branches in build script covered by above tests. Error paths (missing/invalid collapse file) are tested via child-process runs; branch threshold set to 65% (see package.json c8) until in-process coverage for those paths is added.
 
 ## Implementation plan
 
