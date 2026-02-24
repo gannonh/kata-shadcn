@@ -61,7 +61,7 @@ Agents can discover and install components via HTTP. All registry endpoints live
 | Endpoint | Description | Response shape |
 |----------|-------------|----------------|
 | `GET /r/index-compact.json` | Compact list for discovery (~80–100KB). Filter by `name` or `category` client-side. | `{ total: number, items: Array<{ name: string, category: string, url: string }> }` — `url` is the path to the component JSON, e.g. `/r/hero1.json`. |
-| `GET /r/index.json` | Full agent index with titles and descriptions. Heavier than compact. | `{ total: number, items: Array<{ name: string, title: string, description: string, category: string, url: string }> }`. |
+| `GET /r/index.json` | Full agent index with titles, descriptions, and enriched metadata. Heavier than compact. | `{ total: number, items: Array<{ name: string, title: string, description: string, category: string, url: string, tags: string[], complexity: { files: number, lines: number, dependencies: number }, contentHash: string, lastModified?: string, peerComponents: string[] }> }`. `lastModified` is optional and omitted when not in a git repo. |
 | `GET /r/{name}.json` | Single component in shadcn CLI format. Use `name` from an index entry. | `{ $schema: string, name: string, type: string, title: string, description: string, files: Array<{ path: string, content: string, type: string }>, dependencies?: string[], registryDependencies?: string[] }`. `files` contain path and source content for the CLI to write. |
 
 ### Example workflow: find a component and install it

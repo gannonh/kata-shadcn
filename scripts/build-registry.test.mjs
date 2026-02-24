@@ -89,6 +89,12 @@ describe("build-registry category collapse file", () => {
         assert.fail("registry:build should fail when category-collapse.json is missing")
       } catch (err) {
         assert.ok(err.status !== 0, "expected non-zero exit")
+        const stderr = (err.stderr ?? err.stdout ?? "").toString()
+        assert.ok(
+          stderr.includes("Error") &&
+            (stderr.toLowerCase().includes("not found") || stderr.includes("category-collapse")),
+          `stderr should mention missing file or path; got: ${stderr.slice(0, 200)}`
+        )
       }
     } finally {
       fs.writeFileSync(categoryCollapsePath, backup, "utf-8")
@@ -105,6 +111,12 @@ describe("build-registry category collapse file", () => {
         assert.fail("registry:build should fail when category-collapse.json is not an object")
       } catch (err) {
         assert.ok(err.status !== 0, "expected non-zero exit")
+        const stderr = (err.stderr ?? err.stdout ?? "").toString()
+        assert.ok(
+          stderr.includes("Error") &&
+            (stderr.toLowerCase().includes("object") || stderr.toLowerCase().includes("json")),
+          `stderr should mention JSON or object; got: ${stderr.slice(0, 200)}`
+        )
       }
     } finally {
       fs.writeFileSync(categoryCollapsePath, backup, "utf-8")
@@ -167,18 +179,93 @@ describe("build-registry", () => {
     }
   })
 
+  it("completes registry:build in under 60s (manual/CI check)", () => {
+    if (process.env.COVERAGE_RUN) return
+    const start = Date.now()
+    execSync("pnpm registry:build", { encoding: "utf-8", cwd: root, stdio: "pipe" })
+    const duration = Date.now() - start
+    assert.ok(duration < 60000, `registry:build took ${duration}ms (must be < 60s)`)
+  })
+
+  it("produces deterministic contentHash across two builds", () => {
+    execSync("pnpm registry:build", { cwd: root, stdio: "pipe" })
+    const index1 = JSON.parse(fs.readFileSync(componentIndexPath, "utf-8"))
+    execSync("pnpm registry:build", { cwd: root, stdio: "pipe" })
+    const index2 = JSON.parse(fs.readFileSync(componentIndexPath, "utf-8"))
+    assert.strictEqual(index1.length, index2.length)
+    for (let i = 0; i < index1.length; i++) {
+      assert.strictEqual(index1[i].contentHash, index2[i].contentHash, `entry ${index1[i].name} hash must match`)
+    }
+  })
+
+  it("enriches component-index and index.json with tags, complexity, contentHash, lastModified, peerComponents", () => {
+    assert.ok(fs.existsSync(componentIndexPath))
+    const index = JSON.parse(fs.readFileSync(componentIndexPath, "utf-8"))
+    assert.ok(index.length > 0)
+    const entry = index[0]
+    assert.ok(Array.isArray(entry.tags), "entry must have tags array")
+    assert.ok(
+      index.some((e) => e.tags.length >= 1),
+      "at least one entry should have derived tags"
+    )
+    // Optional tag coverage: design accepts best-effort ~90% (see docs/plans/2026-02-24-index-enrichment-design.md); assert >= 50% so we don't ship empty tags everywhere
+    const withTags = index.filter((e) => e.tags && e.tags.length > 0).length
+    const total = index.length
+    assert.ok(
+      withTags >= Math.ceil(total * 0.5),
+      `at least 50% of entries should have non-empty tags (got ${withTags}/${total})`
+    )
+    assert.ok(
+      entry.complexity && typeof entry.complexity.files === "number" && typeof entry.complexity.lines === "number" && typeof entry.complexity.dependencies === "number",
+      "entry must have complexity.files, .lines, .dependencies"
+    )
+    assert.strictEqual(typeof entry.contentHash, "string", "entry must have contentHash string")
+    assert.ok(/^[a-f0-9]{64}$/.test(entry.contentHash), "contentHash must be 64-char hex")
+    // lastModified optional (omit when not in git)
+    if (entry.lastModified != null) {
+      assert.ok(/^\d{4}-\d{2}-\d{2}T/.test(entry.lastModified), "lastModified must be ISO 8601")
+    }
+    assert.ok(Array.isArray(entry.peerComponents), "entry must have peerComponents array")
+    assert.ok(entry.peerComponents.length <= 5, "peerComponents at most 5")
+    assert.strictEqual(
+      new Set(entry.peerComponents).size,
+      entry.peerComponents.length,
+      "peerComponents must not contain duplicates"
+    )
+    // Same for public/r/index.json items
+    const agentIndexPath = path.join(root, "public", "r", "index.json")
+    const agent = JSON.parse(fs.readFileSync(agentIndexPath, "utf-8"))
+    const agentEntry = agent.items[0]
+    assert.ok(Array.isArray(agentEntry.tags))
+    assert.ok(agentEntry.complexity && typeof agentEntry.complexity.files === "number")
+    assert.strictEqual(typeof agentEntry.contentHash, "string")
+    assert.ok(Array.isArray(agentEntry.peerComponents))
+  })
+
   it("fails with clear message when registry.json is missing (coverage)", async () => {
     if (!process.env.COVERAGE_RUN) return
     const { main } = await import("./build-registry.ts")
     const missingPath = path.join(root, "nonexistent-registry.json")
     const orig = process.env.THROW_ON_EXIT
     process.env.THROW_ON_EXIT = "1"
+    const logs = []
+    const origError = console.error
+    console.error = (...args) => {
+      logs.push(args.map(String).join(" "))
+      origError.apply(console, args)
+    }
     try {
       main({ registryJsonPath: missingPath })
       assert.fail("main should throw when registry is missing")
     } catch (err) {
       assert.ok(err.message.includes("Exit 1"), `expected Exit 1, got: ${err.message}`)
+      const logged = logs.join(" ")
+      assert.ok(
+        logged.toLowerCase().includes("not found") || logged.includes("nonexistent-registry"),
+        `console.error should log not found or path; got: ${logged.slice(0, 150)}`
+      )
     } finally {
+      console.error = origError
       if (orig !== undefined) process.env.THROW_ON_EXIT = orig
       else delete process.env.THROW_ON_EXIT
     }
@@ -192,12 +279,24 @@ describe("build-registry", () => {
       const { main } = await import("./build-registry.ts")
       const orig = process.env.THROW_ON_EXIT
       process.env.THROW_ON_EXIT = "1"
+      const logs = []
+      const origError = console.error
+      console.error = (...args) => {
+        logs.push(args.map(String).join(" "))
+        origError.apply(console, args)
+      }
       try {
         main({ registryJsonPath: badPath })
         assert.fail("main should throw when registry is invalid JSON")
       } catch (err) {
         assert.ok(err.message.includes("Exit 1"), `expected Exit 1, got: ${err.message}`)
+        const logged = logs.join(" ")
+        assert.ok(
+          logged.toLowerCase().includes("invalid") || logged.toLowerCase().includes("json"),
+          `console.error should log invalid or json; got: ${logged.slice(0, 150)}`
+        )
       } finally {
+        console.error = origError
         if (orig !== undefined) process.env.THROW_ON_EXIT = orig
         else delete process.env.THROW_ON_EXIT
       }
@@ -214,12 +313,24 @@ describe("build-registry", () => {
       const { main } = await import("./build-registry.ts")
       const orig = process.env.THROW_ON_EXIT
       process.env.THROW_ON_EXIT = "1"
+      const logs = []
+      const origError = console.error
+      console.error = (...args) => {
+        logs.push(args.map(String).join(" "))
+        origError.apply(console, args)
+      }
       try {
         main({ registryJsonPath: badPath })
         assert.fail("main should throw when items is not an array")
       } catch (err) {
         assert.ok(err.message.includes("Exit 1"), `expected Exit 1, got: ${err.message}`)
+        const logged = logs.join(" ")
+        assert.ok(
+          logged.toLowerCase().includes("items") || logged.toLowerCase().includes("array"),
+          `console.error should log items or array; got: ${logged.slice(0, 150)}`
+        )
       } finally {
+        console.error = origError
         if (orig !== undefined) process.env.THROW_ON_EXIT = orig
         else delete process.env.THROW_ON_EXIT
       }

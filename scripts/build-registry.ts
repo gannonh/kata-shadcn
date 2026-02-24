@@ -1,18 +1,13 @@
 // scripts/build-registry.ts
+import crypto from "crypto"
+import { execSync } from "child_process"
 import * as fs from "fs"
 import * as path from "path"
 import { pathToFileURL } from "url"
 import { createRequire } from "module"
+import type { ComponentIndexEntry } from "../lib/registry-types"
 
 type CategoryCollapseMap = Record<string, string>
-
-interface ComponentIndexEntry {
-  name: string
-  title: string
-  description: string
-  category: string
-  installCommand: string
-}
 
 interface RegistryItem {
   name: string
@@ -40,6 +35,38 @@ const LIB = path.join(process.cwd(), "lib")
 const CATEGORY_COLLAPSE_PATH = path.join(process.cwd(), "lib", "category-collapse.json")
 const REGISTRY_SCOPE = "@kata-shadcn"
 
+const STOPWORDS = new Set([
+  "a", "an", "the", "and", "or", "with", "for", "to", "in", "on", "of",
+  "section", "component", "block",
+])
+
+function deriveTags(
+  name: string,
+  description: string,
+  deriveSegment: (n: string) => string
+): string[] {
+  const seg = deriveSegment(name)
+  const fromName = seg ? [seg] : []
+  const words = (description ?? "")
+    .toLowerCase()
+    .split(/\W+/)
+    .filter((w) => w.length >= 2 && !STOPWORDS.has(w))
+  const seen = new Set<string>(fromName)
+  const fromDesc: string[] = []
+  const descCap = 8 - fromName.length
+  for (const w of words) {
+    if (seen.has(w)) continue
+    seen.add(w)
+    fromDesc.push(w)
+    if (fromDesc.length >= descCap) break
+  }
+  return [...fromName, ...fromDesc]
+}
+
+function errorMessage(err: unknown): string {
+  return err instanceof Error ? err.message : String(err)
+}
+
 function exit(code: number): never {
   if (process.env.THROW_ON_EXIT) {
     throw new Error(`Exit ${code}`)
@@ -54,8 +81,7 @@ function main(options: BuildRegistryOptions = {}): void {
     fs.mkdirSync(PUBLIC_R, { recursive: true })
     fs.mkdirSync(LIB, { recursive: true })
   } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err)
-    console.error(`Error creating output directories: ${msg}. Paths: ${PUBLIC_R}, ${LIB}`)
+    console.error(`Error creating output directories: ${errorMessage(err)}. Paths: ${PUBLIC_R}, ${LIB}`)
     exit(1)
   }
 
@@ -68,7 +94,9 @@ function main(options: BuildRegistryOptions = {}): void {
   try {
     collapseMap = loadCollapseMap(CATEGORY_COLLAPSE_PATH)
   } catch (err) {
-    console.error(`Error: ${err instanceof Error ? err.message : String(err)}`)
+    console.error(
+      `Error loading category collapse map from ${CATEGORY_COLLAPSE_PATH}: ${errorMessage(err)}`
+    )
     exit(1)
   }
 
@@ -76,12 +104,11 @@ function main(options: BuildRegistryOptions = {}): void {
   try {
     manifest = JSON.parse(fs.readFileSync(REGISTRY_JSON, "utf8")) as RegistryManifest
   } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err)
     const code = err instanceof Error && "code" in err ? (err as NodeJS.ErrnoException).code : undefined
     if (code === "ENOENT") {
       console.error(`Error: ${REGISTRY_JSON} not found.`)
     } else {
-      console.error(`Error: ${REGISTRY_JSON} is invalid JSON: ${msg}`)
+      console.error(`Error: ${REGISTRY_JSON} is invalid JSON: ${errorMessage(err)}`)
     }
     exit(1)
   }
@@ -111,6 +138,48 @@ function main(options: BuildRegistryOptions = {}): void {
     return registryPath
   }
 
+  function canonicalString(val: unknown): string {
+    if (val === null || typeof val !== "object") return JSON.stringify(val)
+    if (Array.isArray(val)) return "[" + val.map(canonicalString).join(",") + "]"
+    const obj = val as Record<string, unknown>
+    const keys = Object.keys(obj).sort()
+    const parts = keys.map((k) => JSON.stringify(k) + ":" + canonicalString(obj[k]))
+    return "{" + parts.join(",") + "}"
+  }
+  function contentHash(registryItem: Record<string, unknown>): string {
+    return crypto.createHash("sha256").update(canonicalString(registryItem), "utf8").digest("hex")
+  }
+
+  // Collect paths and build lastModified map from batched git log
+  const allPaths = [...new Set(manifest.items.flatMap((item) => (item.files ?? []).map((f) => f.path)))]
+  const lastModifiedMap: Map<string, string> = new Map()
+  if (allPaths.length > 0) {
+    try {
+      const isRepo = execSync("git rev-parse --is-inside-work-tree", { encoding: "utf8" }).trim() === "true"
+      if (isRepo) {
+        const out = execSync("git log -5000 -z --format=%cI%x00 --name-only -z -- registry/", {
+          encoding: "utf8",
+          maxBuffer: 10 * 1024 * 1024,
+        })
+        const tokens = out.split("\0").filter((s) => s.length > 0)
+        let i = 0
+        const isoDate = /^\d{4}-\d{2}-\d{2}T/
+        while (i < tokens.length) {
+          const date = tokens[i]
+          if (!isoDate.test(date)) break
+          i++
+          while (i < tokens.length && !isoDate.test(tokens[i])) {
+            const p = tokens[i].replace(/^\.\//, "")
+            if (!lastModifiedMap.has(p)) lastModifiedMap.set(p, date)
+            i++
+          }
+        }
+      }
+    } catch (err) {
+      console.warn(`lastModified skipped: not a git repo or git failed — ${errorMessage(err)}`)
+    }
+  }
+
   const index: ComponentIndexEntry[] = []
   let built = 0
   let skipped = 0
@@ -137,8 +206,7 @@ function main(options: BuildRegistryOptions = {}): void {
       try {
         content = fs.readFileSync(sourcePath, "utf8")
       } catch (err) {
-        const msg = err instanceof Error ? err.message : String(err)
-        console.error(`Error reading ${fileEntry.path}: ${msg}`)
+        console.error(`Error reading ${fileEntry.path}: ${errorMessage(err)}`)
         exit(1)
       }
       const consumerPath = toConsumerPath(fileEntry.path)
@@ -167,6 +235,8 @@ function main(options: BuildRegistryOptions = {}): void {
     if (item.dependencies?.length) registryItem.dependencies = item.dependencies
     if (item.registryDependencies?.length) registryItem.registryDependencies = item.registryDependencies
 
+    const hash = contentHash(registryItem)
+
     const componentJsonPath = path.join(PUBLIC_R, `${item.name}.json`)
     try {
       fs.writeFileSync(
@@ -183,12 +253,28 @@ function main(options: BuildRegistryOptions = {}): void {
     const seg = deriveSegment(item.name)
     const category = resolveCategory(item.category, collapseMap[seg] ?? seg)
 
+    const lineCount = builtFiles.reduce((sum, f) => sum + f.content.split(/\n/).length, 0)
+    const sourcePaths = (item.files ?? []).map((f) => f.path)
+    let maxDate: string | undefined
+    for (const p of sourcePaths) {
+      const d = lastModifiedMap.get(p)
+      if (d && (!maxDate || new Date(d).getTime() > new Date(maxDate).getTime())) maxDate = d
+    }
     index.push({
       name: item.name,
       title: item.title ?? "",
       description: item.description ?? "",
       category,
       installCommand: `npx shadcn add ${REGISTRY_SCOPE}/${item.name}`,
+      tags: deriveTags(item.name, item.description ?? "", deriveSegment),
+      complexity: {
+        files: builtFiles.length,
+        lines: lineCount,
+        dependencies: (item.dependencies?.length ?? 0) + (item.registryDependencies?.length ?? 0),
+      },
+      contentHash: hash,
+      ...(maxDate != null && { lastModified: maxDate }),
+      peerComponents: [],
     })
 
     built++
@@ -208,13 +294,40 @@ function main(options: BuildRegistryOptions = {}): void {
     }
   }
 
+  // Post-pass: peerComponents (same category, sorted by name, next 5 wrapping, exclude self)
+  const categoryEntriesMap = new Map<string, ComponentIndexEntry[]>()
+  for (const entry of index) {
+    const list = categoryEntriesMap.get(entry.category) ?? []
+    if (list.length === 0) categoryEntriesMap.set(entry.category, list)
+    list.push(entry)
+  }
+  for (const list of categoryEntriesMap.values()) {
+    list.sort((a, b) => a.name.localeCompare(b.name))
+  }
+  for (const entry of index) {
+    const list = categoryEntriesMap.get(entry.category) ?? []
+    if (list.length <= 1) {
+      entry.peerComponents = []
+      continue
+    }
+    const selfIndex = list.findIndex((e) => e.name === entry.name)
+    const peers: string[] = []
+    const n = list.length
+    const peerLimit = Math.min(5, n - 1)
+    for (let k = 1; peers.length < peerLimit; k++) {
+      const idx = (selfIndex + k) % n
+      const name = list[idx].name
+      if (name !== entry.name && !peers.includes(name)) peers.push(name)
+    }
+    entry.peerComponents = peers
+  }
+
   function writeJsonFile(filePath: string, data: unknown, minified = false): void {
     try {
       const content = minified ? JSON.stringify(data) + "\n" : JSON.stringify(data, null, 2) + "\n"
       fs.writeFileSync(filePath, content, "utf8")
     } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err)
-      console.error(`Error writing ${filePath}: ${msg}`)
+      console.error(`Error writing ${filePath}: ${errorMessage(err)}`)
       exit(1)
     }
   }
@@ -222,9 +335,10 @@ function main(options: BuildRegistryOptions = {}): void {
   // Browser UI index
   writeJsonFile(path.join(LIB, "component-index.json"), index)
 
-  // Agent discovery index
+  // Agent discovery index (same index, map to include enriched fields)
   const agentIndex = {
-    _description: "Machine-readable index of all available registry components. Fetch /r/{name}.json to get full source. Requires x-registry-token header.",
+    _description:
+      "Machine-readable index of all available registry components. Fetch /r/{name}.json or /r/{name} to get full source. Requires x-registry-token header.",
     total: index.length,
     items: index.map((c) => ({
       name: c.name,
@@ -232,6 +346,11 @@ function main(options: BuildRegistryOptions = {}): void {
       description: c.description,
       category: c.category,
       url: `/r/${c.name}.json`,
+      tags: c.tags,
+      complexity: c.complexity,
+      contentHash: c.contentHash,
+      ...(c.lastModified != null && { lastModified: c.lastModified }),
+      peerComponents: c.peerComponents,
     })),
   }
   writeJsonFile(path.join(PUBLIC_R, "index.json"), agentIndex)

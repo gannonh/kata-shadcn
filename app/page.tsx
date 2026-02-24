@@ -2,16 +2,9 @@
 
 import { useState, useMemo } from "react"
 import componentIndex from "@/lib/component-index.json"
+import type { ComponentIndexEntry } from "@/lib/registry-types"
 
-type Component = {
-  name: string
-  title: string
-  description: string
-  category: string
-  installCommand: string
-}
-
-const components = componentIndex as Component[]
+const components = componentIndex as ComponentIndexEntry[]
 
 const categories = Array.from(
   new Set(components.map((c) => c.category))
@@ -103,7 +96,7 @@ export default function Home() {
   )
 }
 
-function ComponentCard({ component }: { component: Component }) {
+function ComponentCard({ component }: { component: ComponentIndexEntry }) {
   const [copied, setCopied] = useState(false)
 
   function copy() {
