@@ -1,4 +1,4 @@
-import { describe, it, before } from "node:test"
+import { describe, it, before, after } from "node:test"
 import assert from "node:assert"
 import { execSync } from "node:child_process"
 import fs from "node:fs"
@@ -99,5 +99,43 @@ describe("build-registry", () => {
       !raw.startsWith("{\n"),
       "index-compact.json must be minified (no leading whitespace after opening brace)"
     )
+  })
+})
+
+describe("generate-manifest", () => {
+  const regPath = path.join(root, "registry.json")
+  let originalRegistryJson
+
+  before(() => {
+    originalRegistryJson = fs.readFileSync(regPath, "utf-8")
+    try {
+      execSync("pnpm generate-manifest", { encoding: "utf-8", cwd: root, stdio: "pipe" })
+    } catch (err) {
+      throw new Error(`generate-manifest failed (exit ${err.status}):\nSTDOUT: ${err.stdout}\nSTDERR: ${err.stderr}`)
+    }
+  })
+
+  after(() => {
+    fs.writeFileSync(regPath, originalRegistryJson)
+  })
+
+  it("does not add index-compact or index entries to registry.json", () => {
+    const manifest = JSON.parse(fs.readFileSync(regPath, "utf-8"))
+    const names = manifest.items.map((i) => i.name)
+    assert.ok(
+      !names.includes("index-compact"),
+      "generate-manifest must not add 'index-compact' to registry.json items"
+    )
+    assert.ok(
+      !names.includes("index"),
+      "generate-manifest must not add 'index' to registry.json items"
+    )
+  })
+
+  it("preserves template items in registry.json", () => {
+    const manifest = JSON.parse(fs.readFileSync(regPath, "utf-8"))
+    const names = manifest.items.map((i) => i.name)
+    assert.ok(names.includes("hello-world"), "template hello-world must be preserved")
+    assert.ok(names.includes("example-form"), "template example-form must be preserved")
   })
 })

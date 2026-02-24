@@ -10,7 +10,8 @@
     "registry:build": "npx tsx scripts/build-registry.ts",
     "test": "node --test scripts/build-registry.test.mjs",
     "test:coverage": "COVERAGE_RUN=1 c8 npx tsx scripts/build-registry.ts && COVERAGE_RUN=1 node --test scripts/build-registry.test.mjs",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "generate-manifest": "npx tsx scripts/generate-manifest.ts"
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.7",
@@ -41,9 +42,17 @@
     "typescript": "^5.9.2"
   },
   "c8": {
-    "include": ["scripts/build-registry.ts"],
-    "exclude": ["**/*.test.*", "**/node_modules/**"],
-    "reporter": ["text", "lcov"],
+    "include": [
+      "scripts/build-registry.ts"
+    ],
+    "exclude": [
+      "**/*.test.*",
+      "**/node_modules/**"
+    ],
+    "reporter": [
+      "text",
+      "lcov"
+    ],
     "report-dir": "coverage",
     "check-coverage": true,
     "lines": 80,
