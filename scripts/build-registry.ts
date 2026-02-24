@@ -6,12 +6,24 @@ import { createRequire } from "module"
 
 type CategoryCollapseMap = Record<string, string>
 
+interface Complexity {
+  files: number
+  lines: number
+  dependencies: number
+}
+
+// Extend ComponentIndexEntry with optional lastModified (omit when not in git)
 interface ComponentIndexEntry {
   name: string
   title: string
   description: string
   category: string
   installCommand: string
+  tags: string[]
+  complexity: Complexity
+  contentHash: string
+  lastModified?: string
+  peerComponents: string[]
 }
 
 interface RegistryItem {
@@ -183,12 +195,21 @@ function main(options: BuildRegistryOptions = {}): void {
     const seg = deriveSegment(item.name)
     const category = resolveCategory(item.category, collapseMap[seg] ?? seg)
 
+    const lineCount = builtFiles.reduce((sum, f) => sum + f.content.split(/\n/).length, 0)
     index.push({
       name: item.name,
       title: item.title ?? "",
       description: item.description ?? "",
       category,
       installCommand: `npx shadcn add ${REGISTRY_SCOPE}/${item.name}`,
+      tags: [],
+      complexity: {
+        files: builtFiles.length,
+        lines: lineCount,
+        dependencies: (item.dependencies?.length ?? 0) + (item.registryDependencies?.length ?? 0),
+      },
+      contentHash: "0".repeat(64),
+      peerComponents: [],
     })
 
     built++
@@ -222,7 +243,7 @@ function main(options: BuildRegistryOptions = {}): void {
   // Browser UI index
   writeJsonFile(path.join(LIB, "component-index.json"), index)
 
-  // Agent discovery index
+  // Agent discovery index (same index, map to include enriched fields)
   const agentIndex = {
     _description: "Machine-readable index of all available registry components. Fetch /r/{name}.json to get full source. Requires x-registry-token header.",
     total: index.length,
@@ -232,6 +253,11 @@ function main(options: BuildRegistryOptions = {}): void {
       description: c.description,
       category: c.category,
       url: `/r/${c.name}.json`,
+      tags: c.tags,
+      complexity: c.complexity,
+      contentHash: c.contentHash,
+      ...(c.lastModified != null && { lastModified: c.lastModified }),
+      peerComponents: c.peerComponents,
     })),
   }
   writeJsonFile(path.join(PUBLIC_R, "index.json"), agentIndex)
