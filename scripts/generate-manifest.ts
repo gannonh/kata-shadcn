@@ -32,7 +32,8 @@ const files = fs.readdirSync(PUBLIC_R).filter(
 )
 
 for (const file of files) {
-  let item: Record<string, unknown>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let item: Record<string, any>
   try {
     const raw = fs.readFileSync(path.join(PUBLIC_R, file), "utf8")
     item = JSON.parse(raw)
@@ -82,10 +83,17 @@ const manifest = {
   items: [...templateItems, ...newItems],
 }
 
-fs.writeFileSync(
-  path.join(process.cwd(), "registry.json"),
-  JSON.stringify(manifest, null, 2) + "\n",
-  "utf8"
-)
+const registryJsonPath = path.join(process.cwd(), "registry.json")
+const tmpPath = registryJsonPath + ".tmp"
+try {
+  fs.writeFileSync(tmpPath, JSON.stringify(manifest, null, 2) + "\n", "utf8")
+  fs.renameSync(tmpPath, registryJsonPath)
+} catch (err) {
+  try { fs.unlinkSync(tmpPath) } catch (e) {
+    if ((e as NodeJS.ErrnoException).code !== "ENOENT") throw e
+  }
+  console.error(`Error writing registry.json: ${(err as NodeJS.ErrnoException).message}`)
+  process.exit(1)
+}
 
 console.log(`Generated registry.json with ${newItems.length} registry + ${templateItems.length} template items`)
