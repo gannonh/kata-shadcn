@@ -167,6 +167,34 @@ describe("build-registry", () => {
     }
   })
 
+  it("enriches component-index and index.json with tags, complexity, contentHash, lastModified, peerComponents", () => {
+    assert.ok(fs.existsSync(componentIndexPath))
+    const index = JSON.parse(fs.readFileSync(componentIndexPath, "utf-8"))
+    assert.ok(index.length > 0)
+    const entry = index[0]
+    assert.ok(Array.isArray(entry.tags), "entry must have tags array")
+    assert.ok(
+      entry.complexity && typeof entry.complexity.files === "number" && typeof entry.complexity.lines === "number" && typeof entry.complexity.dependencies === "number",
+      "entry must have complexity.files, .lines, .dependencies"
+    )
+    assert.strictEqual(typeof entry.contentHash, "string", "entry must have contentHash string")
+    assert.ok(/^[a-f0-9]{64}$/.test(entry.contentHash), "contentHash must be 64-char hex")
+    // lastModified optional (omit when not in git)
+    if (entry.lastModified != null) {
+      assert.ok(/^\d{4}-\d{2}-\d{2}T/.test(entry.lastModified), "lastModified must be ISO 8601")
+    }
+    assert.ok(Array.isArray(entry.peerComponents), "entry must have peerComponents array")
+    assert.ok(entry.peerComponents.length <= 5, "peerComponents at most 5")
+    // Same for public/r/index.json items
+    const agentIndexPath = path.join(root, "public", "r", "index.json")
+    const agent = JSON.parse(fs.readFileSync(agentIndexPath, "utf-8"))
+    const agentEntry = agent.items[0]
+    assert.ok(Array.isArray(agentEntry.tags))
+    assert.ok(agentEntry.complexity && typeof agentEntry.complexity.files === "number")
+    assert.strictEqual(typeof agentEntry.contentHash, "string")
+    assert.ok(Array.isArray(agentEntry.peerComponents))
+  })
+
   it("fails with clear message when registry.json is missing (coverage)", async () => {
     if (!process.env.COVERAGE_RUN) return
     const { main } = await import("./build-registry.ts")
