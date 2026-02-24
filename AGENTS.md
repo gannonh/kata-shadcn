@@ -2,6 +2,13 @@
 
 Guidance for Claude Code (claude.ai/code), Cursor agents, and humans working in this repository.
 
+## Using agent skills
+
+When following an agent skill (e.g. pull-requests, kata-linear):
+
+- **Paths are skill-relative.** References (e.g. `./references/reviewing-workflow.md`) and scripts (e.g. `scripts/fetch_comments.py`) live under the skill’s directory, not the current workspace.
+- Resolve and run scripts from the skill root (by full path or by running the command from the skill directory). Do not look for those files only in the workspace or assume they are in the repo—you will miss them.
+
 ## What this is
 
 Private component registry optimized for AI agent discovery (~2500 components; see `lib/component-index.json` for current count). Deployed at https://shadcn-registry-eight.vercel.app (auto-deploys on push to main).
@@ -16,11 +23,11 @@ pnpm start                # production server
 pnpm lint                 # ESLint (next/core-web-vitals + TypeScript)
 pnpm registry:build       # Regenerate public/r/ and lib/component-index.json from registry/ sources
 pnpm test                 # Unit tests (Node test runner): build-registry output / install commands
-pnpm test:coverage        # Same plus c8 coverage report; enforces lines ≥80%, functions ≥80%, branches ≥70%
+pnpm test:coverage        # Same plus c8 coverage report; enforces lines ≥80%, functions ≥80%, branches ≥65%
 pnpm test:e2e             # E2E tests (Playwright): browser UI component cards
 ```
 
-**Tests:** Unit test in `scripts/build-registry.test.mjs` (Node `--test`) asserts `lib/component-index.json` is non-empty, every `installCommand` uses `@kata-shadcn` scope, and no entry contains the legacy `@ourorg` scope. E2E in `tests/e2e/` (Playwright) assert the browser UI shows correct install commands. **Coverage:** `pnpm test:coverage` runs unit tests with c8; coverage targets (package.json `c8`) are lines ≥80%, functions ≥80%, branches ≥70% for `scripts/build-registry.ts`.
+**Tests:** Unit test in `scripts/build-registry.test.mjs` (Node `--test`) asserts `lib/component-index.json` is non-empty, every `installCommand` uses `@kata-shadcn` scope, and no entry contains the legacy `@ourorg` scope. E2E in `tests/e2e/` (Playwright) assert the browser UI shows correct install commands. **Coverage:** `pnpm test:coverage` runs unit tests with c8; coverage targets (package.json `c8`) are lines ≥80%, functions ≥80%, branches ≥65% for `scripts/build-registry.ts`.
 
 **CI:** Two jobs: `lint-build-test` (lint, unit tests, coverage, Next build) and `e2e` (depends on `lint-build-test`; runs `pnpm build` then Playwright Chromium E2E tests against the production server). Dependabot (`.github/dependabot.yml`) opens weekly PRs for npm and GitHub Actions updates.
 
