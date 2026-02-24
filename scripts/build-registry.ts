@@ -128,11 +128,16 @@ const compactIndex = {
     url: `/r/${c.name}.json`,
   })),
 }
-fs.writeFileSync(
-  path.join(PUBLIC_R, "index-compact.json"),
-  JSON.stringify(compactIndex) + "\n",
-  "utf8"
-)
+try {
+  fs.writeFileSync(
+    path.join(PUBLIC_R, "index-compact.json"),
+    JSON.stringify(compactIndex) + "\n",
+    "utf8"
+  )
+} catch (err) {
+  console.error(`Error writing index-compact.json: ${(err as NodeJS.ErrnoException).message}`)
+  process.exit(1)
+}
 
 console.log(`Built ${built} components. Skipped ${skipped} templates. Missing sources: ${missing}. Index: ${index.length} entries.`)
 if (missing > 0) {
