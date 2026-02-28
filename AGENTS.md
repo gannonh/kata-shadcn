@@ -64,6 +64,12 @@ Agents can discover and install components via HTTP. All registry endpoints live
 | `GET /r/index.json` | Full agent index with titles, descriptions, and enriched metadata. Heavier than compact. | `{ total: number, items: Array<{ name: string, title: string, description: string, category: string, url: string, tags: string[], complexity: { files: number, lines: number, dependencies: number }, contentHash: string, lastModified?: string, peerComponents: string[] }> }`. `lastModified` is optional and omitted when not in a git repo. |
 | `GET /r/{name}.json` | Single component in shadcn CLI format. Use `name` from an index entry. | `{ $schema: string, name: string, type: string, title: string, description: string, files: Array<{ path: string, content: string, type: string }>, dependencies?: string[], registryDependencies?: string[] }`. `files` contain path and source content for the CLI to write. |
 
+### Categories
+
+Components are organized into 31 curated categories (collapsed from raw name derivation via `lib/category-collapse.json`). Filter `items` client-side on the `category` field. Valid values:
+
+About, Alert & Dialog, Avatar, Blog, Button, Card, Chart, Contact, Content, CTA, Data & Table, Feature, Footer, Forms - Input & Text, Forms - Select & Controls, Gallery, Hero, Navigation, Other, Pricing, Product, Progress & Skeleton, Projects, Services, Settings, Sidebar, Tabs & Accordion, Testimonial, Timeline, Tooltip & Popover, Trust & Logos
+
 ### Example workflow: find a component and install it
 
 1. **Discover:** `GET /r/index-compact.json` with header `x-registry-token: <token>`. Parse `items` and filter by `name` or `category` (e.g. `category === "hero"`).

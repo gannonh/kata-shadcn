@@ -143,46 +143,95 @@ npx shadcn add @kata-shadcn/alert-alert-warning-1 --path ./tmp/registry-install 
 
 ## Recommended AGENTS.md section for consumers
 
-Copy this section into the consuming project's `AGENTS.md`:
+Copy everything between the `<!-- BEGIN -->` and `<!-- END -->` markers below into the consuming project's `AGENTS.md`:
 
-```md
+<!-- BEGIN: copy from here -->
+````md
 ## Private Component Registry (React Source of Truth)
 
-- Prefer installing from `@kata-shadcn` before creating one-off UI components.
-- Shared component changes belong in `kata-shadcn`, not in generated downstream copies.
-- In `components.json`, configure:
-  - URL: `https://shadcn-registry-eight.vercel.app/r/{name}.json`
-  - Header: `x-registry-token: ${REGISTRY_TOKEN}`
-- Add `REGISTRY_TOKEN=<token>` to the consuming project environment.
-- Install using the registry key from `components.json`:
-  - `npx shadcn add @kata-shadcn/<name>`
-- Auth behavior:
-  - Deployed `/r/*` endpoints are token-protected except `/r/styles/*`, `/r/colors/*`, `/r/icons/*`.
-  - Local registry dev mode may allow requests without a token when `REGISTRY_TOKEN` is unset.
-- For install smoke tests, use `--path` into a temp folder and verify `git status` after running `shadcn add`.
+Private shadcn-compatible component registry:
+- Repo: `https://github.com/gannonh/kata-shadcn`
+- Deploy: `https://shadcn-registry-eight.vercel.app`
+
+Rules:
+1. Prefer installing from `@kata-shadcn` before creating new one-off components.
+2. Shared component changes belong in `kata-shadcn` (source repo), not in generated downstream copies.
+3. Pushing to `main` in `kata-shadcn` triggers Vercel deployment; verify install behavior after deploy.
+
+### Auth
+
+Endpoints under `/r/*` require an `x-registry-token` header except these public passthroughs for built-in shadcn dependencies:
+
+- `/r/styles/*` — style definitions
+- `/r/colors/*` — color registry
+- `/r/icons/*` — icon registry
+
+Compatibility endpoints under `/styles/*` proxy to the public shadcn registry for unscoped dependencies (e.g. `utils`, `button`) that the CLI resolves via `styles/{style}/{name}.json`.
+
+When running a local copy of the registry, auth can be disabled when `REGISTRY_TOKEN` is not set (local dev mode). Do not assume this for the deployed Vercel URL.
+
+### Setup
+
+In the consuming project's `components.json`:
+
+```json
+{
+  "registries": {
+    "@kata-shadcn": {
+      "url": "https://shadcn-registry-eight.vercel.app/r/{name}.json",
+      "headers": {
+        "x-registry-token": "${REGISTRY_TOKEN}"
+      }
+    }
+  }
+}
 ```
 
-## AI agent discovery
+Add `REGISTRY_TOKEN=<token>` to the consuming project's `.env`.
 
-Agents can query the full component index in one request:
+Install a component:
 
+```bash
+npx shadcn add @kata-shadcn/hero1
 ```
-GET /r/index.json
-x-registry-token: <secret>
+
+The install prefix must match the registry key in `components.json` (`<registry-key>/<component-name>`).
+
+For install verification without touching production component paths, use `--path` to a temp folder and verify `git status` afterward:
+
+```bash
+npx shadcn add @kata-shadcn/alert-alert-warning-1 --path ./tmp/registry-install --yes
 ```
 
-Returns `{ total, items: [{ name, title, description, category, url }] }` where `total` is the current component count. Fetch `/r/{name}.json` for full source.
+### Discovery endpoints
+
+Use the compact index for initial filtering (~80-100KB). Fetch the full index only when enriched metadata (tags, complexity, hashes) is needed. All endpoints require `x-registry-token: <token>`.
+
+| Endpoint | Description | Response shape |
+|---|---|---|
+| `GET /r/index-compact.json` | Lightweight discovery (~80-100KB) | `{ total, items: [{ name, category, url }] }` |
+| `GET /r/index.json` | Full enriched index | `{ total, items: [{ name, title, description, category, url, tags, complexity: { files, lines, dependencies }, contentHash, lastModified?, peerComponents }] }` |
+| `GET /r/{name}.json` | Single component (shadcn CLI format) | `{ name, type, title, description, files: [{ path, content, type }], dependencies?, registryDependencies? }` |
+
+`lastModified` is omitted when git history is unavailable.
+
+### Categories
+
+Components are organized into 31 curated categories. Filter `items` client-side on the `category` field. Valid values:
+
+About, Alert & Dialog, Avatar, Blog, Button, Card, Chart, Contact, Content, CTA, Data & Table, Feature, Footer, Forms - Input & Text, Forms - Select & Controls, Gallery, Hero, Navigation, Other, Pricing, Product, Progress & Skeleton, Projects, Services, Settings, Sidebar, Tabs & Accordion, Testimonial, Timeline, Tooltip & Popover, Trust & Logos
+
+### Workflow
+
+1. `GET /r/index-compact.json` — filter by `name` or `category` (e.g. `category === "Hero"`)
+2. Pick an entry, note `name` and `url`
+3. (Optional) `GET /r/{name}.json` — inspect full source and dependencies
+4. Install: `npx shadcn add @kata-shadcn/{name}`
+````
+<!-- END: stop copying here -->
 
 ## Project management
 
 Tracked in Linear: [Kata Shadcn Registry](https://linear.app/kata-sh/project/kata-shadcn-registry-4b3fcae34eed) (team: Kata-sh).
 
-**Milestones:**
 
-| Milestone            | Scope                                                                                     |
-| -------------------- | ----------------------------------------------------------------------------------------- |
-| Quick Wins           | Install command bug fix, category taxonomy, compact agent index, usage logging, AGENTS.md |
-| Analytics & Metadata | Usage analytics dashboard, index enrichment (tags, complexity, content hashes)            |
-| Visual Catalog       | Standalone render audit, Playwright screenshot harness, preview thumbnails in UI          |
-| Curation & Bundles   | Curated page recipes, page builder bundles with layout scaffolding                        |
-| Discovery & Growth   | Semantic search with LLM-enriched descriptions, open-source registry template             |
