@@ -32,7 +32,7 @@
     "@eslint/eslintrc": "^3.3.1",
     "@playwright/test": "^1.49.0",
     "@tailwindcss/postcss": "^4.2.1",
-    "@types/node": "^20.19.9",
+    "@types/node": "^25.3.3",
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",
     "c8": "^10.1.3",
